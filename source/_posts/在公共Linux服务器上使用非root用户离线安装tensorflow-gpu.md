@@ -2,6 +2,7 @@
 title: 在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x
 tags: [tensorflow,cuda]
 category: [深度学习,tensorflow]
+top: 2
 index_img: /img/tensorflow-gpu.jpg
 excerpt: 非root用户还是离线安装tensorflow-gpu很少有这么苛刻的条件。本文借助虚拟机搭建好tensorflow-gpu虚拟环境后，将其迁移至公共服务器上，再离线安装cuda和cudnn。
 ---
