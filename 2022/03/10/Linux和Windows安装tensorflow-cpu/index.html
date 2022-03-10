@@ -16,12 +16,12 @@
   <meta name="author" content="Mr niu2">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linux和Windows安装tensorflow-cpu 2.x网络上有许多安装tensorflow的教程，我写这篇博客主要是想记录下自己安装tensorflow过程中踩的坑，现在回过头看tensorflow的安装其实无比简单。在这里将我的经验写下来，供大家借鉴参考，linux和Windows同样适用。">
+    <meta name="description" content="Linux和Windows安装tensorflow-cpu 2.x 网络上有许多安装tensorflow的教程，我写这篇博客主要是想记录下自己安装tensorflow过程中踩的坑，现在回过头看tensorflow的安装其实无比简单。在这里将我的经验写下来，供大家借鉴参考，linux和Windows同样适用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux和Windows安装tensorflow-cpu 2.x">
 <meta property="og:url" content="https://2022xi.github.io/2022/03/10/Linux%E5%92%8CWindows%E5%AE%89%E8%A3%85tensorflow-cpu/index.html">
 <meta property="og:site_name" content="舍功利之心，注一腔热情。">
-<meta property="og:description" content="Linux和Windows安装tensorflow-cpu 2.x网络上有许多安装tensorflow的教程，我写这篇博客主要是想记录下自己安装tensorflow过程中踩的坑，现在回过头看tensorflow的安装其实无比简单。在这里将我的经验写下来，供大家借鉴参考，linux和Windows同样适用。">
+<meta property="og:description" content="Linux和Windows安装tensorflow-cpu 2.x 网络上有许多安装tensorflow的教程，我写这篇博客主要是想记录下自己安装tensorflow过程中踩的坑，现在回过头看tensorflow的安装其实无比简单。在这里将我的经验写下来，供大家借鉴参考，linux和Windows同样适用。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2022xi.github.io/img/tensorflow-cpu.jpg">
 <meta property="article:published_time" content="2022-03-10T11:07:36.731Z">
@@ -291,48 +291,52 @@
             
             <div class="markdown-body">
               
-              <h1 id="Linux和Windows安装tensorflow-cpu-2-x"><a href="#Linux和Windows安装tensorflow-cpu-2-x" class="headerlink" title="Linux和Windows安装tensorflow-cpu 2.x"></a>Linux和Windows安装tensorflow-cpu 2.x</h1><p>网络上有许多安装tensorflow的教程，我写这篇博客主要是想记录下自己安装tensorflow过程中踩的坑，现在回过头看tensorflow的安装其实无比简单。在这里将我的经验写下来，供大家借鉴参考，linux和Windows同样适用。</p>
+              <h1
+id="linux和windows安装tensorflow-cpu-2.x">Linux和Windows安装tensorflow-cpu
+2.x</h1>
+<p>网络上有许多安装tensorflow的教程，我写这篇博客主要是想记录下自己安装tensorflow过程中踩的坑，现在回过头看tensorflow的安装其实无比简单。在这里将我的经验写下来，供大家借鉴参考，linux和Windows同样适用。
 <span id="more"></span>
-<p>在初次安装tensorflow时，网络上的许多教程都讲可以通过anaconda进行安装。按照教程的步骤，首先是使用conda创建一个新的虚拟环境，对于刚刚接触的我来说并不明白虚拟环境是什么意思，所以就导致了我即使是成功安装了tensorflow而不自知。</p>
+在初次安装tensorflow时，网络上的许多教程都讲可以通过anaconda进行安装。按照教程的步骤，首先是使用conda创建一个新的虚拟环境，对于刚刚接触的我来说并不明白虚拟环境是什么意思，所以就导致了我即使是成功安装了tensorflow而不自知。</p>
 <p>下面我将自己的安装步骤详细记录下来，并对一些问题进行解释。</p>
-<h2 id="一、anaconda的安装"><a href="#一、anaconda的安装" class="headerlink" title="一、anaconda的安装"></a>一、anaconda的安装</h2><p>不同的项目用到的环境可能不一样，但有些环境在同一台计算机里面可能会导致冲突，这就是为什么有时候会产生一些莫名其妙错误的原因，所以我们希望将这些环境隔离开来。anaconda就是这样一个很好的工具。</p>
-<p><img src="https://s2.loli.net/2022/02/12/x3r4PSn582wmUoc.png" srcset="/img/loading.gif" lazyload></p>
-<p><a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual">Anaconda | Individual Edition</a></p>
+<h2 id="一anaconda的安装">一、anaconda的安装</h2>
+<p>不同的项目用到的环境可能不一样，但有些环境在同一台计算机里面可能会导致冲突，这就是为什么有时候会产生一些莫名其妙错误的原因，所以我们希望将这些环境隔离开来。anaconda就是这样一个很好的工具。</p>
+<p><img src="https://s2.loli.net/2022/02/12/x3r4PSn582wmUoc.png" srcset="/img/loading.gif" lazyload /></p>
+<p><a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual">Anaconda |
+Individual Edition</a></p>
 <p>从这个网站上下载，根据自己的操作系统选择相应的版本，可以直接使用最新版本。</p>
-<p>Windows是寻常的.exe文件，按照提示进行安装；Linux是.sh文件，在shell终端使用sh 文件名.sh安装。Linux操作系统下需要注意更改安装路径，建议放在用户目录下，这样可以避免后续安装过程中始终被要求获得root权限。具体安装步骤这里不详加叙述，安装成功并添加好环境变量后，可以使用conda -V命令验证。</p>
-<h2 id="二、虚拟环境的创建"><a href="#二、虚拟环境的创建" class="headerlink" title="二、虚拟环境的创建"></a>二、虚拟环境的创建</h2><p>顺利安装anaconda后，在命令行终端输入</p>
+<p>Windows是寻常的.exe文件，按照提示进行安装；Linux是.sh文件，在shell终端使用sh
+文件名.sh安装。Linux操作系统下需要注意更改安装路径，建议放在用户目录下，这样可以避免后续安装过程中始终被要求获得root权限。具体安装步骤这里不详加叙述，安装成功并添加好环境变量后，可以使用conda
+-V命令验证。</p>
+<h2 id="二虚拟环境的创建">二、虚拟环境的创建</h2>
+<p>顺利安装anaconda后，在命令行终端输入</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create -n tensorflow python&#x3D;3.9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-
 <p>创建一个虚拟环境，python=3.9是指定在虚拟环境安装python3.9</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda info -e<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-
 <p>查看已安装的环境。</p>
-<p><img src="https://s2.loli.net/2022/02/12/FJQjiU9l3hZDdMb.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/12/FJQjiU9l3hZDdMb.png" srcset="/img/loading.gif" lazyload /></p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">activate tensorflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-
 <p>切换虚拟环境（deactivate退出当前环境）。</p>
-<p><img src="https://s2.loli.net/2022/02/12/3GpnKfa29PFiv14.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/12/3GpnKfa29PFiv14.png" srcset="/img/loading.gif" lazyload /></p>
 <p>后续在“tensorflow”这个虚拟环境中安装的任何库，均仅在此虚拟环境中生效。</p>
-<h2 id="三、tensorflow安装"><a href="#三、tensorflow安装" class="headerlink" title="三、tensorflow安装"></a>三、tensorflow安装</h2><p>tensorflow分为cpu和gpu两个版本。gpu需要计算机有英伟达的显卡，我将在下面一篇博客中介绍如何安装和配置环境。</p>
-<p><a href="https://2022xi.github.io/2022/02/12/%E5%9C%A8%E5%85%AC%E5%85%B1Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BD%BF%E7%94%A8%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85tensorflow-gpu/">在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x - 舍功利之心，注一腔热情。 (2022xi.github.io)</a></p>
+<h2 id="三tensorflow安装">三、tensorflow安装</h2>
+<p>tensorflow分为cpu和gpu两个版本。gpu需要计算机有英伟达的显卡，我将在下面一篇博客中介绍如何安装和配置环境。</p>
+<p><a
+href="https://2022xi.github.io/2022/02/12/在公共Linux服务器上使用非root用户离线安装tensorflow-gpu/">在公共服务器上使用非root用户离线安装tensorflow-gpu
+2.x - 舍功利之心，注一腔热情。 (2022xi.github.io)</a></p>
 <p>进入虚拟环境后，在命令行终端输入</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda install tensorflow<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-
 <p>等待自动安装一些依赖。</p>
 <p>安装完成后，我们来验证一下。</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-
 <p>进入python环境</p>
 <div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
 a <span class="token operator">=</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
-
 <p>成功安装输出结果</p>
-<p><img src="https://s2.loli.net/2022/02/12/tcLQ4g2RzJIkMSv.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/12/tcLQ4g2RzJIkMSv.png" srcset="/img/loading.gif" lazyload /></p>
 <p>不想让中间警告信息显示时，可以通过添加如下两行代码，设置TensorFlow日志输出级别。</p>
 <div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python">impot os
 os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"TF_CPP_MIN_LOG_LEVEL"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"3"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
-
 <p>到这里tensorflow的安装就完成了，需要注意在使用时激活虚拟环境。</p>
 
               

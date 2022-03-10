@@ -291,100 +291,167 @@
             
             <div class="markdown-body">
               
-              <h1 id="信号与系统——第二章（时域系统分析）"><a href="#信号与系统——第二章（时域系统分析）" class="headerlink" title="信号与系统——第二章（时域系统分析）"></a>信号与系统——第二章（时域系统分析）</h1><p><img src="https://s2.loli.net/2022/02/16/S8K9TmxprO5bsoV.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="2-1微分方程与差分方程"><a href="#2-1微分方程与差分方程" class="headerlink" title="2.1微分方程与差分方程"></a>2.1微分方程与差分方程</h2><h3 id="2-1-1微分方程的建立"><a href="#2-1-1微分方程的建立" class="headerlink" title="2.1.1微分方程的建立"></a>2.1.1微分方程的建立</h3><p>以输出信号的导数的最高阶次，作为微分方程的阶次。微分方程根据物理的实际问题建立输入输出关系，例如电路系统，根据元器件的电气特性建立微分方程。</p>
-<p><img src="https://s2.loli.net/2022/02/17/AOqx5ngbUShmLF6.png" srcset="/img/loading.gif" lazyload></p>
+              <h1
+id="信号与系统第二章时域系统分析">信号与系统——第二章（时域系统分析）</h1>
+<p><img src="https://s2.loli.net/2022/02/16/S8K9TmxprO5bsoV.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="微分方程与差分方程">2.1微分方程与差分方程</h2>
+<h3 id="微分方程的建立">2.1.1微分方程的建立</h3>
+<p>以输出信号的导数的最高阶次，作为微分方程的阶次。微分方程根据物理的实际问题建立输入输出关系，例如电路系统，根据元器件的电气特性建立微分方程。</p>
+<p><img src="https://s2.loli.net/2022/02/17/AOqx5ngbUShmLF6.png" srcset="/img/loading.gif" lazyload /></p>
 <p>一般把输出写在方程的左边，输入写在方程的右边。</p>
-<h3 id="2-1-2差分方程的建立"><a href="#2-1-2差分方程的建立" class="headerlink" title="2.1.2差分方程的建立"></a>2.1.2差分方程的建立</h3><p>常用后向差分方程，以输出信号的最大延迟作为差分方程的阶。</p>
-<p><img src="https://s2.loli.net/2022/02/17/AqGijdJagRoZp9e.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="差分方程的建立">2.1.2差分方程的建立</h3>
+<p>常用后向差分方程，以输出信号的最大延迟作为差分方程的阶。</p>
+<p><img src="https://s2.loli.net/2022/02/17/AqGijdJagRoZp9e.png" srcset="/img/loading.gif" lazyload /></p>
 <p>1）微分方程离散化：使用前向差分或后向差分近似微分。</p>
 <p>2）物理系统建立差分方程。</p>
 <p>3）根据系统框图建立差分方程。</p>
-<h3 id="2-1-3方程求解"><a href="#2-1-3方程求解" class="headerlink" title="2.1.3方程求解"></a>2.1.3方程求解</h3><p>建立微分/差分方程数学模型，求解输入输出的隐式关系成显式关系，并通过结果介绍其中物理含义。</p>
-<p><img src="https://s2.loli.net/2022/02/17/IVml4wCsJTrASUE.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="方程求解">2.1.3方程求解</h3>
+<p>建立微分/差分方程数学模型，求解输入输出的隐式关系成显式关系，并通过结果介绍其中物理含义。</p>
+<p><img src="https://s2.loli.net/2022/02/17/IVml4wCsJTrASUE.jpg" srcset="/img/loading.gif" lazyload /></p>
 <p>根据微分/差分方程的齐次方程的特征方程，求出带待定系数的齐次解，</p>
-<p><img src="https://s2.loli.net/2022/02/17/w2VkeYozj6qitup.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/17/w2VkeYozj6qitup.png" srcset="/img/loading.gif" lazyload /></p>
 <p>求出微分/差分方程的一个特解，</p>
-<p><img src="https://s2.loli.net/2022/02/17/e2RYrvcVX4BoCZA.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/17/e2RYrvcVX4BoCZA.png" srcset="/img/loading.gif" lazyload /></p>
 <p>根据初始条件确定方程中的未知参数。</p>
-<h2 id="2-2确定系统初始条件"><a href="#2-2确定系统初始条件" class="headerlink" title="2.2确定系统初始条件"></a>2.2确定系统初始条件</h2><p><img src="https://s2.loli.net/2022/02/17/IDX7FHxJewjTv2O.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-2-1物理条件约束方法"><a href="#2-2-1物理条件约束方法" class="headerlink" title="2.2.1物理条件约束方法"></a>2.2.1物理条件约束方法</h3><p>根据系统的实际物理特性确定，这处老师讲解的例子需要运用到电容电感的电路知识，这里我将题目列出，感兴趣的朋友可以试一试。</p>
-<p><img src="https://s2.loli.net/2022/02/17/aoj234TkxqfYXO6.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="确定系统初始条件">2.2确定系统初始条件</h2>
+<p><img src="https://s2.loli.net/2022/02/17/IDX7FHxJewjTv2O.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="物理条件约束方法">2.2.1物理条件约束方法</h3>
+<p>根据系统的实际物理特性确定，这处老师讲解的例子需要运用到电容电感的电路知识，这里我将题目列出，感兴趣的朋友可以试一试。</p>
+<p><img src="https://s2.loli.net/2022/02/17/aoj234TkxqfYXO6.png" srcset="/img/loading.gif" lazyload /></p>
 <p>0时刻之前开关S在1处，0时刻将开关S拨向2处，求0+时刻通过电阻R1的电流。</p>
-<h3 id="2-2-1奇异函数匹配方法"><a href="#2-2-1奇异函数匹配方法" class="headerlink" title="2.2.1奇异函数匹配方法"></a>2.2.1奇异函数匹配方法</h3><p>例如将函数y(t)分解成一个连续函数+单位冲激偶函数+单位冲激函数+单位跃迁函数<br>$$<br>y(t){|<em>{ {0</em> - } \sim {0_ + } } } = {y_1}(t) + a\delta ‘(t) + b\delta (t) + c\Delta u(t)<br>$$<br>求y(t)在0-到0+之间的跳变，<br>$$<br>y({0_ + }) - y({0_ - }) = c<br>$$<br>应为只有单位跃迁函数在0处出现了跳变。所以计算整体跳变时，仅计算单位跃迁函数部分即可。</p>
+<h3 id="奇异函数匹配方法">2.2.1奇异函数匹配方法</h3>
+<p>例如将函数y(t)分解成一个连续函数+单位冲激偶函数+单位冲激函数+单位跃迁函数
+<span class="math display">\[
+y(t){|_{ {0_ - } \sim {0_ + } } } = {y_1}(t) + a\delta &#39;(t) +
+b\delta (t) + c\Delta u(t)
+\]</span> 求y(t)在0-到0+之间的跳变， <span class="math display">\[
+y({0_ + }) - y({0_ - }) = c
+\]</span>
+应为只有单位跃迁函数在0处出现了跳变。所以计算整体跳变时，仅计算单位跃迁函数部分即可。</p>
 <p>例子：</p>
-<p><img src="https://s2.loli.net/2022/02/17/pWKk8usZPFQmXDg.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/17/pWKk8usZPFQmXDg.png" srcset="/img/loading.gif" lazyload /></p>
 <p>博主真迹：</p>
-<p><img src="https://s2.loli.net/2022/02/17/sZXleNL5F2GkSPJ.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-2-1迭代方法：差分方程"><a href="#2-2-1迭代方法：差分方程" class="headerlink" title="2.2.1迭代方法：差分方程"></a>2.2.1迭代方法：差分方程</h3><p><img src="https://s2.loli.net/2022/02/17/asLqfgP2QoFmtdE.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-2-1系统初始条件的两种特殊情况"><a href="#2-2-1系统初始条件的两种特殊情况" class="headerlink" title="2.2.1系统初始条件的两种特殊情况"></a>2.2.1系统初始条件的两种特殊情况</h3><ul>
+<p><img src="https://s2.loli.net/2022/02/17/sZXleNL5F2GkSPJ.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="迭代方法差分方程">2.2.1迭代方法：差分方程</h3>
+<p><img src="https://s2.loli.net/2022/02/17/asLqfgP2QoFmtdE.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="系统初始条件的两种特殊情况">2.2.1系统初始条件的两种特殊情况</h3>
+<ul>
 <li>零状态：对于连续时间系统，表示0-时各阶输出导数都是0；对于离散时间系统，表示n&lt;0时系统输出都是0.</li>
 <li>零输入：系统在0时刻没有输出，当然系统状态没有跳变。</li>
 </ul>
-<h2 id="2-3方程求解的举例说明"><a href="#2-3方程求解的举例说明" class="headerlink" title="2.3方程求解的举例说明"></a>2.3方程求解的举例说明</h2><h3 id="2-3-1连续时间信号例题"><a href="#2-3-1连续时间信号例题" class="headerlink" title="2.3.1连续时间信号例题"></a>2.3.1连续时间信号例题</h3><p>例1：</p>
-<p><img src="https://s2.loli.net/2022/02/18/fazwZv1sAM9VJj2.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-3-2离散时间信号例题"><a href="#2-3-2离散时间信号例题" class="headerlink" title="2.3.2离散时间信号例题"></a>2.3.2离散时间信号例题</h3><p>有些离散时间信号例题的求解有点像组合数学中，递推关系的求解方法。</p>
+<h2 id="方程求解的举例说明">2.3方程求解的举例说明</h2>
+<h3 id="连续时间信号例题">2.3.1连续时间信号例题</h3>
+<p>例1：</p>
+<p><img src="https://s2.loli.net/2022/02/18/fazwZv1sAM9VJj2.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="离散时间信号例题">2.3.2离散时间信号例题</h3>
+<p>有些离散时间信号例题的求解有点像组合数学中，递推关系的求解方法。</p>
 <p>例2：</p>
-<p><img src="https://s2.loli.net/2022/02/18/5U1YEqHKL7jnVkg.png" srcset="/img/loading.gif" lazyload></p>
-<p> 例3：<img src="https://s2.loli.net/2022/02/18/YOAFWa3wLsZJS12.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/18/5U1YEqHKL7jnVkg.png" srcset="/img/loading.gif" lazyload /></p>
+<p>例3：<img
+src="https://s2.loli.net/2022/02/18/YOAFWa3wLsZJS12.png" srcset="/img/loading.gif" lazyload /></p>
 <p>例4：</p>
-<p><img src="https://s2.loli.net/2022/02/18/iLYXEOx7MuWzT4a.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/18/iLYXEOx7MuWzT4a.png" srcset="/img/loading.gif" lazyload /></p>
 <p>因为x[0]=0，是0输入，所以可以直接用y[-1]=-1求待定系数。</p>
-<h3 id="2-3-3银行贷款例题"><a href="#2-3-3银行贷款例题" class="headerlink" title="2.3.3银行贷款例题"></a>2.3.3银行贷款例题</h3><p><img src="https://s2.loli.net/2022/02/18/f2dTgZD6BjQuGUH.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2022/02/18/Agm8lVQM4e3tCJ1.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="银行贷款例题">2.3.3银行贷款例题</h3>
+<p><img src="https://s2.loli.net/2022/02/18/f2dTgZD6BjQuGUH.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2022/02/18/Agm8lVQM4e3tCJ1.png" srcset="/img/loading.gif" lazyload /></p>
 <p>博主真迹：</p>
-<p><img src="C:/Users/math2/AppData/Roaming/Typora/typora-user-images/image-20220218230101602.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-3-4差分方程数值求解微分方程"><a href="#2-3-4差分方程数值求解微分方程" class="headerlink" title="2.3.4差分方程数值求解微分方程"></a>2.3.4差分方程数值求解微分方程</h3><p>对微分方程离散化，用差分代替微分操作：（后向差分形式）<br>$$<br>\frac{ {dy(t)} }{ {dt} } = \frac{ {y(nT) - y(nT - T)} }{T}<br>$$<br><img src="https://s2.loli.net/2022/02/18/aJtjwc94oNUlD5n.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-3-5奇异函数平衡法（求解初始条件）"><a href="#2-3-5奇异函数平衡法（求解初始条件）" class="headerlink" title="2.3.5奇异函数平衡法（求解初始条件）"></a>2.3.5奇异函数平衡法（求解初始条件）</h3><p>同2.2.1节奇异函数匹配法。</p>
-<p><img src="https://s2.loli.net/2022/02/18/ACPfyxb1lWThS7w.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="2-4LTI系统解的分析"><a href="#2-4LTI系统解的分析" class="headerlink" title="2.4LTI系统解的分析"></a>2.4LTI系统解的分析</h2><h3 id="2-4-1自由响应与强迫响应"><a href="#2-4-1自由响应与强迫响应" class="headerlink" title="2.4.1自由响应与强迫响应"></a>2.4.1自由响应与强迫响应</h3><p>1）自由响应：齐次解 ——&gt;&gt;系统固有频率<br>$$<br>\sum\limits_{i = 1}^n { {c_i}{e^{ {\lambda <em>i}t} } } ,\sum\limits</em>{i = 1}^N { {A_i}{a_i}^n}<br>$$<br>如果系统是稳定的自由响应通常是瞬态解。自由响应总体形式与输入信号无关，但参数与输入信号有关。</p>
-<p>2）强迫响应：特解 ——&gt;&gt;与激励函数形式有关系<br>$$<br>B(t),B[n]<br>$$<br>如果输入是稳定信号强迫响应也是稳态响应。</p>
-<p><img src="https://s2.loli.net/2022/02/19/z9QDLlY4hcEkijX.png" srcset="/img/loading.gif" lazyload></p>
+<p><img
+src="C:/Users/math2/AppData/Roaming/Typora/typora-user-images/image-20220218230101602.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="差分方程数值求解微分方程">2.3.4差分方程数值求解微分方程</h3>
+<p>对微分方程离散化，用差分代替微分操作：（后向差分形式） <span
+class="math display">\[
+\frac{ {dy(t)} }{ {dt} } = \frac{ {y(nT) - y(nT - T)} }{T}
+\]</span> <img
+src="https://s2.loli.net/2022/02/18/aJtjwc94oNUlD5n.png" srcset="/img/loading.gif" lazyload /></p>
+<h3
+id="奇异函数平衡法求解初始条件">2.3.5奇异函数平衡法（求解初始条件）</h3>
+<p>同2.2.1节奇异函数匹配法。</p>
+<p><img src="https://s2.loli.net/2022/02/18/ACPfyxb1lWThS7w.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="lti系统解的分析">2.4LTI系统解的分析</h2>
+<h3 id="自由响应与强迫响应">2.4.1自由响应与强迫响应</h3>
+<p>1）自由响应：齐次解 ——&gt;&gt;系统固有频率 <span
+class="math display">\[
+\sum\limits_{i = 1}^n { {c_i}{e^{ {\lambda _i}t} } } ,\sum\limits_{i =
+1}^N { {A_i}{a_i}^n}
+\]</span>
+如果系统是稳定的自由响应通常是瞬态解。自由响应总体形式与输入信号无关，但参数与输入信号有关。</p>
+<p>2）强迫响应：特解 ——&gt;&gt;与激励函数形式有关系 <span
+class="math display">\[
+B(t),B[n]
+\]</span> 如果输入是稳定信号强迫响应也是稳态响应。</p>
+<p><img src="https://s2.loli.net/2022/02/19/z9QDLlY4hcEkijX.png" srcset="/img/loading.gif" lazyload /></p>
 <p>系统的自由响应反映了系统的性质；系统的强迫响应反映了系统对信号的处理能力。</p>
-<h3 id="2-4-2瞬态解与稳态解"><a href="#2-4-2瞬态解与稳态解" class="headerlink" title="2.4.2瞬态解与稳态解"></a>2.4.2瞬态解与稳态解</h3><p>1）瞬态解：当时间趋于无穷，系统输出趋于0的部分。</p>
+<h3 id="瞬态解与稳态解">2.4.2瞬态解与稳态解</h3>
+<p>1）瞬态解：当时间趋于无穷，系统输出趋于0的部分。</p>
 <p>2）稳态解：当时间趋于无穷，保留下来的部分。</p>
-<p><img src="https://s2.loli.net/2022/02/19/lKZ7RUfF8kc3O4L.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-4-3零输入响应与零状态响应"><a href="#2-4-3零输入响应与零状态响应" class="headerlink" title="2.4.3零输入响应与零状态响应"></a>2.4.3零输入响应与零状态响应</h3><p>1）零输入响应：系统在没有外部输入信号的情况下，由内部起始条件所产生的响应。</p>
+<p><img src="https://s2.loli.net/2022/02/19/lKZ7RUfF8kc3O4L.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="零输入响应与零状态响应">2.4.3零输入响应与零状态响应</h3>
+<p>1）零输入响应：系统在没有外部输入信号的情况下，由内部起始条件所产生的响应。</p>
 <p>2）零状态响应：系统在起始条件为零的情况下的系统对于输出信号的输出响应。</p>
-<h3 id="2-4-4单位冲击与阶跃响应介绍"><a href="#2-4-4单位冲击与阶跃响应介绍" class="headerlink" title="2.4.4单位冲击与阶跃响应介绍"></a>2.4.4单位冲击与阶跃响应介绍</h3><p>1）单位冲击响应：LTI输入为单位冲击信号时的零状态响应，h(t),h[n]</p>
-<p>2）单位阶跃响应：LTI输入为单位阶跃信号时的零状态响应，g(t),g[n]<br>$$<br>\begin{array}{l}<br>g’(t) = h(t)\<br>g[n] - g[n - 1] = h[n]<br>\end{array}<br>$$<br><img src="C:/Users/math2/AppData/Roaming/Typora/typora-user-images/image-20220219115205362.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="单位冲击与阶跃响应介绍">2.4.4单位冲击与阶跃响应介绍</h3>
+<p>1）单位冲击响应：LTI输入为单位冲击信号时的零状态响应，h(t),h[n]</p>
+<p>2）单位阶跃响应：LTI输入为单位阶跃信号时的零状态响应，g(t),g[n] <span
+class="math display">\[
+\begin{array}{l}
+g&#39;(t) = h(t)\\
+g[n] - g[n - 1] = h[n]
+\end{array}
+\]</span> <img
+src="C:/Users/math2/AppData/Roaming/Typora/typora-user-images/image-20220219115205362.png" srcset="/img/loading.gif" lazyload /></p>
 <p><strong>求解例题：</strong></p>
-<p><img src="https://s2.loli.net/2022/02/19/GyvT1IY3gHnUea2.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2022/02/19/h3kzFm9M5NYQZRi.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2022/02/19/yTGikClhZvoe4BM.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/19/GyvT1IY3gHnUea2.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2022/02/19/h3kzFm9M5NYQZRi.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2022/02/19/yTGikClhZvoe4BM.png" srcset="/img/loading.gif" lazyload /></p>
 <p><strong>注意：</strong>齐次解只是代表了t&gt;0之后的解，对于t=0的时刻，还需要判断是否包含了一些冲激信号。</p>
-<p><img src="https://s2.loli.net/2022/02/19/3eFMp5vaIocxLTb.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-4-5LTI系统特性与单位冲击信号的关系"><a href="#2-4-5LTI系统特性与单位冲击信号的关系" class="headerlink" title="2.4.5LTI系统特性与单位冲击信号的关系"></a>2.4.5LTI系统特性与单位冲击信号的关系</h3><p><img src="https://s2.loli.net/2022/02/19/RZO7Mt3IB4FdsK5.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="2-5卷积与卷积和"><a href="#2-5卷积与卷积和" class="headerlink" title="2.5卷积与卷积和"></a>2.5卷积与卷积和</h2><h3 id="2-5-1卷积的定义"><a href="#2-5-1卷积的定义" class="headerlink" title="2.5.1卷积的定义"></a>2.5.1卷积的定义</h3><p><img src="https://s2.loli.net/2022/02/19/BE4nr1vIeyAZc2g.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/19/3eFMp5vaIocxLTb.png" srcset="/img/loading.gif" lazyload /></p>
+<h3
+id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位冲击信号的关系</h3>
+<p><img src="https://s2.loli.net/2022/02/19/RZO7Mt3IB4FdsK5.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="卷积与卷积和">2.5卷积与卷积和</h2>
+<h3 id="卷积的定义">2.5.1卷积的定义</h3>
+<p><img src="https://s2.loli.net/2022/02/19/BE4nr1vIeyAZc2g.png" srcset="/img/loading.gif" lazyload /></p>
 <p>h(t),h[t]为系统的单位冲击响应。</p>
 <p>卷积运算的条件：</p>
 <ul>
 <li>线性时不变系统LTI</li>
 <li>求解LTI的零状态响应</li>
 </ul>
-<h3 id="2-5-2卷积的性质"><a href="#2-5-2卷积的性质" class="headerlink" title="2.5.2卷积的性质"></a>2.5.2卷积的性质</h3><p>1）代数性质</p>
+<h3 id="卷积的性质">2.5.2卷积的性质</h3>
+<p>1）代数性质</p>
 <ul>
 <li>交换性</li>
 <li>分配律</li>
 <li>结合律</li>
 </ul>
-<p>2）微分/差分<br>$$<br>\frac{d}{ {dt} }[{f_1}(t)<em>{f_2}(t)] = {f_1}(t)<em>\frac{d}{ {dt} }{f_2}(t) = \frac{d}{ {dt} }{f_1}(t)</em>{f_2}(t)<br>$$<br>3）积分/累加<br>$$<br>\int_{ - \infty }^t {[{f_1}(\tau )</em>{f_2}(\tau )]d\tau }  = {f_1}(t)*\int_{ - \infty }^t { {f_2}(\tau )d\tau }  = \int_{ - \infty }^t { {f_1}(\tau )d\tau } *{f_2}(t)<br>$$</p>
+<p>2）微分/差分 <span class="math display">\[
+\frac{d}{ {dt} }[{f_1}(t)*{f_2}(t)] = {f_1}(t)*\frac{d}{ {dt} }{f_2}(t)
+= \frac{d}{ {dt} }{f_1}(t)*{f_2}(t)
+\]</span> 3）积分/累加 <span class="math display">\[
+\int_{ - \infty }^t {[{f_1}(\tau )*{f_2}(\tau )]d\tau }  =
+{f_1}(t)*\int_{ - \infty }^t { {f_2}(\tau )d\tau }  = \int_{ - \infty
+}^t { {f_1}(\tau )d\tau } *{f_2}(t)
+\]</span></p>
 <p>4）时移性质</p>
-<p><img src="https://s2.loli.net/2022/02/19/ATVy9OfUlLEnJM8.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/19/ATVy9OfUlLEnJM8.png" srcset="/img/loading.gif" lazyload /></p>
 <p>5）与单位冲激信号、单位阶跃信号卷积</p>
-<p><img src="https://s2.loli.net/2022/02/19/RXz62IwcPYCSkTu.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/19/RXz62IwcPYCSkTu.png" srcset="/img/loading.gif" lazyload /></p>
 <p>与单位冲激信号卷积体现采样特性；同单位跃迁信号卷积体现为积分。</p>
-<h3 id="2-5-3性质的应用"><a href="#2-5-3性质的应用" class="headerlink" title="2.5.3性质的应用"></a>2.5.3性质的应用</h3><p>利用性质2）微分/差分、3）积分/累加简化卷积运算：对一个卷积运算可以对其中一个信号进行微分使其称为一个单位冲激响应信号的加，再对另外一个信号进行积分，即可通过平移和相加得到卷积结果。</p>
-<p><img src="https://s2.loli.net/2022/02/19/SpDekj7MJsitIAv.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-5-4辅助求解方法"><a href="#2-5-4辅助求解方法" class="headerlink" title="2.5.4辅助求解方法"></a>2.5.4辅助求解方法</h3><p>1）图解法（通用方法）</p>
+<h3 id="性质的应用">2.5.3性质的应用</h3>
+<p>利用性质2）微分/差分、3）积分/累加简化卷积运算：对一个卷积运算可以对其中一个信号进行微分使其称为一个单位冲激响应信号的加，再对另外一个信号进行积分，即可通过平移和相加得到卷积结果。</p>
+<p><img src="https://s2.loli.net/2022/02/19/SpDekj7MJsitIAv.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="辅助求解方法">2.5.4辅助求解方法</h3>
+<p>1）图解法（通用方法）</p>
 <p>2）对位相乘求和、表格方法、矩阵方法（离散）</p>
-<p><img src="https://s2.loli.net/2022/02/19/bVmzxgWTaIUelYX.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/19/bVmzxgWTaIUelYX.png" srcset="/img/loading.gif" lazyload /></p>
 <p>3）对连续时间信号离散化求解</p>
-<h3 id="2-5-5解卷积"><a href="#2-5-5解卷积" class="headerlink" title="2.5.5解卷积"></a>2.5.5解卷积</h3><p>输入、卷积结果、系统单位冲激响应信号，知其二求其一。</p>
+<h3 id="解卷积">2.5.5解卷积</h3>
+<p>输入、卷积结果、系统单位冲激响应信号，知其二求其一。</p>
 <p>例：x[n],y[n]求：h[n]—&gt;系统辨识；</p>
-<p>​        h[n],y[n]求：x[n]—&gt;信号估计，信号恢复；</p>
+<p>​ h[n],y[n]求：x[n]—&gt;信号估计，信号恢复；</p>
 <p>应用：图像恢复、雷达探测等。</p>
-<h3 id="2-5-6卷积的应用"><a href="#2-5-6卷积的应用" class="headerlink" title="2.5.6卷积的应用"></a>2.5.6卷积的应用</h3><p>1）滤波：去噪、均衡、补偿</p>
+<h3 id="卷积的应用">2.5.6卷积的应用</h3>
+<p>1）滤波：去噪、均衡、补偿</p>
 <p>图像滤波，采用不同的滤波算子进行卷积达到不同的图像滤波效果。</p>
 
               

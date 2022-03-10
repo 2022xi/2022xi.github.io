@@ -291,95 +291,203 @@
             
             <div class="markdown-body">
               
-              <h1 id="信号与系统——第一章（信号）"><a href="#信号与系统——第一章（信号）" class="headerlink" title="信号与系统——第一章（信号）"></a>信号与系统——第一章（信号）</h1><p><img src="https://s2.loli.net/2022/02/14/n54G9cLAhdE3BDQ.png" srcset="/img/loading.gif" lazyload></p>
+              <h1 id="信号与系统第一章信号">信号与系统——第一章（信号）</h1>
+<p><img src="https://s2.loli.net/2022/02/14/n54G9cLAhdE3BDQ.png" srcset="/img/loading.gif" lazyload /></p>
 <p>信号的定义：信号是传递、表达信息（消息）的物质载体。</p>
-<p>系统的定义：特定功能的整体，有输入有输出。 </p>
-<h2 id="1-1如何描述信号"><a href="#1-1如何描述信号" class="headerlink" title="1.1如何描述信号"></a>1.1如何描述信号</h2><h3 id="1-1-1连续时间信号"><a href="#1-1-1连续时间信号" class="headerlink" title="1.1.1连续时间信号"></a>1.1.1连续时间信号</h3><p>1）函数表示 function<br>$$<br>f(t) = k\sin (\omega t + \theta )<br>$$<br>2）图形、波形 waveform</p>
-<p><img src="https://s2.loli.net/2022/02/14/8fCzNcs9ebTDZ5q.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="1-1-2离散时间信号"><a href="#1-1-2离散时间信号" class="headerlink" title="1.1.2离散时间信号"></a>1.1.2离散时间信号</h3><p>1）函数表示</p>
-<p>指数衰减序列<br>$$<br>f[n] = k{e^{ - 0.15n} },n = 0,1,2,3,…<br>$$<br>正弦震荡序列<br>$$<br>x[n] = 3\cos [\frac{ {4\pi n} }{ {25} }],n = 0,1,2,3,…<br>$$<br>2）序列波形</p>
-<p><img src="https://s2.loli.net/2022/02/14/lUpzV4v2PftQCce.png" srcset="/img/loading.gif" lazyload></p>
+<p>系统的定义：特定功能的整体，有输入有输出。</p>
+<h2 id="如何描述信号">1.1如何描述信号</h2>
+<h3 id="连续时间信号">1.1.1连续时间信号</h3>
+<p>1）函数表示 function <span class="math display">\[
+f(t) = k\sin (\omega t + \theta )
+\]</span> 2）图形、波形 waveform</p>
+<p><img src="https://s2.loli.net/2022/02/14/8fCzNcs9ebTDZ5q.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="离散时间信号">1.1.2离散时间信号</h3>
+<p>1）函数表示</p>
+<p>指数衰减序列 <span class="math display">\[
+f[n] = k{e^{ - 0.15n} },n = 0,1,2,3,...
+\]</span> 正弦震荡序列 <span class="math display">\[
+x[n] = 3\cos [\frac{ {4\pi n} }{ {25} }],n = 0,1,2,3,...
+\]</span> 2）序列波形</p>
+<p><img src="https://s2.loli.net/2022/02/14/lUpzV4v2PftQCce.png" srcset="/img/loading.gif" lazyload /></p>
 <p>3）列表表示</p>
-<p><img src="https://s2.loli.net/2022/02/14/4r2fxWXvZjIAybn.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/14/4r2fxWXvZjIAybn.png" srcset="/img/loading.gif" lazyload /></p>
 <p>信号取值按自变量从小到大罗列出来</p>
-<p><img src="https://s2.loli.net/2022/02/14/kdUPMphLAF3cyqG.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/14/kdUPMphLAF3cyqG.png" srcset="/img/loading.gif" lazyload /></p>
 <p>答：三维函数对应的波形有函数表示和图像表示，更高维函数着只能通过函数表示。</p>
-<p><img src="https://s2.loli.net/2022/02/14/VhkT96rPeHMtSRO.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/14/VhkT96rPeHMtSRO.png" srcset="/img/loading.gif" lazyload /></p>
 <p>答：更高维的函数无法绘制出波形。</p>
-<h2 id="1-2如何手工描述信号"><a href="#1-2如何手工描述信号" class="headerlink" title="1.2如何手工描述信号"></a>1.2如何手工描述信号</h2><p><img src="https://s2.loli.net/2022/02/14/wzfRoTLnKFiWpOU.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="1-3信号的分类"><a href="#1-3信号的分类" class="headerlink" title="1.3信号的分类"></a>1.3信号的分类</h2><h3 id="1-3-1确定性信号与随机信号"><a href="#1-3-1确定性信号与随机信号" class="headerlink" title="1.3.1确定性信号与随机信号"></a>1.3.1确定性信号与随机信号</h3><p> 实际信息传递过程中，包含了确定信号和随机信号。（伪随机信号、混沌信号）</p>
-<h3 id="1-3-2模拟信号与数字信号"><a href="#1-3-2模拟信号与数字信号" class="headerlink" title="1.3.2模拟信号与数字信号"></a>1.3.2模拟信号与数字信号</h3><p>1）时间连续，幅值连续</p>
-<p><img src="https://s2.loli.net/2022/02/14/47hWVUbnZBADvHs.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="如何手工描述信号">1.2如何手工描述信号</h2>
+<p><img src="https://s2.loli.net/2022/02/14/wzfRoTLnKFiWpOU.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="信号的分类">1.3信号的分类</h2>
+<h3 id="确定性信号与随机信号">1.3.1确定性信号与随机信号</h3>
+<p>实际信息传递过程中，包含了确定信号和随机信号。（伪随机信号、混沌信号）</p>
+<h3 id="模拟信号与数字信号">1.3.2模拟信号与数字信号</h3>
+<p>1）时间连续，幅值连续</p>
+<p><img src="https://s2.loli.net/2022/02/14/47hWVUbnZBADvHs.png" srcset="/img/loading.gif" lazyload /></p>
 <p>2）时间离散，幅值连续</p>
-<p><img src="https://s2.loli.net/2022/02/14/SqiBzcWyFJf7YKA.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/14/SqiBzcWyFJf7YKA.png" srcset="/img/loading.gif" lazyload /></p>
 <p>3）时间连续，幅值离散</p>
-<p><img src="https://s2.loli.net/2022/02/14/bD1jGELOQUHt7x5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/14/bD1jGELOQUHt7x5.png" srcset="/img/loading.gif" lazyload /></p>
 <p>4）时间离散，幅值离散</p>
-<p><img src="https://s2.loli.net/2022/02/14/4Ar1vTEdHPK9VUe.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="1-3-3信号的能量与功率（能量信号、功率信号）"><a href="#1-3-3信号的能量与功率（能量信号、功率信号）" class="headerlink" title="1.3.3信号的能量与功率（能量信号、功率信号）"></a>1.3.3信号的能量与功率（能量信号、功率信号）</h3><p>1）信号的能量：(代表信号的强弱)<br>$$<br>\begin{array}{l}<br>E = \int_{ - \infty }^{ + \infty } { { {\left| {f(t)} \right|}^2}dt} \<br>E = \sum { { {\left| {x[n]} \right|}^2} } \qquad ({L^2} - Norm)<br>\<br>\left| {a + jb} \right| = \sqrt { {a^2} + {b^2} }<br>\end{array}<br>$$<br>能量信号：能量有限，平方可积<br>$$<br>E &lt;  + \infty ,P = 0.<br>$$<br>2）信号的功率：（一段时间内信号的平均能量）<br>$$<br>\begin{array}{l}<br>P = \mathop {\lim }\limits_{T \to \infty } \frac{1}{T}\int_{ - \frac{T}{2} }^{\frac{T}{2} } { { {\left| {f(t)} \right|}^2}dt} \<br>P = \mathop {\lim }\limits_{N \to \infty } \frac{1}{ {2N + 1} }\sum { { {\left| {x[n]} \right|}^2} }<br>\end{array}<br>$$<br>功率信号：功率有限<br>$$<br>E =  + \infty ,P &gt; 0.<br>$$<br>3）能量为0的信号：信号有限个个离散点</p>
+<p><img src="https://s2.loli.net/2022/02/14/4Ar1vTEdHPK9VUe.png" srcset="/img/loading.gif" lazyload /></p>
+<h3
+id="信号的能量与功率能量信号功率信号">1.3.3信号的能量与功率（能量信号、功率信号）</h3>
+<p>1）信号的能量：(代表信号的强弱) <span class="math display">\[
+\begin{array}{l}
+E = \int_{ - \infty }^{ + \infty } { { {\left| {f(t)} \right|}^2}dt} \\
+E = \sum { { {\left| {x[n]} \right|}^2} } \qquad ({L^2} - Norm)
+\\
+\left| {a + jb} \right| = \sqrt { {a^2} + {b^2} }
+\end{array}
+\]</span> 能量信号：能量有限，平方可积 <span class="math display">\[
+E &lt;  + \infty ,P = 0.
+\]</span> 2）信号的功率：（一段时间内信号的平均能量） <span
+class="math display">\[
+\begin{array}{l}
+P = \mathop {\lim }\limits_{T \to \infty } \frac{1}{T}\int_{ -
+\frac{T}{2} }^{\frac{T}{2} } { { {\left| {f(t)} \right|}^2}dt} \\
+P = \mathop {\lim }\limits_{N \to \infty } \frac{1}{ {2N + 1} }\sum { {
+{\left| {x[n]} \right|}^2} }
+\end{array}
+\]</span> 功率信号：功率有限 <span class="math display">\[
+E =  + \infty ,P &gt; 0.
+\]</span> 3）能量为0的信号：信号有限个个离散点</p>
 <p>4）能量发散、功率发散信号</p>
-<h3 id="1-3-4周期信号与基本周期"><a href="#1-3-4周期信号与基本周期" class="headerlink" title="1.3.4周期信号与基本周期"></a>1.3.4周期信号与基本周期</h3><p>$$<br>\begin{array}{l}<br>f(t + T) = f(t)\<br>f[n + N] = f[n]<br>\end{array}<br>$$</p>
+<h3 id="周期信号与基本周期">1.3.4周期信号与基本周期</h3>
+<p><span class="math display">\[
+\begin{array}{l}
+f(t + T) = f(t)\\
+f[n + N] = f[n]
+\end{array}
+\]</span></p>
 <p>1）基本周期：最小的T,N称为周期信号的基本周期。</p>
 <p>2）两种特殊情况：</p>
-<p><img src="https://s2.loli.net/2022/02/14/exJ3rZ9MRgO68KH.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/14/exJ3rZ9MRgO68KH.png" srcset="/img/loading.gif" lazyload /></p>
 <p>3）两个周期信号的复合</p>
-<p><img src="https://s2.loli.net/2022/02/14/kh5avTMxqgES8Ul.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/14/kh5avTMxqgES8Ul.png" srcset="/img/loading.gif" lazyload /></p>
 <p>4）信号复合与分解中的周期性不保持</p>
-<p><img src="https://s2.loli.net/2022/02/14/QeUHsvVylpJthgb.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2022/02/14/RL6nUG9lPtVAkDr.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="1-4典型信号"><a href="#1-4典型信号" class="headerlink" title="1.4典型信号"></a>1.4典型信号</h2><h3 id="1-4-1LTI特征函数（线性时不变系统）"><a href="#1-4-1LTI特征函数（线性时不变系统）" class="headerlink" title="1.4.1LTI特征函数（线性时不变系统）"></a>1.4.1LTI特征函数（线性时不变系统）</h3><p>信号在微分、积分操作下，函数形式保持不变。</p>
-<p>1）指数信号、正弦信号 </p>
-<p><img src="https://s2.loli.net/2022/02/14/Aw8zy2v7JPYcgxG.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/14/QeUHsvVylpJthgb.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2022/02/14/RL6nUG9lPtVAkDr.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="典型信号">1.4典型信号</h2>
+<h3
+id="lti特征函数线性时不变系统">1.4.1LTI特征函数（线性时不变系统）</h3>
+<p>信号在微分、积分操作下，函数形式保持不变。</p>
+<p>1）指数信号、正弦信号</p>
+<p><img src="https://s2.loli.net/2022/02/14/Aw8zy2v7JPYcgxG.png" srcset="/img/loading.gif" lazyload /></p>
 <p><em>2）复指数信号</em></p>
-<p><img src="https://s2.loli.net/2022/02/14/caFSEHn7GUL2VlJ.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="1-4-2对称信号"><a href="#1-4-2对称信号" class="headerlink" title="1.4.2对称信号"></a>1.4.2对称信号</h3><p>1）高斯信号</p>
+<p><img src="https://s2.loli.net/2022/02/14/caFSEHn7GUL2VlJ.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="对称信号">1.4.2对称信号</h3>
+<p>1）高斯信号</p>
 <p>通常用于描述随机信号的分布密度函数，是傅里叶变换的特征函数。</p>
-<p>2）抽样信号<br>$$<br>f(t) = Sa(t) = \frac{ {\sin (t)} }{t}<br>$$<br>函数在Π的整数倍数时过零点；1/t为衰减包络线。</p>
-<h3 id="1-4-3奇异信号"><a href="#1-4-3奇异信号" class="headerlink" title="1.4.3奇异信号"></a>1.4.3奇异信号</h3><p>函数本身或者其导数存在不连续的信号。</p>
-<p>1）单位斜变信号<br>$$<br>f(t) = \left{ \begin{array}{l}<br>t\quad t \ge 0\<br>0\quad t &lt; 0<br>\end{array} \right.<br>$$<br>2）单位阶跃信号<br>$$<br>u(t) = \left{ {\begin{array}{*{20}{l} }<br>{1\quad t &gt; 0}\<br>{0\quad t &lt; 0}<br>\end{array} } \right. = \frac{ {df(t)} }{ {dt} }<br>$$<br><em>性质：</em></p>
+<p>2）抽样信号 <span class="math display">\[
+f(t) = Sa(t) = \frac{ {\sin (t)} }{t}
+\]</span> 函数在Π的整数倍数时过零点；1/t为衰减包络线。</p>
+<h3 id="奇异信号">1.4.3奇异信号</h3>
+<p>函数本身或者其导数存在不连续的信号。</p>
+<p>1）单位斜变信号 <span class="math display">\[
+f(t) = \left\{ \begin{array}{l}
+t\quad t \ge 0\\
+0\quad t &lt; 0
+\end{array} \right.
+\]</span> 2）单位阶跃信号 <span class="math display">\[
+u(t) = \left\{ {\begin{array}{*{20}{l} }
+{1\quad t &gt; 0}\\
+{0\quad t &lt; 0}
+\end{array} } \right. = \frac{ {df(t)} }{ {dt} }
+\]</span> <em>性质：</em></p>
 <ul>
 <li>表示信号的起始/结束：延迟信号与反褶</li>
 </ul>
-<p>3）单位冲激信号<br>$$<br>\delta (t) = \left{ \begin{array}{l}</p>
+<p>3）单位冲激信号 <span class="math display">\[
+\delta (t) = \left\{ \begin{array}{l}
++ \infty \quad t = 0\\
+0\quad \;\;\;\;t \ne 0
+\end{array} \right. = \frac{ {du(t)} }{ {dt} }
+\]</span> <em>性质：</em></p>
 <ul>
-<li>\infty \quad t = 0\<br>0\quad ;;;;t \ne 0<br>\end{array} \right. = \frac{ {du(t)} }{ {dt} }<br>$$</li>
+<li><p>抽样特性 <span class="math display">\[
+\int_{ - \infty }^{ + \infty } {\delta (t)f(t)dt = } \int_{ - 0}^{ + 0}
+{\delta (t)f(0)dt = } f(0)
+\]</span> 这里可以理解为积分第一中值定理。</p></li>
+<li><p>偶对称</p></li>
+<li><p>尺度特性 <span class="math display">\[
+\int_{ - \infty }^{ + \infty } {\delta (at)f(t)dt = } \int_{ - \infty
+}^{ + \infty } {\delta (\tau )f(\frac{\tau }{a})d\frac{\tau }{a} = }
+\frac{1}{a}f(0)
+\]</span></p></li>
+<li><p>对持续时间短、瞬时作用信号的近似</p></li>
 </ul>
-<p><em>性质：</em></p>
+<p>4）单位冲激偶信号 <span class="math display">\[
+\delta &#39;(t) = \frac{ {d\delta (t)} }{ {dt} }
+\]</span></p>
+<h2 id="信号的运算">1.5信号的运算</h2>
+<h3 id="运算介绍">1.5.1运算介绍</h3>
+<p>时移、反转、尺度变换、微分、积分、卷积、相关</p>
+<p><img src="https://s2.loli.net/2022/02/14/gIPxhnmaNWAfzoB.png" srcset="/img/loading.gif" lazyload /></p>
 <ul>
-<li><p>抽样特性<br>$$<br>\int_{ - \infty }^{ + \infty } {\delta (t)f(t)dt = } \int_{ - 0}^{ + 0} {\delta (t)f(0)dt = } f(0)<br>$$<br>这里可以理解为积分第一中值定理。</p>
-</li>
-<li><p>偶对称</p>
-</li>
-<li><p>尺度特性<br>$$<br>\int_{ - \infty }^{ + \infty } {\delta (at)f(t)dt = } \int_{ - \infty }^{ + \infty } {\delta (\tau )f(\frac{\tau }{a})d\frac{\tau }{a} = } \frac{1}{a}f(0)<br>$$</p>
-</li>
-<li><p>对持续时间短、瞬时作用信号的近似</p>
-</li>
-</ul>
-<p>4）单位冲激偶信号<br>$$<br>\delta ‘(t) = \frac{ {d\delta (t)} }{ {dt} }<br>$$</p>
-<h2 id="1-5信号的运算"><a href="#1-5信号的运算" class="headerlink" title="1.5信号的运算"></a>1.5信号的运算</h2><h3 id="1-5-1运算介绍"><a href="#1-5-1运算介绍" class="headerlink" title="1.5.1运算介绍"></a>1.5.1运算介绍</h3><p>时移、反转、尺度变换、微分、积分、卷积、相关</p>
-<p><img src="https://s2.loli.net/2022/02/14/gIPxhnmaNWAfzoB.png" srcset="/img/loading.gif" lazyload></p>
-<ul>
-<li><p>卷积：<br>$$<br>f(t)g(t) = \int_{ - \infty }^{ + \infty } {f(\tau )g(t - \tau )d\tau }<br>$$</p>
-</li>
-<li><p>相关：<br>$$<br>{R_{fg} }(t) = \int_{ - \infty }^{ + \infty } {f(\tau ){g^*}(t - \tau )d\tau }<br>$$</p>
-</li>
+<li><p>卷积： <span class="math display">\[
+f(t)g(t) = \int_{ - \infty }^{ + \infty } {f(\tau )g(t - \tau )d\tau }
+\]</span></p></li>
+<li><p>相关： <span class="math display">\[
+{R_{fg} }(t) = \int_{ - \infty }^{ + \infty } {f(\tau ){g^*}(t - \tau
+)d\tau }
+\]</span></p></li>
 </ul>
 <p><strong>符号表示</strong></p>
-<p><img src="https://s2.loli.net/2022/02/14/xdoG4UDPLBYV8ta.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="1-5-2信号操作"><a href="#1-5-2信号操作" class="headerlink" title="1.5.2信号操作"></a>1.5.2信号操作</h3><p>1）自变量操作：倍乘、移位、反褶、尺度</p>
-<p><img src="https://s2.loli.net/2022/02/14/NOIP4iGk2qps5Yt.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/14/xdoG4UDPLBYV8ta.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="信号操作">1.5.2信号操作</h3>
+<p>1）自变量操作：倍乘、移位、反褶、尺度</p>
+<p><img src="https://s2.loli.net/2022/02/14/NOIP4iGk2qps5Yt.png" srcset="/img/loading.gif" lazyload /></p>
 <p>2）信号的微分：突出了信号的变化部分，提升了高频</p>
 <p>3）信号的积分：突出了信号的平滑部分，提升了低频</p>
 <p>4）信号的相加（信号的分解与组合）</p>
 <p>5）信号的相乘（信号幅度调制）</p>
 <p>6）信号的卷积、相关</p>
-<h2 id="1-6信号的分解"><a href="#1-6信号的分解" class="headerlink" title="1.6信号的分解"></a>1.6信号的分解</h2><h3 id="1-6-1信号的直交分解"><a href="#1-6-1信号的直交分解" class="headerlink" title="1.6.1信号的直交分解"></a>1.6.1信号的直交分解</h3><p>直流分量：信号的均值，是一个常量。</p>
+<h2 id="信号的分解">1.6信号的分解</h2>
+<h3 id="信号的直交分解">1.6.1信号的直交分解</h3>
+<p>直流分量：信号的均值，是一个常量。</p>
 <p>交流分量：减去直流分量，交流分量的积分为零。</p>
-<p>直交分解的正交关系：<br>$$<br>\int_{ - \frac{T}{2} }^{\frac{T}{2} } { {f_D}(t){f_A}(t)dt}  = \left\langle { {f_D},{f_A} } \right\rangle  = {f_D}\int_{ - \frac{T}{2} }^{\frac{T}{2} } { {f_A}(t)dt}  = 0<br>$$<br>能量守恒(Parsavel定理)：<br>$$<br>E = {E_D} + {E_A}<br>$$</p>
-<h3 id="1-6-2信号的奇偶分解"><a href="#1-6-2信号的奇偶分解" class="headerlink" title="1.6.2信号的奇偶分解"></a>1.6.2信号的奇偶分解</h3><p>任何信号都可以分解成一个奇分量和偶分量的叠加：<br>$$<br>\begin{array}{l}<br>f(t) = {f_e}(t) + {f_o}(t)\quad \quad ;;,(1)\<br>f( - t) = {f_e}(t) - {f_o}(t)\quad \quad (2)<br>\end{array}<br>$$<br>奇偶分解的正交关系：<br>$$<br>\int_{ - \infty }^\infty  { {f_e}(t){f_o}(t)dt}  = \frac{1}{4}\int_{ - \infty }^\infty  {[{f^2}(t) - {f^2}( - t)]dt}  = 0<br>$$<br>能量守恒：<br>$$<br>E = {E_e} + {E_o}<br>$$</p>
-<h3 id="1-6-3信号的实部虚部分解"><a href="#1-6-3信号的实部虚部分解" class="headerlink" title="1.6.3信号的实部虚部分解"></a>1.6.3信号的实部虚部分解</h3><p>$$<br>\begin{array}{<em>{20}{l} }<br>{f(t) = {f_R}(t) + j{f_I}(t)\quad \quad ;;{\mkern 1mu} (1)}\<br>{ {f^</em>}(t) = {f_R}(t) - j{f_I}(t)\quad \quad (2)}<br>\end{array}<br>$$</p>
-<p>模与幅度：（能量守恒）<br>$$<br>\begin{array}{l}<br>{\left| {f(t)} \right|^2} = f_R^2(t) + f_I^2(t)\quad \quad {\left| {f(t)} \right|^2} = f(t){f^*}(t)\<br>\theta  = t{g^{ - 1} }(\frac{ { {f_I} } }{ { {f_R} } })<br>\end{array}<br>$$<br><img src="https://s2.loli.net/2022/02/15/wP4opWvQZtFYS9q.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="1-6-4信号的脉冲分解"><a href="#1-6-4信号的脉冲分解" class="headerlink" title="1.6.4信号的脉冲分解"></a>1.6.4信号的脉冲分解</h3><p>离散时间信号的脉冲分解：<br>$$<br>x[n] = \sum\limits_{k =  - \infty }^\infty  {x[k]\delta [n - k]}<br>$$<br>连续时间信号的脉冲分解：<br>$$<br>f({t_1}) = \int_{ - \infty }^\infty  {f(t)\delta (t - {t_1})dt}<br>$$<br>脉冲信号的分量具有正交关系。</p>
+<p>直交分解的正交关系： <span class="math display">\[
+\int_{ - \frac{T}{2} }^{\frac{T}{2} } { {f_D}(t){f_A}(t)dt}  =
+\left\langle { {f_D},{f_A} } \right\rangle  = {f_D}\int_{ - \frac{T}{2}
+}^{\frac{T}{2} } { {f_A}(t)dt}  = 0
+\]</span> 能量守恒(Parsavel定理)： <span class="math display">\[
+E = {E_D} + {E_A}
+\]</span></p>
+<h3 id="信号的奇偶分解">1.6.2信号的奇偶分解</h3>
+<p>任何信号都可以分解成一个奇分量和偶分量的叠加： <span
+class="math display">\[
+\begin{array}{l}
+f(t) = {f_e}(t) + {f_o}(t)\quad \quad \;\;\,(1)\\
+f( - t) = {f_e}(t) - {f_o}(t)\quad \quad (2)
+\end{array}
+\]</span> 奇偶分解的正交关系： <span class="math display">\[
+\int_{ - \infty }^\infty  { {f_e}(t){f_o}(t)dt}  = \frac{1}{4}\int_{ -
+\infty }^\infty  {[{f^2}(t) - {f^2}( - t)]dt}  = 0
+\]</span> 能量守恒： <span class="math display">\[
+E = {E_e} + {E_o}
+\]</span></p>
+<h3 id="信号的实部虚部分解">1.6.3信号的实部虚部分解</h3>
+<p><span class="math display">\[
+\begin{array}{*{20}{l} }
+{f(t) = {f_R}(t) + j{f_I}(t)\quad \quad \;\;{\mkern 1mu} (1)}\\
+{ {f^*}(t) = {f_R}(t) - j{f_I}(t)\quad \quad (2)}
+\end{array}
+\]</span></p>
+<p>模与幅度：（能量守恒） <span class="math display">\[
+\begin{array}{l}
+{\left| {f(t)} \right|^2} = f_R^2(t) + f_I^2(t)\quad \quad {\left|
+{f(t)} \right|^2} = f(t){f^*}(t)\\
+\theta  = t{g^{ - 1} }(\frac{ { {f_I} } }{ { {f_R} } })
+\end{array}
+\]</span> <img
+src="https://s2.loli.net/2022/02/15/wP4opWvQZtFYS9q.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="信号的脉冲分解">1.6.4信号的脉冲分解</h3>
+<p>离散时间信号的脉冲分解： <span class="math display">\[
+x[n] = \sum\limits_{k =  - \infty }^\infty  {x[k]\delta [n - k]}
+\]</span> 连续时间信号的脉冲分解： <span class="math display">\[
+f({t_1}) = \int_{ - \infty }^\infty  {f(t)\delta (t - {t_1})dt}
+\]</span> 脉冲信号的分量具有正交关系。</p>
 
               
             </div>

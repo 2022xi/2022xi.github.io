@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2022xi.github.io/img/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F(%E7%AC%AC%E4%B8%89%E7%AB%A0).jpg">
 <meta property="article:published_time" content="2022-03-10T11:07:36.752Z">
-<meta property="article:modified_time" content="2022-03-10T11:43:49.770Z">
+<meta property="article:modified_time" content="2022-03-10T11:54:44.555Z">
 <meta property="article:author" content="Mr niu2">
 <meta property="article:tag" content="信号与系统">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.5k 字
+          3.6k 字
         
       </span>
     
@@ -291,35 +291,77 @@
             
             <div class="markdown-body">
               
-              <h1 id="信号与系统——第三章（信号的频谱分析）"><a href="#信号与系统——第三章（信号的频谱分析）" class="headerlink" title="信号与系统——第三章（信号的频谱分析）"></a>信号与系统——第三章（信号的频谱分析）</h1><h2 id="3-1正交函数集合"><a href="#3-1正交函数集合" class="headerlink" title="3.1正交函数集合"></a>3.1正交函数集合</h2><h3 id="3-1-1正交的定义"><a href="#3-1-1正交的定义" class="headerlink" title="3.1.1正交的定义"></a>3.1.1正交的定义</h3><p>对于定义的某种内积运算，两个函数在该运算下的结果为0，这两个函数正交。</p>
-<p>定义内积运算：<br>$$<br>\int_{ - \infty }^{ + \infty } {f(x)g(x)dx}  = 0<br>$$</p>
-<h3 id="3-1-2正交函数集合"><a href="#3-1-2正交函数集合" class="headerlink" title="3.1.2正交函数集合"></a>3.1.2正交函数集合</h3><p>有n个函数构成的一个函数集合，在区间内满足两两正交关系，则称为正交函数集合。若函数的模为1，则称为归一化正交函数集合。</p>
+              <h1
+id="信号与系统第三章信号的频谱分析">信号与系统——第三章（信号的频谱分析）</h1>
+<h2 id="正交函数集合">3.1正交函数集合</h2>
+<h3 id="正交的定义">3.1.1正交的定义</h3>
+<p>对于定义的某种内积运算，两个函数在该运算下的结果为0，这两个函数正交。</p>
+<p>定义内积运算： <span class="math display">\[
+\int_{ - \infty }^{ + \infty } {f(x)g(x)dx}  = 0
+\]</span></p>
+<h3 id="正交函数集合-1">3.1.2正交函数集合</h3>
+<p>有n个函数构成的一个函数集合，在区间内满足两两正交关系，则称为正交函数集合。若函数的模为1，则称为归一化正交函数集合。</p>
 <p>正交函数分解：smith变换。</p>
-<h3 id="3-1-3完备正交函数集合"><a href="#3-1-3完备正交函数集合" class="headerlink" title="3.1.3完备正交函数集合"></a>3.1.3完备正交函数集合</h3><p>完备可以理解为，正交函数集合中的函数是函数的线性空间中的一组基。</p>
+<h3 id="完备正交函数集合">3.1.3完备正交函数集合</h3>
+<p>完备可以理解为，正交函数集合中的函数是函数的线性空间中的一组基。</p>
 <p>正经定义1：如果在正交函数集之外不存在有限能量且能量不为0的函数与函数集中任何函数都正交。（其实就是正交基的概念）</p>
-<p>正经定义2：任何函数f(t)分解成正交函数集的线性组合，它们之间的误差的能量：<br>$$<br>\begin{array}{l}<br>e(t) = f(t) - \sum\limits_{i = 1}^n { {c_i}{g_i}(t)} \<br>\left| {e(t)} \right|_2^2 = 0<br>\end{array}<br>$$</p>
-<h3 id="3-1-4完备正交基的例子"><a href="#3-1-4完备正交基的例子" class="headerlink" title="3.1.4完备正交基的例子"></a>3.1.4完备正交基的例子</h3><p>1）三角函数：<br>$$<br>{ \cos n{\omega _1}t,\sin n{\omega _1}t} ,n = 0,1,2,…,\infty<br>$$<br>2）复指数函数：<br>$$<br>{ {e^{jn{\omega <em>1}t} }} ,n = 0, \pm 1, \pm 2,…, \pm \infty<br>$$<br>傅里叶变换：<br>$$<br>\begin{array}{l}<br>f(t) = {a_0} + \sum\limits</em>{n = 1}^\infty  {({a_n}\cos n{\omega _1}t + {b_n}\sin n{\omega <em>1}t)} \<br>\quad \quad  = \sum\limits</em>{n =  - \infty }^\infty  { {F_n}{e^{jn{\omega _1}t} } }<br>\end{array}<br>$$</p>
-<h3 id="3-1-5三角函数-复指数集合的完备正交性"><a href="#3-1-5三角函数-复指数集合的完备正交性" class="headerlink" title="3.1.5三角函数/复指数集合的完备正交性"></a>3.1.5三角函数/复指数集合的完备正交性</h3><p>1）三角函数</p>
-<p><img src="https://s2.loli.net/2022/02/20/E68UfXke1nwaqM4.png" srcset="/img/loading.gif" lazyload></p>
+<p>正经定义2：任何函数f(t)分解成正交函数集的线性组合，它们之间的误差的能量：
+<span class="math display">\[
+\begin{array}{l}
+e(t) = f(t) - \sum\limits_{i = 1}^n { {c_i}{g_i}(t)} \\
+\left\| {e(t)} \right\|_2^2 = 0
+\end{array}
+\]</span></p>
+<h3 id="完备正交基的例子">3.1.4完备正交基的例子</h3>
+<p>1）三角函数： <span class="math display">\[
+\{ \cos n{\omega _1}t,\sin n{\omega _1}t\} ,n = 0,1,2,...,\infty
+\]</span> 2）复指数函数： <span class="math display">\[
+\{ {e^{jn{\omega _1}t} }\} ,n = 0, \pm 1, \pm 2,..., \pm \infty
+\]</span> 傅里叶变换： <span class="math display">\[
+\begin{array}{l}
+f(t) = {a_0} + \sum\limits_{n = 1}^\infty  {({a_n}\cos n{\omega _1}t +
+{b_n}\sin n{\omega _1}t)} \\
+\quad \quad  = \sum\limits_{n =  - \infty }^\infty  { {F_n}{e^{jn{\omega
+_1}t} } }
+\end{array}
+\]</span></p>
+<h3
+id="三角函数复指数集合的完备正交性">3.1.5三角函数/复指数集合的完备正交性</h3>
+<p>1）三角函数</p>
+<p><img src="https://s2.loli.net/2022/02/20/E68UfXke1nwaqM4.png" srcset="/img/loading.gif" lazyload /></p>
 <p>2）复指数函数</p>
-<p><img src="https://s2.loli.net/2022/02/20/hWSdc8NLKeGCTyi.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-1-6-Parseval定理"><a href="#3-1-6-Parseval定理" class="headerlink" title="3.1.6 Parseval定理"></a>3.1.6 Parseval定理</h3><p>$$<br>\begin{array}{l}<br>P = \overline { {f^2}(t)}  = \frac{1}{ { {T_1} } }\int_{ {t_0} }^{ {t_0} + {T_1} } { {f^2}(t)dt} \<br>\quad  = a_0^2 + \frac{1}{2}\sum\limits_{n = 1}^\infty  {(a_n^2 + b_n^2)} \<br>\quad  = \sum\limits_{n =  - \infty }^\infty  { { {\left| { {F_n} } \right|}^2} }<br>\end{array}<br>$$</p>
-<h2 id="3-2周期信号的傅里叶级数分解"><a href="#3-2周期信号的傅里叶级数分解" class="headerlink" title="3.2周期信号的傅里叶级数分解"></a>3.2周期信号的傅里叶级数分解</h2><h3 id="3-2-1分解公式"><a href="#3-2-1分解公式" class="headerlink" title="3.2.1分解公式"></a>3.2.1分解公式</h3><p>1）三角函数分解形式</p>
-<p><img src="https://s2.loli.net/2022/02/20/4OtbBRS7nJaYQ12.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/20/hWSdc8NLKeGCTyi.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="parseval定理">3.1.6 Parseval定理</h3>
+<p><span class="math display">\[
+\begin{array}{l}
+P = \overline { {f^2}(t)}  = \frac{1}{ { {T_1} } }\int_{ {t_0} }^{ {t_0}
++ {T_1} } { {f^2}(t)dt} \\
+\quad  = a_0^2 + \frac{1}{2}\sum\limits_{n = 1}^\infty  {(a_n^2 +
+b_n^2)} \\
+\quad  = \sum\limits_{n =  - \infty }^\infty  { { {\left| { {F_n} }
+\right|}^2} }
+\end{array}
+\]</span></p>
+<h2 id="周期信号的傅里叶级数分解">3.2周期信号的傅里叶级数分解</h2>
+<h3 id="分解公式">3.2.1分解公式</h3>
+<p>1）三角函数分解形式</p>
+<p><img src="https://s2.loli.net/2022/02/20/4OtbBRS7nJaYQ12.png" srcset="/img/loading.gif" lazyload /></p>
 <p>一个信号可以分解为一个直流信号与无穷多个交流信号的叠加，其中与原信号周期相同的交流信号称为信号的<em>基波</em>，其他交流信号称为信号的<em>谐波</em>。</p>
 <p>2）复指数分解形式</p>
 <p>复指数函数通过欧拉公式，可化成三角函数形式，相当与复指数函数分别在实轴和虚轴上的投影。</p>
-<p><img src="https://s2.loli.net/2022/02/20/rlfxoW75dkVhjAR.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/20/rlfxoW75dkVhjAR.png" srcset="/img/loading.gif" lazyload /></p>
 <p>参数对应关系：</p>
-<p><img src="https://s2.loli.net/2022/02/20/Ffe6sw1bWKhdqrA.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-2-2周期矩阵信号的分解"><a href="#3-2-2周期矩阵信号的分解" class="headerlink" title="3.2.2周期矩阵信号的分解"></a>3.2.2周期矩阵信号的分解</h3><p>1）三角函数分解</p>
+<p><img src="https://s2.loli.net/2022/02/20/Ffe6sw1bWKhdqrA.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="周期矩阵信号的分解">3.2.2周期矩阵信号的分解</h3>
+<p>1）三角函数分解</p>
 <p>信号的幅度图：</p>
-<p><img src="https://s2.loli.net/2022/02/20/yQJjg9AM5SHVwPq.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/20/yQJjg9AM5SHVwPq.png" srcset="/img/loading.gif" lazyload /></p>
 <p>信号的相位图：</p>
-<p><img src="https://s2.loli.net/2022/02/20/OWm2RYGnXFIuB5v.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/20/OWm2RYGnXFIuB5v.png" srcset="/img/loading.gif" lazyload /></p>
 <p>2）复指数分解</p>
-<p><img src="https://s2.loli.net/2022/02/20/8ZlyORLMKq5cdgH.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-2-3级数收敛条件"><a href="#3-2-3级数收敛条件" class="headerlink" title="3.2.3级数收敛条件"></a>3.2.3级数收敛条件</h3><p>在高等数学中，傅里叶级数收敛条件是有有限个第一类间断点即可。</p>
+<p><img src="https://s2.loli.net/2022/02/20/8ZlyORLMKq5cdgH.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="级数收敛条件">3.2.3级数收敛条件</h3>
+<p>在高等数学中，傅里叶级数收敛条件是有有限个第一类间断点即可。</p>
 <p>1）能量条件：能量有限</p>
 <p>2）波形条件（Dirichlet条件）</p>
 <ul>
@@ -328,90 +370,153 @@
 <li>间断点个数有限</li>
 </ul>
 <p><strong>Gibbs现象：</strong></p>
-<p><img src="https://s2.loli.net/2022/02/20/6jhIYHkfBX85Z7W.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="3-3典型周期信号傅里叶级数分解"><a href="#3-3典型周期信号傅里叶级数分解" class="headerlink" title="3.3典型周期信号傅里叶级数分解"></a>3.3典型周期信号傅里叶级数分解</h2><h3 id="3-3-1典型信号"><a href="#3-3-1典型信号" class="headerlink" title="3.3.1典型信号"></a>3.3.1典型信号</h3><p>1）周期方波信号：实偶函数<img src="https://s2.loli.net/2022/03/08/RmVpiCDeMyKJN69.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/02/20/6jhIYHkfBX85Z7W.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="典型周期信号傅里叶级数分解">3.3典型周期信号傅里叶级数分解</h2>
+<h3 id="典型信号">3.3.1典型信号</h3>
+<p>1）周期方波信号：实偶函数<img
+src="https://s2.loli.net/2022/03/08/RmVpiCDeMyKJN69.png" srcset="/img/loading.gif" lazyload /></p>
 <p>1中Sa(t)抽样函数随谐波次数n衰减；2中当n为偶数时，an=0，这样的函数称为奇谐函数。</p>
 <p>2）周期锯齿信号：实奇函数，</p>
-<p><img src="https://s2.loli.net/2022/03/08/sb2JjZdfWYvgEhC.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/08/sb2JjZdfWYvgEhC.png" srcset="/img/loading.gif" lazyload /></p>
 <p>3）三角脉冲信号</p>
-<p><img src="https://s2.loli.net/2022/03/08/9oq5VhJAEz4NS2w.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/08/9oq5VhJAEz4NS2w.png" srcset="/img/loading.gif" lazyload /></p>
 <p>连续，高频分量更少，谐波分量衰减更快，奇谐信号</p>
 <p>4）半波余弦信号：实偶函数</p>
-<p><img src="https://s2.loli.net/2022/03/08/v3wBWQZmDURYkC6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/08/v3wBWQZmDURYkC6.png" srcset="/img/loading.gif" lazyload /></p>
 <p>5）全波整流余弦信号</p>
-<p><img src="https://s2.loli.net/2022/03/09/BUSNKXlFYfVI9dH.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/09/BUSNKXlFYfVI9dH.png" srcset="/img/loading.gif" lazyload /></p>
 <p>6）周期脉冲序列：白色频谱，高频分量丰富，功率发散信号，单位脉冲信号功率无穷大</p>
-<p><img src="https://s2.loli.net/2022/03/08/CmbJwie28Q3uNyg.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/08/CmbJwie28Q3uNyg.png" srcset="/img/loading.gif" lazyload /></p>
 <p><strong>傅里叶级数分解的频谱规律：</strong></p>
-<p><img src="https://s2.loli.net/2022/03/08/xMIVtmaQ5274wSP.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-3-2信号的对称性"><a href="#3-3-2信号的对称性" class="headerlink" title="3.3.2信号的对称性"></a>3.3.2信号的对称性</h3><p>1）偶对称</p>
+<p><img src="https://s2.loli.net/2022/03/08/xMIVtmaQ5274wSP.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="信号的对称性">3.3.2信号的对称性</h3>
+<p>1）偶对称</p>
 <p>2）奇对称</p>
 <p>3）奇谐对称：只存在奇次谐波，偶次谐波不存在</p>
-<p><img src="https://s2.loli.net/2022/03/09/WtOSuX51hVyTLni.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="https://s2.loli.net/2022/03/09/WtOSuX51hVyTLni.png" srcset="/img/loading.gif" lazyload /></p>
 <p>将波形移动半个基波周期，结果与原来相反。</p>
-<h3 id="3-3-3信号参数与频谱的关系"><a href="#3-3-3信号参数与频谱的关系" class="headerlink" title="3.3.3信号参数与频谱的关系"></a>3.3.3信号参数与频谱的关系</h3><p>1）矩形脉冲信号</p>
-<p><img src="https://s2.loli.net/2022/03/08/HFVlE58bmGMvsqA.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="信号参数与频谱的关系">3.3.3信号参数与频谱的关系</h3>
+<p>1）矩形脉冲信号</p>
+<p><img src="https://s2.loli.net/2022/03/08/HFVlE58bmGMvsqA.png" srcset="/img/loading.gif" lazyload /></p>
 <p><strong>频谱的幅值：</strong>表示谐波的功率</p>
 <p>当周期无穷大时，频谱变成了幅值为0的连续频谱；当周期为脉冲宽度时，这信号只包含直流分量，高频分量频谱在包络线的零点处。</p>
-<p><strong>频带宽度：</strong>（频谱主半宽度）<br>$$<br>B \approx \frac{ {2\pi } }{\tau }\quad \quad B \propto \frac{1}{\tau }<br>$$<br>频谱消失：<br>$$<br>{\omega _1} = \frac{m}{n}\frac{ {2\pi } }{\tau }<br>$$</p>
-<h2 id="3-4傅里叶变换"><a href="#3-4傅里叶变换" class="headerlink" title="3.4傅里叶变换"></a>3.4傅里叶变换</h2><h3 id="3-4-1推导过程"><a href="#3-4-1推导过程" class="headerlink" title="3.4.1推导过程"></a>3.4.1推导过程</h3><p><strong>FT公式：</strong>（1）正变换；（2）负变换。积分内的指数函数部分呈共轭关系。<br>$$<br>\begin{array}{*{20}{l} }<br>{(1)\quad F(\omega ) = \int_{ - \infty }^\infty  {f(t){e^{ - j\omega t} } } dt =  &lt; f(t),{e^{j\omega t} } &gt; }\<br>{(2)\quad f(t) = \frac{1}{ {2\pi } }\int_{ - \infty }^\infty  {F(\omega ){e^{j\omega t} } } d\omega  =  &lt; F(\omega ),{e^{ - j\omega t} } &gt; }<br>\end{array}<br>$$<br>频谱间隔随周期变化而变换</p>
-<p><img src="https://s2.loli.net/2022/03/09/Fh6xDG3PKpMyQ4g.png" srcset="/img/loading.gif" lazyload></p>
-<p>正变换公式推导，幅度由表示功率转化成表示能量：<br>$$<br>\begin{array}{l}<br>{T_1} \cdot F(n{\omega <em>1}) = \int</em>{ - \frac{ { {T_1} } }{2} }^{\frac{ { {T_1} } }{2} } {f(t){e^{ - jn{\omega _1}t} } } dt\<br>\frac{0}{0} = \frac{ {2\pi F(n{\omega _1})} }{ { {\omega <em>1} } } = F(\omega ) = \int</em>{ - \infty }^\infty  {f(t){e^{ - j\omega t} } } dt<br>\end{array}<br>$$<br>F(w)表示频谱密度函数，简称频谱函数。</p>
+<p><strong>频带宽度：</strong>（频谱主半宽度） <span
+class="math display">\[
+B \approx \frac{ {2\pi } }{\tau }\quad \quad B \propto \frac{1}{\tau }
+\]</span> 频谱消失： <span class="math display">\[
+{\omega _1} = \frac{m}{n}\frac{ {2\pi } }{\tau }
+\]</span></p>
+<h2 id="傅里叶变换">3.4傅里叶变换</h2>
+<h3 id="推导过程">3.4.1推导过程</h3>
+<p><strong>FT公式：</strong>（1）正变换；（2）负变换。积分内的指数函数部分呈共轭关系。
+<span class="math display">\[
+\begin{array}{*{20}{l} }
+{(1)\quad F(\omega ) = \int_{ - \infty }^\infty  {f(t){e^{ - j\omega t}
+} } dt =  &lt; f(t),{e^{j\omega t} } &gt; }\\
+{(2)\quad f(t) = \frac{1}{ {2\pi } }\int_{ - \infty }^\infty  {F(\omega
+){e^{j\omega t} } } d\omega  =  &lt; F(\omega ),{e^{ - j\omega t} } &gt;
+}
+\end{array}
+\]</span> 频谱间隔随周期变化而变换</p>
+<p><img src="https://s2.loli.net/2022/03/09/Fh6xDG3PKpMyQ4g.png" srcset="/img/loading.gif" lazyload /></p>
+<p>正变换公式推导，幅度由表示功率转化成表示能量： <span
+class="math display">\[
+\begin{array}{l}
+{T_1} \cdot F(n{\omega _1}) = \int_{ - \frac{ { {T_1} } }{2} }^{\frac{ {
+{T_1} } }{2} } {f(t){e^{ - jn{\omega _1}t} } } dt\\
+\frac{0}{0} = \frac{ {2\pi F(n{\omega _1})} }{ { {\omega _1} } } =
+F(\omega ) = \int_{ - \infty }^\infty  {f(t){e^{ - j\omega t} } } dt
+\end{array}
+\]</span> F(w)表示频谱密度函数，简称频谱函数。</p>
 <p>负变换公式推导：（卓晴老师的课件有点小问题，下图已更正）</p>
-<p><img src="https://s2.loli.net/2022/03/08/FySCPgGBMuzH781.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/08/FySCPgGBMuzH781.png" srcset="/img/loading.gif" lazyload /></p>
 <p>从周期信号的离散谐波分解得到非周期信号的频谱密度函数。</p>
 <p><strong>对称性质：</strong></p>
-<p><img src="https://s2.loli.net/2022/03/08/SVjFNOxPJg5pf7e.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-4-2对称性分析"><a href="#3-4-2对称性分析" class="headerlink" title="3.4.2对称性分析"></a>3.4.2对称性分析</h3><p><img src="https://s2.loli.net/2022/03/08/9zJSwH5rPQfTML1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/08/SVjFNOxPJg5pf7e.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="对称性分析">3.4.2对称性分析</h3>
+<p><img src="https://s2.loli.net/2022/03/08/9zJSwH5rPQfTML1.png" srcset="/img/loading.gif" lazyload /></p>
 <p>傅里叶变换的特征函数：</p>
-<p><img src="https://s2.loli.net/2022/03/09/vshK3OxkPzHu165.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-4-3广义傅里叶变换"><a href="#3-4-3广义傅里叶变换" class="headerlink" title="3.4.3广义傅里叶变换"></a>3.4.3广义傅里叶变换</h3><p>1）存在条件</p>
-<p><img src="https://s2.loli.net/2022/03/09/3ApeiLZolNUWmFH.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/09/vshK3OxkPzHu165.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="广义傅里叶变换">3.4.3广义傅里叶变换</h3>
+<p>1）存在条件</p>
+<p><img src="https://s2.loli.net/2022/03/09/3ApeiLZolNUWmFH.png" srcset="/img/loading.gif" lazyload /></p>
 <p>2）广义傅里叶变换</p>
-<p><img src="https://s2.loli.net/2022/03/09/Hq9tX3CBG6JYyuA.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-4-4证明过程"><a href="#3-4-4证明过程" class="headerlink" title="3.4.4证明过程"></a>3.4.4证明过程</h3><p><img src="https://s2.loli.net/2022/03/09/GfzVL2jiXCHRTKF.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="3-5典型信号傅里叶变换"><a href="#3-5典型信号傅里叶变换" class="headerlink" title="3.5典型信号傅里叶变换"></a>3.5典型信号傅里叶变换</h2><h3 id="3-5-1公式法求FT"><a href="#3-5-1公式法求FT" class="headerlink" title="3.5.1公式法求FT"></a>3.5.1公式法求FT</h3><p><strong>FT公式：</strong>（1）正变换；（2）负变换。积分内的指数函数部分呈共轭关系。<br>$$<br>\begin{array}{*{20}{l} }<br>{(1)\quad F(\omega ) = \int_{ - \infty }^\infty  {f(t){e^{ - j\omega t} } } dt =  &lt; f(t),{e^{j\omega t} } &gt; }\<br>{(2)\quad f(t) = \frac{1}{ {2\pi } }\int_{ - \infty }^\infty  {F(\omega ){e^{j\omega t} } } d\omega  =  &lt; F(\omega ),{e^{ - j\omega t} } &gt; }<br>\end{array}<br>$$</p>
-<h3 id="3-5-2广义傅里叶变换方法"><a href="#3-5-2广义傅里叶变换方法" class="headerlink" title="3.5.2广义傅里叶变换方法"></a>3.5.2广义傅里叶变换方法</h3><p><img src="https://s2.loli.net/2022/03/09/XHCpDOqaTzU3ZIW.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-5-3奇偶虚实与共轭对称性"><a href="#3-5-3奇偶虚实与共轭对称性" class="headerlink" title="3.5.3奇偶虚实与共轭对称性"></a>3.5.3奇偶虚实与共轭对称性</h3><p>1）奇偶虚实：当信号是纯实的偶函数时，频谱是纯实的偶函数；当信号是纯实的奇函数时，频谱是纯虚的，在频域内关于w的奇函数；当信号是纯虚的偶函数时，结论奇偶性对调。</p>
-<p><img src="https://s2.loli.net/2022/03/09/keSLPca3xDCpz6d.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/09/Hq9tX3CBG6JYyuA.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="证明过程">3.4.4证明过程</h3>
+<p><img src="https://s2.loli.net/2022/03/09/GfzVL2jiXCHRTKF.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="典型信号傅里叶变换">3.5典型信号傅里叶变换</h2>
+<h3 id="公式法求ft">3.5.1公式法求FT</h3>
+<p><strong>FT公式：</strong>（1）正变换；（2）负变换。积分内的指数函数部分呈共轭关系。
+<span class="math display">\[
+\begin{array}{*{20}{l} }
+{(1)\quad F(\omega ) = \int_{ - \infty }^\infty  {f(t){e^{ - j\omega t}
+} } dt =  &lt; f(t),{e^{j\omega t} } &gt; }\\
+{(2)\quad f(t) = \frac{1}{ {2\pi } }\int_{ - \infty }^\infty  {F(\omega
+){e^{j\omega t} } } d\omega  =  &lt; F(\omega ),{e^{ - j\omega t} } &gt;
+}
+\end{array}
+\]</span></p>
+<h3 id="广义傅里叶变换方法">3.5.2广义傅里叶变换方法</h3>
+<p><img src="https://s2.loli.net/2022/03/09/XHCpDOqaTzU3ZIW.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="奇偶虚实与共轭对称性">3.5.3奇偶虚实与共轭对称性</h3>
+<p>1）奇偶虚实：当信号是纯实的偶函数时，频谱是纯实的偶函数；当信号是纯实的奇函数时，频谱是纯虚的，在频域内关于w的奇函数；当信号是纯虚的偶函数时，结论奇偶性对调。</p>
+<p><img src="https://s2.loli.net/2022/03/09/keSLPca3xDCpz6d.png" srcset="/img/loading.gif" lazyload /></p>
 <p>信号的奇偶分解分别对应于频谱的虚部和实部，通过逆变换可以可以从频谱的虚部和实部分别求出信号的奇偶分量。</p>
-<p><img src="https://s2.loli.net/2022/03/09/7Q3Jb5CvMmgKz9T.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/09/7Q3Jb5CvMmgKz9T.png" srcset="/img/loading.gif" lazyload /></p>
 <p>2）共轭对称性</p>
-<p><img src="https://s2.loli.net/2022/03/09/GbXr8wEi6Y9CsAT.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-5-4信号的频谱衰减"><a href="#3-5-4信号的频谱衰减" class="headerlink" title="3.5.4信号的频谱衰减"></a>3.5.4信号的频谱衰减</h3><p>1）光滑性与频谱衰减有关：波形不连续，频谱衰减与w成反比；波形连续，导数不连续，频谱衰减与w的平方成反比；波形连续，导数连续，频谱衰减与w的3次方成反比；</p>
-<p><img src="https://s2.loli.net/2022/03/09/2SecTWhHnjgz4ME.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2022/03/09/a348Nkr2wTuL6Us.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/09/GbXr8wEi6Y9CsAT.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="信号的频谱衰减">3.5.4信号的频谱衰减</h3>
+<p>1）光滑性与频谱衰减有关：波形不连续，频谱衰减与w成反比；波形连续，导数不连续，频谱衰减与w的平方成反比；波形连续，导数连续，频谱衰减与w的3次方成反比；</p>
+<p><img src="https://s2.loli.net/2022/03/09/2SecTWhHnjgz4ME.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2022/03/09/a348Nkr2wTuL6Us.png" srcset="/img/loading.gif" lazyload /></p>
 <p><strong>高斯信号是FT的特征信号，其具有信号和频谱都快速衰减的特点。</strong></p>
-<h2 id="3-6傅里叶变换的性质（一）"><a href="#3-6傅里叶变换的性质（一）" class="headerlink" title="3.6傅里叶变换的性质（一）"></a>3.6傅里叶变换的性质（一）</h2><p><img src="https://s2.loli.net/2022/03/09/cSIjv5X3u2CAbLW.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-6-1线性特性"><a href="#3-6-1线性特性" class="headerlink" title="3.6.1线性特性"></a>3.6.1线性特性</h3><p><img src="https://s2.loli.net/2022/03/09/CAO5ZFvLEoWml4a.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-6-2比例变换特性"><a href="#3-6-2比例变换特性" class="headerlink" title="3.6.2比例变换特性"></a>3.6.2比例变换特性</h3><p><img src="https://s2.loli.net/2022/03/09/hkwEFrDidmp6sSf.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="傅里叶变换的性质一">3.6傅里叶变换的性质（一）</h2>
+<p><img src="https://s2.loli.net/2022/03/09/cSIjv5X3u2CAbLW.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="线性特性">3.6.1线性特性</h3>
+<p><img src="https://s2.loli.net/2022/03/09/CAO5ZFvLEoWml4a.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="比例变换特性">3.6.2比例变换特性</h3>
+<p><img src="https://s2.loli.net/2022/03/09/hkwEFrDidmp6sSf.png" srcset="/img/loading.gif" lazyload /></p>
 <p><strong>等效脉冲宽度与频带宽度：</strong></p>
-<p><img src="https://s2.loli.net/2022/03/09/ZAmyGS2F3oqtpTP.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/09/ZAmyGS2F3oqtpTP.png" srcset="/img/loading.gif" lazyload /></p>
 <p>等效脉冲宽度与频带宽度的乘积是一个常量，频带宽度就是信号的带宽。</p>
 <p>信号宽度的度量方式：</p>
-<p><img src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-20220309195726147.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-6-3时移特性"><a href="#3-6-3时移特性" class="headerlink" title="3.6.3时移特性"></a>3.6.3时移特性</h3><p><img src="https://s2.loli.net/2022/03/10/6puAtNqyc2zVhkF.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-6-4频移特性"><a href="#3-6-4频移特性" class="headerlink" title="3.6.4频移特性"></a>3.6.4频移特性</h3><p><img src="https://s2.loli.net/2022/03/09/uwC7o2q6JKQOGfz.png" srcset="/img/loading.gif" lazyload></p>
+<p><img
+src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-20220309195726147.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="时移特性">3.6.3时移特性</h3>
+<p><img src="https://s2.loli.net/2022/03/10/6puAtNqyc2zVhkF.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="频移特性">3.6.4频移特性</h3>
+<p><img src="https://s2.loli.net/2022/03/09/uwC7o2q6JKQOGfz.png" srcset="/img/loading.gif" lazyload /></p>
 <p>平移相当于信号的幅度调制。</p>
 <p>正弦信号的调制分析：</p>
-<p><img src="https://s2.loli.net/2022/03/09/wA5QEFdhix7Cc2n.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="3-7傅里叶变换的性质（二）"><a href="#3-7傅里叶变换的性质（二）" class="headerlink" title="3.7傅里叶变换的性质（二）"></a>3.7傅里叶变换的性质（二）</h2><h3 id="3-7-1微分特性"><a href="#3-7-1微分特性" class="headerlink" title="3.7.1微分特性"></a>3.7.1微分特性</h3><p>微分与线性加权通过傅里叶变换联系起来。<br>$$<br>F[\frac{ { {d^n} } }{ {d{t^n} } }f(t)] = {(j\omega )^n}F(\omega )<br>$$<br><img src="https://s2.loli.net/2022/03/09/YmKzkIAvEFU8ojC.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/09/wA5QEFdhix7Cc2n.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="傅里叶变换的性质二">3.7傅里叶变换的性质（二）</h2>
+<h3 id="微分特性">3.7.1微分特性</h3>
+<p>微分与线性加权通过傅里叶变换联系起来。 <span class="math display">\[
+F[\frac{ { {d^n} } }{ {d{t^n} } }f(t)] = {(j\omega )^n}F(\omega )
+\]</span> <img
+src="https://s2.loli.net/2022/03/09/YmKzkIAvEFU8ojC.png" srcset="/img/loading.gif" lazyload /></p>
 <p>时域微分和频域微分：</p>
-<p><img src="https://s2.loli.net/2022/03/09/6MXh9yq3Jplk4Tv.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/09/6MXh9yq3Jplk4Tv.png" srcset="/img/loading.gif" lazyload /></p>
 <p>运用：</p>
-<p><img src="https://s2.loli.net/2022/03/09/rM5Gz63AVWOZc2o.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-7-2积分特性"><a href="#3-7-2积分特性" class="headerlink" title="3.7.2积分特性"></a>3.7.2积分特性</h3><p><img src="https://s2.loli.net/2022/03/09/2QTbncH4fsoEAmN.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/09/rM5Gz63AVWOZc2o.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="积分特性">3.7.2积分特性</h3>
+<p><img src="https://s2.loli.net/2022/03/09/2QTbncH4fsoEAmN.png" srcset="/img/loading.gif" lazyload /></p>
 <p>当F(0)=0时，冲击信号部分为0，则FT变换的积分、微分可以相互运算。F(0)=0有以下情况：</p>
 <ul>
 <li>f(t)：奇函数；有限长函数的导数。</li>
 </ul>
-<p><img src="https://s2.loli.net/2022/03/10/ExIoGwkuZyJM2Xp.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-7-3卷积特性"><a href="#3-7-3卷积特性" class="headerlink" title="3.7.3卷积特性"></a>3.7.3卷积特性</h3><p><img src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-20220310091631375.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/10/ExIoGwkuZyJM2Xp.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="卷积特性">3.7.3卷积特性</h3>
+<p><img src="https://s2.loli.net/2022/03/10/RkxQuKpgHeXF3Pd.png" srcset="/img/loading.gif" lazyload /></p>
 <p><strong>系统频率响应（系统幅频函数）：</strong></p>
-<p><img src="https://s2.loli.net/2022/03/10/f5bwBF6qLYEshrP.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-7-4测不准原理"><a href="#3-7-4测不准原理" class="headerlink" title="3.7.4测不准原理"></a>3.7.4测不准原理</h3><p><img src="https://s2.loli.net/2022/03/10/Tn26qLHKIxdYl7V.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="3-8周期信号FT"><a href="#3-8周期信号FT" class="headerlink" title="3.8周期信号FT"></a>3.8周期信号FT</h2><h3 id="3-8-1傅里叶级数分解"><a href="#3-8-1傅里叶级数分解" class="headerlink" title="3.8.1傅里叶级数分解"></a>3.8.1傅里叶级数分解</h3><p><img src="https://s2.loli.net/2022/03/10/GOFiPIsTgrwvY9b.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-8-2卷积方法"><a href="#3-8-2卷积方法" class="headerlink" title="3.8.2卷积方法"></a>3.8.2卷积方法</h3><p><img src="https://s2.loli.net/2022/03/10/YgVfQlaIemjONtM.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/10/f5bwBF6qLYEshrP.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="测不准原理">3.7.4测不准原理</h3>
+<p><img src="https://s2.loli.net/2022/03/10/Tn26qLHKIxdYl7V.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="周期信号ft">3.8周期信号FT</h2>
+<h3 id="傅里叶级数分解">3.8.1傅里叶级数分解</h3>
+<p><img src="https://s2.loli.net/2022/03/10/GOFiPIsTgrwvY9b.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="卷积方法">3.8.2卷积方法</h3>
+<p><img src="https://s2.loli.net/2022/03/10/YgVfQlaIemjONtM.png" srcset="/img/loading.gif" lazyload /></p>
 
               
             </div>
