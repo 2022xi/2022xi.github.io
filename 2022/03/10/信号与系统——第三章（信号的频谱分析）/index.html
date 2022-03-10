@@ -1,0 +1,898 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Mr niu2">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="跨专业考研，复试科目：信号与系统，清华大学卓晴副教授课程学习笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信号与系统——第三章（信号的频谱分析）">
+<meta property="og:url" content="https://2022xi.github.io/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%A2%91%E8%B0%B1%E5%88%86%E6%9E%90%EF%BC%89/index.html">
+<meta property="og:site_name" content="舍功利之心，注一腔热情。">
+<meta property="og:description" content="跨专业考研，复试科目：信号与系统，清华大学卓晴副教授课程学习笔记。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://2022xi.github.io/img/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F(%E7%AC%AC%E4%B8%89%E7%AB%A0).jpg">
+<meta property="article:published_time" content="2022-03-10T11:07:36.752Z">
+<meta property="article:modified_time" content="2022-03-10T07:27:39.198Z">
+<meta property="article:author" content="Mr niu2">
+<meta property="article:tag" content="信号与系统">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://2022xi.github.io/img/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F(%E7%AC%AC%E4%B8%89%E7%AB%A0).jpg">
+  
+  
+  <title>信号与系统——第三章（信号的频谱分析） - 舍功利之心，注一腔热情。</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"2022xi.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mr niu2</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/message/">
+                <i class="iconfont icon-note"></i>
+                留言
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="信号与系统——第三章（信号的频谱分析）">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-10 19:07" pubdate>
+          2022年3月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">信号与系统——第三章（信号的频谱分析）</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="信号与系统——第三章（信号的频谱分析）"><a href="#信号与系统——第三章（信号的频谱分析）" class="headerlink" title="信号与系统——第三章（信号的频谱分析）"></a>信号与系统——第三章（信号的频谱分析）</h1><h2 id="3-1正交函数集合"><a href="#3-1正交函数集合" class="headerlink" title="3.1正交函数集合"></a>3.1正交函数集合</h2><h3 id="3-1-1正交的定义"><a href="#3-1-1正交的定义" class="headerlink" title="3.1.1正交的定义"></a>3.1.1正交的定义</h3><p>对于定义的某种内积运算，两个函数在该运算下的结果为0，这两个函数正交。</p>
+<p>定义内积运算：<br>$$<br>\int_{ - \infty }^{ + \infty } {f(x)g(x)dx}  = 0<br>$$</p>
+<h3 id="3-1-2正交函数集合"><a href="#3-1-2正交函数集合" class="headerlink" title="3.1.2正交函数集合"></a>3.1.2正交函数集合</h3><p>有n个函数构成的一个函数集合，在区间内满足两两正交关系，则称为正交函数集合。若函数的模为1，则称为归一化正交函数集合。</p>
+<p>正交函数分解：smith变换。</p>
+<h3 id="3-1-3完备正交函数集合"><a href="#3-1-3完备正交函数集合" class="headerlink" title="3.1.3完备正交函数集合"></a>3.1.3完备正交函数集合</h3><p>完备可以理解为，正交函数集合中的函数是函数的线性空间中的一组基。</p>
+<p>正经定义1：如果在正交函数集之外不存在有限能量且能量不为0的函数与函数集中任何函数都正交。（其实就是正交基的概念）</p>
+<p>正经定义2：任何函数f(t)分解成正交函数集的线性组合，它们之间的误差的能量：<br>$$<br>\begin{array}{l}<br>e(t) = f(t) - \sum\limits_{i = 1}^n { {c_i}{g_i}(t)} \<br>\left| {e(t)} \right|_2^2 = 0<br>\end{array}<br>$$</p>
+<h3 id="3-1-4完备正交基的例子"><a href="#3-1-4完备正交基的例子" class="headerlink" title="3.1.4完备正交基的例子"></a>3.1.4完备正交基的例子</h3><p>1）三角函数：<br>$$<br>{ \cos n{\omega _1}t,\sin n{\omega _1}t} ,n = 0,1,2,…,\infty<br>$$<br>2）复指数函数：<br>$$<br>{ {e^{jn{\omega <em>1}t} }} ,n = 0, \pm 1, \pm 2,…, \pm \infty<br>$$<br>傅里叶变换：<br>$$<br>\begin{array}{l}<br>f(t) = {a_0} + \sum\limits</em>{n = 1}^\infty  {({a_n}\cos n{\omega _1}t + {b_n}\sin n{\omega <em>1}t)} \<br>\quad \quad  = \sum\limits</em>{n =  - \infty }^\infty  { {F_n}{e^{jn{\omega _1}t} } }<br>\end{array}<br>$$</p>
+<h3 id="3-1-5三角函数-复指数集合的完备正交性"><a href="#3-1-5三角函数-复指数集合的完备正交性" class="headerlink" title="3.1.5三角函数/复指数集合的完备正交性"></a>3.1.5三角函数/复指数集合的完备正交性</h3><p>1）三角函数</p>
+<p><img src="https://s2.loli.net/2022/02/20/E68UfXke1nwaqM4.png" srcset="/img/loading.gif" lazyload></p>
+<p>2）复指数函数</p>
+<p><img src="https://s2.loli.net/2022/02/20/hWSdc8NLKeGCTyi.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-1-6-Parseval定理"><a href="#3-1-6-Parseval定理" class="headerlink" title="3.1.6 Parseval定理"></a>3.1.6 Parseval定理</h3><p>$$<br>\begin{array}{l}<br>P = \overline { {f^2}(t)}  = \frac{1}{ { {T_1} } }\int_{ {t_0} }^{ {t_0} + {T_1} } { {f^2}(t)dt} \<br>\quad  = a_0^2 + \frac{1}{2}\sum\limits_{n = 1}^\infty  {(a_n^2 + b_n^2)} \<br>\quad  = \sum\limits_{n =  - \infty }^\infty  { { {\left| { {F_n} } \right|}^2} }<br>\end{array}<br>$$</p>
+<h2 id="3-2周期信号的傅里叶级数分解"><a href="#3-2周期信号的傅里叶级数分解" class="headerlink" title="3.2周期信号的傅里叶级数分解"></a>3.2周期信号的傅里叶级数分解</h2><h3 id="3-2-1分解公式"><a href="#3-2-1分解公式" class="headerlink" title="3.2.1分解公式"></a>3.2.1分解公式</h3><p>1）三角函数分解形式</p>
+<p><img src="https://s2.loli.net/2022/02/20/4OtbBRS7nJaYQ12.png" srcset="/img/loading.gif" lazyload></p>
+<p>一个信号可以分解为一个直流信号与无穷多个交流信号的叠加，其中与原信号周期相同的交流信号称为信号的<em>基波</em>，其他交流信号称为信号的<em>谐波</em>。</p>
+<p>2）复指数分解形式</p>
+<p>复指数函数通过欧拉公式，可化成三角函数形式，相当与复指数函数分别在实轴和虚轴上的投影。</p>
+<p><img src="https://s2.loli.net/2022/02/20/rlfxoW75dkVhjAR.png" srcset="/img/loading.gif" lazyload></p>
+<p>参数对应关系：</p>
+<p><img src="https://s2.loli.net/2022/02/20/Ffe6sw1bWKhdqrA.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-2周期矩阵信号的分解"><a href="#3-2-2周期矩阵信号的分解" class="headerlink" title="3.2.2周期矩阵信号的分解"></a>3.2.2周期矩阵信号的分解</h3><p>1）三角函数分解</p>
+<p>信号的幅度图：</p>
+<p><img src="https://s2.loli.net/2022/02/20/yQJjg9AM5SHVwPq.png" srcset="/img/loading.gif" lazyload></p>
+<p>信号的相位图：</p>
+<p><img src="https://s2.loli.net/2022/02/20/OWm2RYGnXFIuB5v.png" srcset="/img/loading.gif" lazyload></p>
+<p>2）复指数分解</p>
+<p><img src="https://s2.loli.net/2022/02/20/8ZlyORLMKq5cdgH.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-3级数收敛条件"><a href="#3-2-3级数收敛条件" class="headerlink" title="3.2.3级数收敛条件"></a>3.2.3级数收敛条件</h3><p>在高等数学中，傅里叶级数收敛条件是有有限个第一类间断点即可。</p>
+<p>1）能量条件：能量有限</p>
+<p>2）波形条件（Dirichlet条件）</p>
+<ul>
+<li>信号一个周期内绝对可积</li>
+<li>极大值极小值个数有限</li>
+<li>间断点个数有限</li>
+</ul>
+<p><strong>Gibbs现象：</strong></p>
+<p><img src="https://s2.loli.net/2022/02/20/6jhIYHkfBX85Z7W.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-3典型周期信号傅里叶级数分解"><a href="#3-3典型周期信号傅里叶级数分解" class="headerlink" title="3.3典型周期信号傅里叶级数分解"></a>3.3典型周期信号傅里叶级数分解</h2><h3 id="3-3-1典型信号"><a href="#3-3-1典型信号" class="headerlink" title="3.3.1典型信号"></a>3.3.1典型信号</h3><p>1）周期方波信号：实偶函数<img src="https://s2.loli.net/2022/03/08/RmVpiCDeMyKJN69.png" srcset="/img/loading.gif" lazyload></p>
+<p>1中Sa(t)抽样函数随谐波次数n衰减；2中当n为偶数时，an=0，这样的函数称为奇谐函数。</p>
+<p>2）周期锯齿信号：实奇函数，</p>
+<p><img src="https://s2.loli.net/2022/03/08/sb2JjZdfWYvgEhC.png" srcset="/img/loading.gif" lazyload></p>
+<p>3）三角脉冲信号</p>
+<p><img src="https://s2.loli.net/2022/03/08/9oq5VhJAEz4NS2w.png" srcset="/img/loading.gif" lazyload></p>
+<p>连续，高频分量更少，谐波分量衰减更快，奇谐信号</p>
+<p>4）半波余弦信号：实偶函数</p>
+<p><img src="https://s2.loli.net/2022/03/08/v3wBWQZmDURYkC6.png" srcset="/img/loading.gif" lazyload></p>
+<p>5）全波整流余弦信号</p>
+<p><img src="https://s2.loli.net/2022/03/09/BUSNKXlFYfVI9dH.png" srcset="/img/loading.gif" lazyload></p>
+<p>6）周期脉冲序列：白色频谱，高频分量丰富，功率发散信号，单位脉冲信号功率无穷大</p>
+<p><img src="https://s2.loli.net/2022/03/08/CmbJwie28Q3uNyg.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>傅里叶级数分解的频谱规律：</strong></p>
+<p><img src="https://s2.loli.net/2022/03/08/xMIVtmaQ5274wSP.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-3-2信号的对称性"><a href="#3-3-2信号的对称性" class="headerlink" title="3.3.2信号的对称性"></a>3.3.2信号的对称性</h3><p>1）偶对称</p>
+<p>2）奇对称</p>
+<p>3）奇谐对称：只存在奇次谐波，偶次谐波不存在</p>
+<p><img src="https://s2.loli.net/2022/03/09/WtOSuX51hVyTLni.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>将波形移动半个基波周期，结果与原来相反。</p>
+<h3 id="3-3-3信号参数与频谱的关系"><a href="#3-3-3信号参数与频谱的关系" class="headerlink" title="3.3.3信号参数与频谱的关系"></a>3.3.3信号参数与频谱的关系</h3><p>1）矩形脉冲信号</p>
+<p><img src="https://s2.loli.net/2022/03/08/HFVlE58bmGMvsqA.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>频谱的幅值：</strong>表示谐波的功率</p>
+<p>当周期无穷大时，频谱变成了幅值为0的连续频谱；当周期为脉冲宽度时，这信号只包含直流分量，高频分量频谱在包络线的零点处。</p>
+<p><strong>频带宽度：</strong>（频谱主半宽度）<br>$$<br>B \approx \frac{ {2\pi } }{\tau }\quad \quad B \propto \frac{1}{\tau }<br>$$<br>频谱消失：<br>$$<br>{\omega _1} = \frac{m}{n}\frac{ {2\pi } }{\tau }<br>$$</p>
+<h2 id="3-4傅里叶变换"><a href="#3-4傅里叶变换" class="headerlink" title="3.4傅里叶变换"></a>3.4傅里叶变换</h2><h3 id="3-4-1推导过程"><a href="#3-4-1推导过程" class="headerlink" title="3.4.1推导过程"></a>3.4.1推导过程</h3><p><strong>FT公式：</strong>（1）正变换；（2）负变换。积分内的指数函数部分呈共轭关系。<br>$$<br>\begin{array}{*{20}{l} }<br>{(1)\quad F(\omega ) = \int_{ - \infty }^\infty  {f(t){e^{ - j\omega t} } } dt =  &lt; f(t),{e^{j\omega t} } &gt; }\<br>{(2)\quad f(t) = \frac{1}{ {2\pi } }\int_{ - \infty }^\infty  {F(\omega ){e^{j\omega t} } } d\omega  =  &lt; F(\omega ),{e^{ - j\omega t} } &gt; }<br>\end{array}<br>$$<br>频谱间隔随周期变化而变换</p>
+<p><img src="https://s2.loli.net/2022/03/09/Fh6xDG3PKpMyQ4g.png" srcset="/img/loading.gif" lazyload></p>
+<p>正变换公式推导，幅度由表示功率转化成表示能量：<br>$$<br>\begin{array}{l}<br>{T_1} \cdot F(n{\omega <em>1}) = \int</em>{ - \frac{ { {T_1} } }{2} }^{\frac{ { {T_1} } }{2} } {f(t){e^{ - jn{\omega _1}t} } } dt\<br>\frac{0}{0} = \frac{ {2\pi F(n{\omega _1})} }{ { {\omega <em>1} } } = F(\omega ) = \int</em>{ - \infty }^\infty  {f(t){e^{ - j\omega t} } } dt<br>\end{array}<br>$$<br>F(w)表示频谱密度函数，简称频谱函数。</p>
+<p>负变换公式推导：（卓晴老师的课件有点小问题，下图已更正）</p>
+<p><img src="https://s2.loli.net/2022/03/08/FySCPgGBMuzH781.png" srcset="/img/loading.gif" lazyload></p>
+<p>从周期信号的离散谐波分解得到非周期信号的频谱密度函数。</p>
+<p><strong>对称性质：</strong></p>
+<p><img src="https://s2.loli.net/2022/03/08/SVjFNOxPJg5pf7e.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-2对称性分析"><a href="#3-4-2对称性分析" class="headerlink" title="3.4.2对称性分析"></a>3.4.2对称性分析</h3><p><img src="https://s2.loli.net/2022/03/08/9zJSwH5rPQfTML1.png" srcset="/img/loading.gif" lazyload></p>
+<p>傅里叶变换的特征函数：</p>
+<p><img src="https://s2.loli.net/2022/03/09/vshK3OxkPzHu165.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-3广义傅里叶变换"><a href="#3-4-3广义傅里叶变换" class="headerlink" title="3.4.3广义傅里叶变换"></a>3.4.3广义傅里叶变换</h3><p>1）存在条件</p>
+<p><img src="https://s2.loli.net/2022/03/09/3ApeiLZolNUWmFH.png" srcset="/img/loading.gif" lazyload></p>
+<p>2）广义傅里叶变换</p>
+<p><img src="https://s2.loli.net/2022/03/09/Hq9tX3CBG6JYyuA.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-4证明过程"><a href="#3-4-4证明过程" class="headerlink" title="3.4.4证明过程"></a>3.4.4证明过程</h3><p><img src="https://s2.loli.net/2022/03/09/GfzVL2jiXCHRTKF.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-5典型信号傅里叶变换"><a href="#3-5典型信号傅里叶变换" class="headerlink" title="3.5典型信号傅里叶变换"></a>3.5典型信号傅里叶变换</h2><h3 id="3-5-1公式法求FT"><a href="#3-5-1公式法求FT" class="headerlink" title="3.5.1公式法求FT"></a>3.5.1公式法求FT</h3><p><strong>FT公式：</strong>（1）正变换；（2）负变换。积分内的指数函数部分呈共轭关系。<br>$$<br>\begin{array}{*{20}{l} }<br>{(1)\quad F(\omega ) = \int_{ - \infty }^\infty  {f(t){e^{ - j\omega t} } } dt =  &lt; f(t),{e^{j\omega t} } &gt; }\<br>{(2)\quad f(t) = \frac{1}{ {2\pi } }\int_{ - \infty }^\infty  {F(\omega ){e^{j\omega t} } } d\omega  =  &lt; F(\omega ),{e^{ - j\omega t} } &gt; }<br>\end{array}<br>$$</p>
+<h3 id="3-5-2广义傅里叶变换方法"><a href="#3-5-2广义傅里叶变换方法" class="headerlink" title="3.5.2广义傅里叶变换方法"></a>3.5.2广义傅里叶变换方法</h3><p><img src="https://s2.loli.net/2022/03/09/XHCpDOqaTzU3ZIW.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-5-3奇偶虚实与共轭对称性"><a href="#3-5-3奇偶虚实与共轭对称性" class="headerlink" title="3.5.3奇偶虚实与共轭对称性"></a>3.5.3奇偶虚实与共轭对称性</h3><p>1）奇偶虚实：当信号是纯实的偶函数时，频谱是纯实的偶函数；当信号是纯实的奇函数时，频谱是纯虚的，在频域内关于w的奇函数；当信号是纯虚的偶函数时，结论奇偶性对调。</p>
+<p><img src="https://s2.loli.net/2022/03/09/keSLPca3xDCpz6d.png" srcset="/img/loading.gif" lazyload></p>
+<p>信号的奇偶分解分别对应于频谱的虚部和实部，通过逆变换可以可以从频谱的虚部和实部分别求出信号的奇偶分量。</p>
+<p><img src="https://s2.loli.net/2022/03/09/7Q3Jb5CvMmgKz9T.png" srcset="/img/loading.gif" lazyload></p>
+<p>2）共轭对称性</p>
+<p><img src="https://s2.loli.net/2022/03/09/GbXr8wEi6Y9CsAT.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-5-4信号的频谱衰减"><a href="#3-5-4信号的频谱衰减" class="headerlink" title="3.5.4信号的频谱衰减"></a>3.5.4信号的频谱衰减</h3><p>1）光滑性与频谱衰减有关：波形不连续，频谱衰减与w成反比；波形连续，导数不连续，频谱衰减与w的平方成反比；波形连续，导数连续，频谱衰减与w的3次方成反比；</p>
+<p><img src="https://s2.loli.net/2022/03/09/2SecTWhHnjgz4ME.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/03/09/a348Nkr2wTuL6Us.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>高斯信号是FT的特征信号，其具有信号和频谱都快速衰减的特点。</strong></p>
+<h2 id="3-6傅里叶变换的性质（一）"><a href="#3-6傅里叶变换的性质（一）" class="headerlink" title="3.6傅里叶变换的性质（一）"></a>3.6傅里叶变换的性质（一）</h2><p><img src="https://s2.loli.net/2022/03/09/cSIjv5X3u2CAbLW.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-6-1线性特性"><a href="#3-6-1线性特性" class="headerlink" title="3.6.1线性特性"></a>3.6.1线性特性</h3><p><img src="https://s2.loli.net/2022/03/09/CAO5ZFvLEoWml4a.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-6-2比例变换特性"><a href="#3-6-2比例变换特性" class="headerlink" title="3.6.2比例变换特性"></a>3.6.2比例变换特性</h3><p><img src="https://s2.loli.net/2022/03/09/hkwEFrDidmp6sSf.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>等效脉冲宽度与频带宽度：</strong></p>
+<p><img src="https://s2.loli.net/2022/03/09/ZAmyGS2F3oqtpTP.png" srcset="/img/loading.gif" lazyload></p>
+<p>等效脉冲宽度与频带宽度的乘积是一个常量，频带宽度就是信号的带宽。</p>
+<p>信号宽度的度量方式：</p>
+<p><img src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-20220309195726147.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-6-3时移特性"><a href="#3-6-3时移特性" class="headerlink" title="3.6.3时移特性"></a>3.6.3时移特性</h3><p><img src="https://s2.loli.net/2022/03/10/6puAtNqyc2zVhkF.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-6-4频移特性"><a href="#3-6-4频移特性" class="headerlink" title="3.6.4频移特性"></a>3.6.4频移特性</h3><p><img src="https://s2.loli.net/2022/03/09/uwC7o2q6JKQOGfz.png" srcset="/img/loading.gif" lazyload></p>
+<p>平移相当于信号的幅度调制。</p>
+<p>正弦信号的调制分析：</p>
+<p><img src="https://s2.loli.net/2022/03/09/wA5QEFdhix7Cc2n.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-7傅里叶变换的性质（二）"><a href="#3-7傅里叶变换的性质（二）" class="headerlink" title="3.7傅里叶变换的性质（二）"></a>3.7傅里叶变换的性质（二）</h2><h3 id="3-7-1微分特性"><a href="#3-7-1微分特性" class="headerlink" title="3.7.1微分特性"></a>3.7.1微分特性</h3><p>微分与线性加权通过傅里叶变换联系起来。<br>$$<br>F[\frac{ { {d^n} } }{ {d{t^n} } }f(t)] = {(j\omega )^n}F(\omega )<br>$$<br><img src="https://s2.loli.net/2022/03/09/YmKzkIAvEFU8ojC.png" srcset="/img/loading.gif" lazyload></p>
+<p>时域微分和频域微分：</p>
+<p><img src="https://s2.loli.net/2022/03/09/6MXh9yq3Jplk4Tv.png" srcset="/img/loading.gif" lazyload></p>
+<p>运用：</p>
+<p><img src="https://s2.loli.net/2022/03/09/rM5Gz63AVWOZc2o.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-7-2积分特性"><a href="#3-7-2积分特性" class="headerlink" title="3.7.2积分特性"></a>3.7.2积分特性</h3><p><img src="https://s2.loli.net/2022/03/09/2QTbncH4fsoEAmN.png" srcset="/img/loading.gif" lazyload></p>
+<p>当F(0)=0时，冲击信号部分为0，则FT变换的积分、微分可以相互运算。F(0)=0有以下情况：</p>
+<ul>
+<li>f(t)：奇函数；有限长函数的导数。</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/03/10/ExIoGwkuZyJM2Xp.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-7-3卷积特性"><a href="#3-7-3卷积特性" class="headerlink" title="3.7.3卷积特性"></a>3.7.3卷积特性</h3><p><img src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-20220310091631375.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>系统频率响应（系统幅频函数）：</strong></p>
+<p><img src="https://s2.loli.net/2022/03/10/f5bwBF6qLYEshrP.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-7-4测不准原理"><a href="#3-7-4测不准原理" class="headerlink" title="3.7.4测不准原理"></a>3.7.4测不准原理</h3><p><img src="https://s2.loli.net/2022/03/10/Tn26qLHKIxdYl7V.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-8周期信号FT"><a href="#3-8周期信号FT" class="headerlink" title="3.8周期信号FT"></a>3.8周期信号FT</h2><h3 id="3-8-1傅里叶级数分解"><a href="#3-8-1傅里叶级数分解" class="headerlink" title="3.8.1傅里叶级数分解"></a>3.8.1傅里叶级数分解</h3><p><img src="https://s2.loli.net/2022/03/10/GOFiPIsTgrwvY9b.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-8-2卷积方法"><a href="#3-8-2卷积方法" class="headerlink" title="3.8.2卷积方法"></a>3.8.2卷积方法</h3><p><img src="https://s2.loli.net/2022/03/10/YgVfQlaIemjONtM.png" srcset="/img/loading.gif" lazyload></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%8D%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">复试学习笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%A4%8D%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/" class="category-chain-item">信号与系统</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/">#信号与系统</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>信号与系统——第三章（信号的频谱分析）</div>
+      <div>https://2022xi.github.io/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%A2%91%E8%B0%B1%E5%88%86%E6%9E%90%EF%BC%89/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mr niu2</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月10日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%88%E7%B3%BB%E7%BB%9F%EF%BC%89/" title="信号与系统——第一章（系统）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">信号与系统——第一章（系统）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E6%97%B6%E5%9F%9F%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%EF%BC%89/" title="信号与系统——第二章（时域系统分析）">
+                        <span class="hidden-mobile">信号与系统——第二章（时域系统分析）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.staticfile.org/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UCNXdyjiJS6tgjtPhPdXzf1J-gzGzoHsz","appKey":"KLouyOWRCliEiOJIX3CSjsMd","path":"window.location.pathname","placeholder":"Just Go Go!","avatar":"retro","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script  src="https://cdn.staticfile.org/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://cdn.staticfile.org/mathjax/3.2.0/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

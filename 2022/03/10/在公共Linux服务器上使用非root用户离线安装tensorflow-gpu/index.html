@@ -1,0 +1,828 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Mr niu2">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="非root用户还是离线安装tensorflow-gpu很少有这么苛刻的条件。本文借助虚拟机搭建好tensorflow-gpu虚拟环境后，将其迁移至公共服务器上，再离线安装cuda和cudnn。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x">
+<meta property="og:url" content="https://2022xi.github.io/2022/03/10/%E5%9C%A8%E5%85%AC%E5%85%B1Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BD%BF%E7%94%A8%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85tensorflow-gpu/index.html">
+<meta property="og:site_name" content="舍功利之心，注一腔热情。">
+<meta property="og:description" content="非root用户还是离线安装tensorflow-gpu很少有这么苛刻的条件。本文借助虚拟机搭建好tensorflow-gpu虚拟环境后，将其迁移至公共服务器上，再离线安装cuda和cudnn。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://2022xi.github.io/img/tensorflow-gpu.jpg">
+<meta property="article:published_time" content="2022-03-10T11:07:36.793Z">
+<meta property="article:modified_time" content="2022-03-10T07:27:39.307Z">
+<meta property="article:author" content="Mr niu2">
+<meta property="article:tag" content="tensorflow">
+<meta property="article:tag" content="cuda">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://2022xi.github.io/img/tensorflow-gpu.jpg">
+  
+  
+  <title>在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x - 舍功利之心，注一腔热情。</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"2022xi.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mr niu2</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/message/">
+                <i class="iconfont icon-note"></i>
+                留言
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-10 19:07" pubdate>
+          2022年3月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="在公共服务器上使用非root用户离线安装tensorflow-gpu-2-x"><a href="#在公共服务器上使用非root用户离线安装tensorflow-gpu-2-x" class="headerlink" title="在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x"></a>在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x</h1><p>非root用户还是离线安装tensorflow-gpu很少有这么苛刻的条件，这偏偏被我遇上了。。。</p>
+<p>场景是这样的，老师给了我一个超算的用户，这种学校的公共服务器肯定是不会给root权限的，而偏偏这台机器只连学校内网，这就很郁闷。。。</p>
+<p>在网上查了查很少有这样场景下的安装教程，于是我就来写一篇。</p>
+<h2 id="一、寻常做法"><a href="#一、寻常做法" class="headerlink" title="一、寻常做法"></a>一、寻常做法</h2><p>因为离线，所以寻常做法是通过命令复制现有的base环境</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create tf_gpu -clone base<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p>在自己电脑里下载python、tensorflow-gpu，以及所有依赖库，把它们都上传到服务器上一个一个安装，不出所料我吐了。</p>
+<p>于是经过我百般摸索，使出了浑身解数，终于给我发现了一个神奇的方法。</p>
+<h2 id="二、借助虚拟机安装"><a href="#二、借助虚拟机安装" class="headerlink" title="二、借助虚拟机安装"></a>二、借助虚拟机安装</h2><p>这起源于，我从百度上得知conda创建的虚拟环境可以直接复制到另一台机器上使用。</p>
+<p>我在我自己的笔记本上创建了一个和服务器ubuntu版本一样的虚拟机（虚拟机的安装过程我这里就不叙述了）。在服务器上，通过conda-V命令我得到了服务器上conda的版本是4.10.3，于是我在虚拟机上也同样安装了一个conda4.10.3。于是我在虚拟机上，安装寻常安装tensorflow的步骤：</p>
+<p>创建虚拟环境。</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create -n tf_gpu Python&#x3D;3.9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p>激活虚拟环境。</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">activate tf-gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p>安装tensorflow-gpu，这样所需要的依赖就可以自动安装。</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda install tensorflow-gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p>网上说要使用gpu加速，需要另外装cuda和cudnn两个工具，而cuda和cudnn有很严格的版本对应关系，因为担心会冲突，我先用conda安装cudatoolkit、cudnn</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda install cudatoolkit
+conda install cudnn<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
+
+<p>这样我就得到了cuda版本11.3.1和cudnn版本8.2.1（不知道我这样是否多此一举，但我确是这样做了），后续下载相应的版本进行安装。</p>
+<p><img src="https://s2.loli.net/2022/02/12/TseURp37FrJNWjD.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意：以上安装过程均未使用root权限。</p>
+<p>把前面这些能在虚拟机中安装好的完成之后，开始将tf_gpu打包，使用cd命令切换至虚拟环境目录，打包虚拟环境tf_gpu</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -zcvf tf_gpu.tar.gz tf_gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p>将tf_gpu.tar.gz复制上传至服务器。</p>
+<p>将tf_gpu.tar.gz解压至服务器conda的虚拟环境目录</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -zxvf tf_gpu.tar.gz -C ～&#x2F;.conda&#x2F;envs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p>这里每个人的conda虚拟环境目录可能会不同，请根据自己的实际情况而定。</p>
+<p>解压之后，在终端中输入conda info -e就会发现tf_gpu已经迁移到服务器中了。</p>
+<p><img src="https://s2.loli.net/2022/02/12/L3oe91xKldTjXJz.png" srcset="/img/loading.gif" lazyload></p>
+<p>激活tf_gpu虚拟环境</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">activate tf_gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p>进入python环境</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+a <span class="token operator">=</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<p>可以正常输出，但会报一堆警告，这是因为还需要安装cuda和cudnn。</p>
+<h2 id="三、cuda安装"><a href="#三、cuda安装" class="headerlink" title="三、cuda安装"></a>三、cuda安装</h2><p>到NVIDIA官网 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://developer.nvidia.com/cuda-toolkit-archive"><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA Toolkit Archive | NVIDIA Developer</a></a> 选择对应版本的cuda，这里选择11.3.1。</p>
+<p>然后再选对应的系统型号和installer type</p>
+<p><img src="https://s2.loli.net/2022/02/12/yQBxj1aoU5OGILl.png" srcset="/img/loading.gif" lazyload></p>
+<p>将“Base Installer”里面的下载链接复制到下载器中，或者也可以自己复制链接地址用wget下载，然后安装</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wget https:&#x2F;&#x2F;developer.download.nvidia.com&#x2F;compute&#x2F;cuda&#x2F;11.3.1&#x2F;local_installers&#x2F;cuda_11.3.1_465.19.01_linux.run
+# sh后的文件名以实际下载文件名为准
+sh cuda_11.3.1_465.19.01_linux.run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<p>因为是非root用户，所以安装过程中所以需要root权限的操作都要避免掉。</p>
+<p>接受协议</p>
+<p><img src="https://s2.loli.net/2022/02/12/8Kqpe5LWDuFfrcw.png" srcset="/img/loading.gif" lazyload></p>
+<p>取消cuda安装驱动程序</p>
+<p><img src="https://s2.loli.net/2022/02/12/W3C26owX1KPBRd7.png" srcset="/img/loading.gif" lazyload></p>
+<p>进入Options</p>
+<p><img src="https://s2.loli.net/2022/02/12/9E84ftDTvN3L1oR.png" srcset="/img/loading.gif" lazyload></p>
+<p>不更新和安装驱动</p>
+<p><img src="https://s2.loli.net/2022/02/12/uyEtc69XA7OgFdY.png" srcset="/img/loading.gif" lazyload></p>
+<p>不创建链接和文档</p>
+<p><img src="https://s2.loli.net/2022/02/12/DzuqixQXkce8Sfp.png" srcset="/img/loading.gif" lazyload></p>
+<p>更改cuda的安装路径为用户目录</p>
+<p><img src="https://s2.loli.net/2022/02/12/qyM1DjgrCAL3NVR.png" srcset="/img/loading.gif" lazyload></p>
+<p>更改完这些选项就可以安装了。</p>
+<h2 id="四、cudnn安装"><a href="#四、cudnn安装" class="headerlink" title="四、cudnn安装"></a>四、cudnn安装</h2><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">cuDNN Archive | NVIDIA Developer</a><br>下载cudnn需要NVIDIA账号，注册一个即可。</p>
+<p>选择对应cuda版本号的cudnn版本（8.2.1）。</p>
+<p><img src="https://s2.loli.net/2022/02/12/wbcT2ovR7UCxJSg.png" srcset="/img/loading.gif" lazyload></p>
+<p>选择cuDNN Library for Linux，因为下载cudnn是需要登录的，所以在自己电脑上下载后，再传到服务器上。</p>
+<p>下载完 cuDNN，发现后缀是 .tgz ，使用命令解压至用户目录</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -zxvf cudnn-11.3-linux-x64-v8.2.1.32.tgz -C ~&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<p>解压后发现cudnn总共分两个目录，复制 cuDNN 文件到 CUDA 安装目录：(cuDNN 解压到 <del>/cuda 目录了，</del>/cuda-11.3 为自己设定的 CUDA 安装目录，~ 代表用户目录),并且给所有用户添加读的权限</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cp ~&#x2F;cuda&#x2F;include&#x2F;cudnn.h ~&#x2F;cuda-11.3&#x2F;include
+cp ~&#x2F;cuda&#x2F;lib64&#x2F;lib* ~&#x2F;cuda-11.3&#x2F;lib64
+chmod a+r ~&#x2F;cuda-11.3&#x2F;include&#x2F;cudnn.h ~&#x2F;cuda-11.3&#x2F;lib64&#x2F;libcudnn*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+
+<p>建立软连接</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd ~&#x2F;cuda-11.3&#x2F;lib64
+ln -sf libcudnn.so.8.2.1 libcudnn.so.8
+ln -sf libcudnn.so.8 libcudnn.so
+ldconfig -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
+
+<h2 id="五、配置用户环境变量"><a href="#五、配置用户环境变量" class="headerlink" title="五、配置用户环境变量"></a>五、配置用户环境变量</h2><p>修改 ~/.bashrc 文件，将下面两行加进去：（将xxx 改成自己的用户名）</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">export PATH&#x3D;&#x2F;home&#x2F;xxx&#x2F;cuda-11.3&#x2F;bin$&#123;PATH:+:$&#123;PATH&#125;&#125; 
+export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib64$&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
+
+<p>保存 ~/.bashrc 文件后，source ~/.bashrc 使其生效。</p>
+<p>到这一步tensorflow-gpu的环境搭建就完成了，我们可以验证一下是否启动了GPU加速。在python中运行下面代码，打印结果若是true，则成功启动GPU加速，反之。</p>
+<div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">print</span><span class="token punctuation">(</span>tf<span class="token punctuation">.</span>test<span class="token punctuation">.</span>is_gpu_available<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
+
+<p><em><strong>温馨提示：</strong></em>使用公共服务器的同学可以在安装自己的cuda和cudnn后，最好删除安装文件，为自己和别人节省公共空间。（安装其他包也是一样，及时清理安装缓存文件）</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c95c5b6a4707">Linux服务器中非 root 用户安装（多版本） CUDA 和 cuDNN - 简书 (jianshu.com)</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="category-chain-item">深度学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/tensorflow/" class="category-chain-item">tensorflow</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/tensorflow/">#tensorflow</a>
+      
+        <a href="/tags/cuda/">#cuda</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x</div>
+      <div>https://2022xi.github.io/2022/03/10/%E5%9C%A8%E5%85%AC%E5%85%B1Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BD%BF%E7%94%A8%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85tensorflow-gpu/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mr niu2</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月10日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%88%E7%B3%BB%E7%BB%9F%EF%BC%89/" title="信号与系统——第一章（系统）">
+                        <span class="hidden-mobile">信号与系统——第一章（系统）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.staticfile.org/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UCNXdyjiJS6tgjtPhPdXzf1J-gzGzoHsz","appKey":"KLouyOWRCliEiOJIX3CSjsMd","path":"window.location.pathname","placeholder":"Just Go Go!","avatar":"retro","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script  src="https://cdn.staticfile.org/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
