@@ -16,24 +16,29 @@
   <meta name="author" content="Mr niu2">
   <meta name="keywords" content="">
   
-    <meta name="description" content="非root用户还是离线安装tensorflow-gpu很少有这么苛刻的条件。本文借助虚拟机搭建好tensorflow-gpu虚拟环境后，将其迁移至公共服务器上，再离线安装cuda和cudnn。">
+    <meta name="description" content="title: 通信原理——第一章（确定信号分析） tags: [通信原理] category: [复试学习笔记, 通信原理] top: 9 index_img: &#x2F;img&#x2F;通信原理(第一章).jpg excerpt: 重点复试科目——通信原理，先导课程《信号与系统》的后面章节就先行跳过，后面如有需要再来补充。这份学习笔记是基于学堂在线中北邮杨鸿文老师的视频课程整理的。 math: true">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x">
-<meta property="og:url" content="https://2022xi.github.io/2022/03/10/%E5%9C%A8%E5%85%AC%E5%85%B1Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BD%BF%E7%94%A8%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85tensorflow-gpu/index.html">
+<meta property="og:title" content="舍功利之心，注一腔热情。">
+<meta property="og:url" content="https://2022xi.github.io/2022/03/12/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%88%E7%A1%AE%E5%AE%9A%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%EF%BC%89/index.html">
 <meta property="og:site_name" content="舍功利之心，注一腔热情。">
-<meta property="og:description" content="非root用户还是离线安装tensorflow-gpu很少有这么苛刻的条件。本文借助虚拟机搭建好tensorflow-gpu虚拟环境后，将其迁移至公共服务器上，再离线安装cuda和cudnn。">
+<meta property="og:description" content="title: 通信原理——第一章（确定信号分析） tags: [通信原理] category: [复试学习笔记, 通信原理] top: 9 index_img: &#x2F;img&#x2F;通信原理(第一章).jpg excerpt: 重点复试科目——通信原理，先导课程《信号与系统》的后面章节就先行跳过，后面如有需要再来补充。这份学习笔记是基于学堂在线中北邮杨鸿文老师的视频课程整理的。 math: true">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2022xi.github.io/img/tensorflow-gpu.jpg">
-<meta property="article:published_time" content="2022-03-10T11:07:36.793Z">
-<meta property="article:modified_time" content="2022-03-10T11:42:53.268Z">
+<meta property="og:image" content="https://s2.loli.net/2022/03/12/YKBujohvL6ybZc2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/12/9gupPXt6mcFkDdA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/12/xnw6Y4dzNT1EZ9G.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/14/3Azp5IHy9i2Sfba.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/14/XeUCl1sTNE67Juq.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/03/12/cCFQuXJ26igh7qy.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/13/fLkJ6goa1CHNew4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/14/MrkROUetywHjQum.png">
+<meta property="article:published_time" content="2022-03-12T07:16:20.118Z">
+<meta property="article:modified_time" content="2022-03-15T03:10:28.853Z">
 <meta property="article:author" content="Mr niu2">
-<meta property="article:tag" content="tensorflow">
-<meta property="article:tag" content="cuda">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2022xi.github.io/img/tensorflow-gpu.jpg">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/12/YKBujohvL6ybZc2.png">
   
   
-  <title>在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x - 舍功利之心，注一腔热情。</title>
+  <title>舍功利之心，注一腔热情。</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,7 +220,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x">
+          <span id="subtitle" title="">
             
           </span>
         </div>
@@ -227,8 +232,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-10 19:07" pubdate>
-          2022年3月10日 晚上
+        <time datetime="2022-03-12 15:16" pubdate>
+          2022年3月12日 下午
         </time>
       </span>
     
@@ -239,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          1.8k 字
         
       </span>
     
@@ -250,7 +255,7 @@
         
         
         
-          26 分钟
+          16 分钟
         
       </span>
     
@@ -288,113 +293,136 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x</h1>
+            <h1 style="display: none"></h1>
             
             <div class="markdown-body">
               
-              <h1
-id="在公共服务器上使用非root用户离线安装tensorflow-gpu-2.x">在公共服务器上使用非root用户离线安装tensorflow-gpu
-2.x</h1>
-<p>非root用户还是离线安装tensorflow-gpu很少有这么苛刻的条件，这偏偏被我遇上了。。。</p>
-<p>场景是这样的，老师给了我一个超算的用户，这种学校的公共服务器肯定是不会给root权限的，而偏偏这台机器只连学校内网，这就很郁闷。。。</p>
-<p>在网上查了查很少有这样场景下的安装教程，于是我就来写一篇。</p>
-<h2 id="一寻常做法">一、寻常做法</h2>
-<p>因为离线，所以寻常做法是通过命令复制现有的base环境</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create tf_gpu -clone base<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>在自己电脑里下载python、tensorflow-gpu，以及所有依赖库，把它们都上传到服务器上一个一个安装，不出所料我吐了。</p>
-<p>于是经过我百般摸索，使出了浑身解数，终于给我发现了一个神奇的方法。</p>
-<h2 id="二借助虚拟机安装">二、借助虚拟机安装</h2>
-<p>这起源于，我从百度上得知conda创建的虚拟环境可以直接复制到另一台机器上使用。</p>
-<p>我在我自己的笔记本上创建了一个和服务器ubuntu版本一样的虚拟机（虚拟机的安装过程我这里就不叙述了）。在服务器上，通过conda-V命令我得到了服务器上conda的版本是4.10.3，于是我在虚拟机上也同样安装了一个conda4.10.3。于是我在虚拟机上，安装寻常安装tensorflow的步骤：</p>
-<p>创建虚拟环境。</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create -n tf_gpu Python&#x3D;3.9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>激活虚拟环境。</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">activate tf-gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>安装tensorflow-gpu，这样所需要的依赖就可以自动安装。</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda install tensorflow-gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>网上说要使用gpu加速，需要另外装cuda和cudnn两个工具，而cuda和cudnn有很严格的版本对应关系，因为担心会冲突，我先用conda安装cudatoolkit、cudnn</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda install cudatoolkit
-conda install cudnn<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
-<p>这样我就得到了cuda版本11.3.1和cudnn版本8.2.1（不知道我这样是否多此一举，但我确是这样做了），后续下载相应的版本进行安装。</p>
-<p><img src="https://s2.loli.net/2022/02/12/TseURp37FrJNWjD.png" srcset="/img/loading.gif" lazyload /></p>
-<p>注意：以上安装过程均未使用root权限。</p>
-<p>把前面这些能在虚拟机中安装好的完成之后，开始将tf_gpu打包，使用cd命令切换至虚拟环境目录，打包虚拟环境tf_gpu</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -zcvf tf_gpu.tar.gz tf_gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>将tf_gpu.tar.gz复制上传至服务器。</p>
-<p>将tf_gpu.tar.gz解压至服务器conda的虚拟环境目录</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -zxvf tf_gpu.tar.gz -C ～&#x2F;.conda&#x2F;envs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>这里每个人的conda虚拟环境目录可能会不同，请根据自己的实际情况而定。</p>
-<p>解压之后，在终端中输入conda info
--e就会发现tf_gpu已经迁移到服务器中了。</p>
-<p><img src="https://s2.loli.net/2022/02/12/L3oe91xKldTjXJz.png" srcset="/img/loading.gif" lazyload /></p>
-<p>激活tf_gpu虚拟环境</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">activate tf_gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>进入python环境</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
-a <span class="token operator">=</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
-<p>可以正常输出，但会报一堆警告，这是因为还需要安装cuda和cudnn。</p>
-<h2 id="三cuda安装">三、cuda安装</h2>
-<p>到NVIDIA官网 <a
-target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https%3A%2F%2Fdeveloper.nvidia.com%2Fcuda-toolkit-archive">[CUDA
-Toolkit Archive | NVIDIA
-Developer](https://developer.nvidia.com/cuda-toolkit-archive)</a>
-选择对应版本的cuda，这里选择11.3.1。</p>
-<p>然后再选对应的系统型号和installer type</p>
-<p><img src="https://s2.loli.net/2022/02/12/yQBxj1aoU5OGILl.png" srcset="/img/loading.gif" lazyload /></p>
-<p>将“Base
-Installer”里面的下载链接复制到下载器中，或者也可以自己复制链接地址用wget下载，然后安装</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wget https:&#x2F;&#x2F;developer.download.nvidia.com&#x2F;compute&#x2F;cuda&#x2F;11.3.1&#x2F;local_installers&#x2F;cuda_11.3.1_465.19.01_linux.run
-# sh后的文件名以实际下载文件名为准
-sh cuda_11.3.1_465.19.01_linux.run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
-<p>因为是非root用户，所以安装过程中所以需要root权限的操作都要避免掉。</p>
-<p>接受协议</p>
-<p><img src="https://s2.loli.net/2022/02/12/8Kqpe5LWDuFfrcw.png" srcset="/img/loading.gif" lazyload /></p>
-<p>取消cuda安装驱动程序</p>
-<p><img src="https://s2.loli.net/2022/02/12/W3C26owX1KPBRd7.png" srcset="/img/loading.gif" lazyload /></p>
-<p>进入Options</p>
-<p><img src="https://s2.loli.net/2022/02/12/9E84ftDTvN3L1oR.png" srcset="/img/loading.gif" lazyload /></p>
-<p>不更新和安装驱动</p>
-<p><img src="https://s2.loli.net/2022/02/12/uyEtc69XA7OgFdY.png" srcset="/img/loading.gif" lazyload /></p>
-<p>不创建链接和文档</p>
-<p><img src="https://s2.loli.net/2022/02/12/DzuqixQXkce8Sfp.png" srcset="/img/loading.gif" lazyload /></p>
-<p>更改cuda的安装路径为用户目录</p>
-<p><img src="https://s2.loli.net/2022/02/12/qyM1DjgrCAL3NVR.png" srcset="/img/loading.gif" lazyload /></p>
-<p>更改完这些选项就可以安装了。</p>
-<h2 id="四cudnn安装">四、cudnn安装</h2>
-<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">cuDNN
-Archive | NVIDIA Developer</a>
-下载cudnn需要NVIDIA账号，注册一个即可。</p>
-<p>选择对应cuda版本号的cudnn版本（8.2.1）。</p>
-<p><img src="https://s2.loli.net/2022/02/12/wbcT2ovR7UCxJSg.png" srcset="/img/loading.gif" lazyload /></p>
-<p>选择cuDNN Library for
-Linux，因为下载cudnn是需要登录的，所以在自己电脑上下载后，再传到服务器上。</p>
-<p>下载完 cuDNN，发现后缀是 .tgz ，使用命令解压至用户目录</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -zxvf cudnn-11.3-linux-x64-v8.2.1.32.tgz -C ~&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>解压后发现cudnn总共分两个目录，复制 cuDNN 文件到 CUDA
-安装目录：(cuDNN 解压到 ~/cuda 目录了，~/cuda-11.3 为自己设定的 CUDA
-安装目录，~ 代表用户目录),并且给所有用户添加读的权限</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cp ~&#x2F;cuda&#x2F;include&#x2F;cudnn.h ~&#x2F;cuda-11.3&#x2F;include
-cp ~&#x2F;cuda&#x2F;lib64&#x2F;lib* ~&#x2F;cuda-11.3&#x2F;lib64
-chmod a+r ~&#x2F;cuda-11.3&#x2F;include&#x2F;cudnn.h ~&#x2F;cuda-11.3&#x2F;lib64&#x2F;libcudnn*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
-<p>建立软连接</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd ~&#x2F;cuda-11.3&#x2F;lib64
-ln -sf libcudnn.so.8.2.1 libcudnn.so.8
-ln -sf libcudnn.so.8 libcudnn.so
-ldconfig -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
-<h2 id="五配置用户环境变量">五、配置用户环境变量</h2>
-<p>修改 ~/.bashrc 文件，将下面两行加进去：（将xxx 改成自己的用户名）</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">export PATH&#x3D;&#x2F;home&#x2F;xxx&#x2F;cuda-11.3&#x2F;bin$&#123;PATH:+:$&#123;PATH&#125;&#125; 
-export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib64$&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
-<p>保存 ~/.bashrc 文件后，source ~/.bashrc 使其生效。</p>
-<p>到这一步tensorflow-gpu的环境搭建就完成了，我们可以验证一下是否启动了GPU加速。在python中运行下面代码，打印结果若是true，则成功启动GPU加速，反之。</p>
-<div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
-<span class="token keyword">print</span><span class="token punctuation">(</span>tf<span class="token punctuation">.</span>test<span class="token punctuation">.</span>is_gpu_available<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
-<p><strong><em>温馨提示：</em></strong>使用公共服务器的同学可以在安装自己的cuda和cudnn后，最好删除安装文件，为自己和别人节省公共空间。（安装其他包也是一样，及时清理安装缓存文件）</p>
-<h2 id="reference">reference</h2>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c95c5b6a4707">Linux服务器中非 root
-用户安装（多版本） CUDA 和 cuDNN - 简书 (jianshu.com)</a></p>
+              <p>title: 通信原理——第一章（确定信号分析） tags: [通信原理] category:
+[复试学习笔记, 通信原理] top: 9 index_img: /img/通信原理(第一章).jpg
+excerpt:
+重点复试科目——通信原理，先导课程《信号与系统》的后面章节就先行跳过，后面如有需要再来补充。这份学习笔记是基于学堂在线中北邮杨鸿文老师的视频课程整理的。
+math: true</p>
+<h1
+id="通信原理第一章确定信号分析">通信原理——第一章（确定信号分析）</h1>
+<h2 id="信号">1.1信号</h2>
+<h3 id="信号的功率和能量">1.1.1信号的功率和能量</h3>
+<p>信号𝑠(𝑡)一般表示电压𝑠随时间𝑡变化的函数。</p>
+<p>信号𝑠(𝑡)的瞬时功率是s<sup>2(t)，信号𝑠(𝑡)在区间[t,t+a]内的能量是s</sup>2(t)·a，当a非常小时。</p>
+<p><img src="https://s2.loli.net/2022/03/12/YKBujohvL6ybZc2.png" srcset="/img/loading.gif" lazyload /></p>
+<p>能量和功率满足以下性质：</p>
+<ul>
+<li>能量、功率非负</li>
+<li>信号乘以实系数𝐾，能量或功率将乘以𝐾^2</li>
+<li>时延不改变能量或功率</li>
+<li>能量或功率一般不满足叠加性</li>
+<li>两个不同频率的信号之和的功率是各自功率之和</li>
+</ul>
+<h3 id="复信号">1.1.2复信号</h3>
+<p><strong>复信号：</strong>可以理解为一对实信号 <span
+class="math display">\[
+z(t) = a(t) + jb(t) = A(t){e^{j\varphi (t)} }
+\]</span> 复信号的瞬时功率是实部和虚部瞬时功率之和： <span
+class="math display">\[
+{\left| {z(t)} \right|^2} = {a^2}(t) + {b^2}(t)
+\]</span> ### 1.1.3复单频信号</p>
+<p><strong>复单频信号：</strong>点在圆周上匀速运动，逆时针旋转是正转，顺时针旋转是反转；</p>
+<p><img src="https://s2.loli.net/2022/03/12/9gupPXt6mcFkDdA.png" srcset="/img/loading.gif" lazyload /></p>
+<p>复单频信号的模平方与复指数部分无关。</p>
+<p><img src="https://s2.loli.net/2022/03/12/xnw6Y4dzNT1EZ9G.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="傅里叶变换">1.2傅里叶变换</h2>
+<p>1）定义 <span class="math display">\[
+\begin{array}{*{20}{l} }
+{(1)\quad F(\omega ) = \int_{ - \infty }^\infty  {f(t){e^{ - j 2\pi f t}
+} } dt =  &lt; f(t),{e^{j 2\pi f t} } &gt; }\\
+{(2)\quad f(t) = \int_{ - \infty }^\infty  {F(\omega ){e^{j 2\pi f t} }
+} d\omega  =  &lt; F(\omega ),{e^{ - j 2\pi f t} } &gt; }
+\end{array}
+\]</span></p>
+<p>2）性质</p>
+<ul>
+<li><p>一个域中的原点的值是另一个域中的面积</p></li>
+<li><p>时域越宽，频域越窄；频域越宽，时域越窄；</p></li>
+<li><p>时移、频移</p></li>
+<li><p><img
+src="https://s2.loli.net/2022/03/12/ODcPRsLzXwETnfM.png" srcset="/img/loading.gif" lazyload /></p>
+<p>实信号x(t)的频谱满足共轭偶对称</p>
+<p><img
+src="https://s2.loli.net/2022/03/12/8gFlnXTDxGozH6P.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p><img
+src="https://s2.loli.net/2022/03/12/IpZxtUAXoTe1mdR.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ul>
+<p>3）矩形的傅氏变换是sinc</p>
+<p><img src="https://s2.loli.net/2022/03/14/3Azp5IHy9i2Sfba.png" srcset="/img/loading.gif" lazyload /></p>
+<p>4）sinc的傅氏变换是矩形</p>
+<p><img src="https://s2.loli.net/2022/03/14/XeUCl1sTNE67Juq.jpg" srcset="/img/loading.gif" lazyload /></p>
+<p>要点：sinc前面乘的是矩形的面积，sinc()括号内𝑡或𝑓前乘的是矩形的宽度</p>
+<h2 id="内积">1.3内积</h2>
+<p>1）定义</p>
+<p><img src="https://s2.loli.net/2022/03/12/cCFQuXJ26igh7qy.png" srcset="/img/loading.gif" lazyload /></p>
+<p>2）性质</p>
+<ul>
+<li>时域内积等于频域内积，则有时域正交频域也正交。<img
+src="https://s2.loli.net/2022/03/13/3vGSrlJCpj4Vc2B.png" srcset="/img/loading.gif" lazyload /></li>
+<li>信号的能量是信号与自身的内积</li>
+<li>帕瑟瓦尔定理，因此能量可以在时域计算，也可以在频域计算。<img
+src="https://s2.loli.net/2022/03/13/IMY258WXSNJqaHR.png" srcset="/img/loading.gif" lazyload /></li>
+<li>互能量，两个信号的内积称为互能量，两个信号的互能量顺序不同，会导致结果也不相同。</li>
+</ul>
+<h2 id="许瓦兹不等式">1.4许瓦兹不等式</h2>
+<ul>
+<li>互能量的模值小于等于自能量的几何平均。</li>
+</ul>
+<p>柯西-施瓦茨不等式和数学中的不等式是一样的，可以扩展至多维的情况。</p>
+<ul>
+<li><p>能量归一化： <span class="math display">\[
+\frac{ {x(t)} }{ {\sqrt { {E_x} } } },\frac{ {y(t)} }{ {\sqrt { {E_y} }
+} }
+\]</span></p></li>
+<li><p>能量归一化相关系数： <span class="math display">\[
+{\rho _{xy} } = \int_{ - \infty }^\infty  {\frac{ {x(t)} }{ {\sqrt {
+{E_x} } } } \cdot \frac{ { {y^*}(t)} }{ {\sqrt { {E_y} } } } } dt =
+\frac{ { {E_{xy} } } }{ {\sqrt { {E_x}{E_y} } } }
+\]</span></p></li>
+</ul>
+<h2 id="能量信号的相关函数">1.5能量信号的相关函数</h2>
+<p>1）定义</p>
+<p><img src="https://s2.loli.net/2022/03/13/fLkJ6goa1CHNew4.png" srcset="/img/loading.gif" lazyload /></p>
+<p>2）性质</p>
+<ul>
+<li>互相关函数的共轭对称性：</li>
+</ul>
+<p><span class="math display">\[
+{R_{xy} }(\tau ) = R_{yx}^*( - \tau )
+\]</span></p>
+<ul>
+<li>自相关函数共轭偶对称性：</li>
+</ul>
+<p><span class="math display">\[
+{R_{x} }(\tau ) = R_{x}^*( - \tau )
+\]</span></p>
+<ul>
+<li>x(t)的能量是自相关函数在自变量=0处的值</li>
+</ul>
+<h2 id="能量谱密度">1.6能量谱密度</h2>
+<p>1）能量信号的互能量谱密度 <span class="math display">\[
+{E_{xy} }(f) = X(f){Y^*}(f)
+\]</span> 信号傅里叶变换的共轭乘积。</p>
+<p>2）能量信号的自能量谱密度（能量谱密度） <span class="math display">\[
+{E_x}(f) = X(f){X^*}(f) = {\left| {X(f)} \right|^2}
+\]</span> 3）互相关函数的傅氏变换是互能量谱密度 <span
+class="math display">\[
+{R_{xy} }(\tau ) \Leftrightarrow X(f){Y^*}(f)
+\]</span> <img
+src="https://s2.loli.net/2022/03/14/3wKRWHJIXarxdmf.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="功率信号的相关函数">1.7功率信号的相关函数</h2>
+<p>1）功率信号自相关函数</p>
+<p><img src="https://s2.loli.net/2022/03/14/MrkROUetywHjQum.png" srcset="/img/loading.gif" lazyload /></p>
+<p>2）功率信号自相关函数与能量自相关函数相同</p>
+<p>3）功率谱密度定义 <span class="math display">\[
+{P_{xy} }(f) = \mathop {\lim }\limits_{T \to \infty } \{
+\frac{1}{T}X(f){Y^*}(f)\}
+\]</span></p>
+<h2 id="信号的带宽">1.8信号的带宽</h2>
 
               
             </div>
@@ -402,43 +430,6 @@ export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="category-chain-item">深度学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/tensorflow/" class="category-chain-item">tensorflow</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/tensorflow/">#tensorflow</a>
-      
-        <a href="/tags/cuda/">#cuda</a>
-      
-    </div>
   
 </div>
 
@@ -448,8 +439,8 @@ export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x</div>
-      <div>https://2022xi.github.io/2022/03/10/%E5%9C%A8%E5%85%AC%E5%85%B1Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BD%BF%E7%94%A8%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85tensorflow-gpu/</div>
+      <div></div>
+      <div>https://2022xi.github.io/2022/03/12/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%88%E7%A1%AE%E5%AE%9A%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%EF%BC%89/</div>
     </div>
     <div class="license-meta">
       
@@ -461,7 +452,7 @@ export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月10日</div>
+          <div>2022年3月12日</div>
         </div>
       
       
@@ -491,18 +482,12 @@ export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%88%E9%A2%91%E8%B0%B1%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8%EF%BC%89/" title="信号与系统——第四章（频谱分析技术应用）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">信号与系统——第四章（频谱分析技术应用）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%88%E7%B3%BB%E7%BB%9F%EF%BC%89/" title="信号与系统——第一章（系统）">
-                        <span class="hidden-mobile">信号与系统——第一章（系统）</span>
+                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%88%E9%A2%91%E8%B0%B1%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8%EF%BC%89/" title="信号与系统——第四章（频谱分析技术应用）">
+                        <span class="hidden-mobile">信号与系统——第四章（频谱分析技术应用）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
