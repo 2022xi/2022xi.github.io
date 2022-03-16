@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2022xi.github.io/img/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E7%AC%AC%E4%B8%80%E7%AB%A0).jpg">
 <meta property="article:published_time" content="2022-03-12T07:16:20.118Z">
-<meta property="article:modified_time" content="2022-03-15T13:27:58.959Z">
+<meta property="article:modified_time" content="2022-03-16T02:38:25.969Z">
 <meta property="article:author" content="Mr niu2">
 <meta property="article:tag" content="通信原理">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          2k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          15 分钟
+          17 分钟
         
       </span>
     
@@ -321,10 +321,10 @@ class="math display">\[
 <h2 id="傅里叶变换">1.2傅里叶变换</h2>
 <p>1）定义 <span class="math display">\[
 \begin{array}{*{20}{l} }
-{(1)\quad F(\omega ) = \int_{ - \infty }^\infty  {f(t){e^{ - j 2\pi f t}
-} } dt =  &lt; f(t),{e^{j 2\pi f t} } &gt; }\\
-{(2)\quad f(t) = \int_{ - \infty }^\infty  {F(\omega ){e^{j 2\pi f t} }
-} d\omega  =  &lt; F(\omega ),{e^{ - j 2\pi f t} } &gt; }
+{(1)\quad F(f) = \int_{ - \infty }^\infty  {f(t){e^{ - j 2\pi f t} } }
+dt =  &lt; f(t),{e^{j 2\pi f t} } &gt; }\\
+{(2)\quad f(t) = \int_{ - \infty }^\infty  {F(f){e^{j 2\pi f t} } }
+df  =  &lt; F(f),{e^{ - j 2\pi f t} } &gt; }
 \end{array}
 \]</span></p>
 <p>2）性质</p>
@@ -424,6 +424,30 @@ src="https://s2.loli.net/2022/03/14/3wKRWHJIXarxdmf.png" srcset="/img/loading.gi
 <li>带宽有多种定义，主要有：</li>
 </ul>
 <p><img src="https://s2.loli.net/2022/03/15/6sMfBpoWhZ1txU9.png" srcset="/img/loading.gif" lazyload /></p>
+<ul>
+<li>信号平方的带宽：x(t)平方的绝对带宽是x(t)的两倍</li>
+</ul>
+<h2 id="线性时不变系统">1.9线性时不变系统</h2>
+<p>线性时不变系统也叫滤波器或简称为线性系统。</p>
+<p><img src="https://s2.loli.net/2022/03/16/VTq9HCBx812Rfj3.png" srcset="/img/loading.gif" lazyload /></p>
+<p>𝐻(𝑓)是ℎ(𝑡)的傅氏变换。</p>
+<p><img src="https://s2.loli.net/2022/03/16/qMZfgJUbtpWe7lx.png" srcset="/img/loading.gif" lazyload /></p>
+<ul>
+<li>能量谱密度：</li>
+</ul>
+<p><span class="math display">\[
+{E_y}(f) = {\left| {H(f)} \right|^2}{E_x}(f)
+\]</span></p>
+<ul>
+<li>功率谱密度：</li>
+</ul>
+<p><span class="math display">\[
+{P_y}(f) = {\left| {H(f)} \right|^2}{P_x}(f)
+\]</span></p>
+<ul>
+<li>理想低通滤波器：传递函数是矩形，冲激响应是sinc函数</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/03/16/eUYoIbX5pgBwFjh.png" srcset="/img/loading.gif" lazyload /></p>
 
               
             </div>
