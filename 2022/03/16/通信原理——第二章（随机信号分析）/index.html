@@ -16,23 +16,23 @@
   <meta name="author" content="Mr niu2">
   <meta name="keywords" content="">
   
-    <meta name="description" content="重点复试科目——通信原理，先导课程《信号与系统》的后面章节就先行跳过，后面如有需要再来补充。这份学习笔记是基于学堂在线中北邮杨鸿文老师的视频课程整理的。">
+    <meta name="description" content="重点复试科目——通信原理，这份学习笔记是基于学堂在线中北邮杨鸿文老师的视频课程整理的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="通信原理——第一章（确定信号分析）">
-<meta property="og:url" content="https://2022xi.github.io/2022/03/12/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%88%E7%A1%AE%E5%AE%9A%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%EF%BC%89/index.html">
+<meta property="og:title" content="通信原理——第二章（随机信号分析）">
+<meta property="og:url" content="https://2022xi.github.io/2022/03/16/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E9%9A%8F%E6%9C%BA%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%EF%BC%89/index.html">
 <meta property="og:site_name" content="舍功利之心，注一腔热情。">
-<meta property="og:description" content="重点复试科目——通信原理，先导课程《信号与系统》的后面章节就先行跳过，后面如有需要再来补充。这份学习笔记是基于学堂在线中北邮杨鸿文老师的视频课程整理的。">
+<meta property="og:description" content="重点复试科目——通信原理，这份学习笔记是基于学堂在线中北邮杨鸿文老师的视频课程整理的。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2022xi.github.io/img/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E7%AC%AC%E4%B8%80%E7%AB%A0).jpg">
-<meta property="article:published_time" content="2022-03-12T07:16:20.118Z">
-<meta property="article:modified_time" content="2022-03-16T12:18:57.562Z">
+<meta property="og:image" content="https://2022xi.github.io/img/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E7%AC%AC%E4%BA%8C%E7%AB%A0).jpg">
+<meta property="article:published_time" content="2022-03-16T11:47:50.251Z">
+<meta property="article:modified_time" content="2022-03-17T07:47:55.815Z">
 <meta property="article:author" content="Mr niu2">
 <meta property="article:tag" content="通信原理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2022xi.github.io/img/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E7%AC%AC%E4%B8%80%E7%AB%A0).jpg">
+<meta name="twitter:image" content="https://2022xi.github.io/img/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E7%AC%AC%E4%BA%8C%E7%AB%A0).jpg">
   
   
-  <title>通信原理——第一章（确定信号分析） - 舍功利之心，注一腔热情。</title>
+  <title>通信原理——第二章（随机信号分析） - 舍功利之心，注一腔热情。</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +214,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="通信原理——第一章（确定信号分析）">
+          <span id="subtitle" title="通信原理——第二章（随机信号分析）">
             
           </span>
         </div>
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-12 15:16" pubdate>
-          2022年3月12日 下午
+        <time datetime="2022-03-16 19:47" pubdate>
+          2022年3月16日 晚上
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.5k 字
+          1.8k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          30 分钟
+          15 分钟
         
       </span>
     
@@ -287,244 +287,125 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">通信原理——第一章（确定信号分析）</h1>
+            <h1 style="display: none">通信原理——第二章（随机信号分析）</h1>
             
             <div class="markdown-body">
               
               <h1
-id="通信原理第一章确定信号分析">通信原理——第一章（确定信号分析）</h1>
-<h2 id="信号">1.1信号</h2>
-<h3 id="信号的功率和能量">1.1.1信号的功率和能量</h3>
-<p>信号𝑠(𝑡)一般表示电压𝑠随时间𝑡变化的函数。</p>
-<p>信号𝑠(𝑡)的瞬时功率是s<sup>2(t)，信号𝑠(𝑡)在区间[t,t+a]内的能量是s</sup>2(t)·a，当a非常小时。</p>
-<p><img src="https://s2.loli.net/2022/03/12/YKBujohvL6ybZc2.png" srcset="/img/loading.gif" lazyload /></p>
-<p>能量和功率满足以下性质：</p>
+id="通信原理第二章随机信号分析">通信原理——第二章（随机信号分析）</h1>
+<h2 id="随机过程">2.1随机过程</h2>
+<p>随机变量：随机实验的样本空间是实数集合，随机变量𝑋𝑋表示从许多实数{𝑥1,𝑥2,⋯}中随机抽一个。</p>
+<p>随机过程：随机过程也叫随机信号，其随机实验的样本空间是函数的集合。</p>
+<p>随机过程𝑋(𝑡)表示从许多实函数{𝑥1(𝑡),𝑥2(𝑡),⋯}中随机抽一个。</p>
 <ul>
-<li>能量、功率非负</li>
-<li>信号乘以实系数𝐾，能量或功率将乘以𝐾^2</li>
-<li>时延不改变能量或功率</li>
-<li>能量或功率一般不满足叠加性</li>
-<li>两个不同频率的信号之和的功率是各自功率之和</li>
+<li>随机过程的数学期望是一个关于时间t的函数，是某时刻t所有取值的均值。</li>
+<li>任意随机过程可以看成是零均值过程与确定函数的和。</li>
+<li>X(t),Y(t)的互相关函数</li>
 </ul>
-<h3 id="复信号">1.1.2复信号</h3>
-<p><strong>复信号：</strong>可以理解为一对实信号 <span
+<p><span class="math display">\[
+{R_{XY} }({t_1},{t_2}) = E[X({t_1})Y({t_2})]
+\]</span></p>
+<p>概率论中有： <span class="math display">\[
+{\mathop{\rm cov} } (X,Y) = E(X)E(Y) - E(XY)
+\]</span></p>
+<ul>
+<li>自相关函数：</li>
+</ul>
+<p><span class="math display">\[
+{R_X}(t + \tau ,t) = E[X(t + \tau )X(t)]
+\]</span></p>
+<ul>
+<li><strong>平均自相关函数：</strong>对t做时间平均</li>
+</ul>
+<p><span class="math display">\[
+{\bar R_X}(\tau ) = \overline {E[X(t + \tau )X(t)]}  = E[\overline {X(t
++ \tau )X(t)} ]
+\]</span></p>
+<h2 id="功率谱密度">2.2功率谱密度</h2>
+<ul>
+<li>对单个样本函数的功率谱密度做统计平均的结果就是随机过程的功率谱密度：</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/03/17/XoE9f2FxPYOgse8.png" srcset="/img/loading.gif" lazyload /></p>
+<ul>
+<li>随机过程的平均功率谱密度是平均自相关函数的傅里叶变换（维纳-辛钦定理）。</li>
+<li>随机过程X(t)的平均功率为：<img
+src="https://s2.loli.net/2022/03/17/nTjS1vQJz3k6pad.png" srcset="/img/loading.gif" lazyload /></li>
+<li>两个零均值不相关的随机过程和的功率谱密度是两个功率谱密度之和。</li>
+<li>若𝑋(𝑡)是零均值随机过程、𝑚(𝑡)是确定的实功率信号，则𝑋(𝑡)+𝑚(𝑡)的功率谱密度是𝑃𝑋(𝑓)+𝑃𝑚(𝑓)。</li>
+</ul>
+<h2 id="广义平稳过程">2.3广义平稳过程</h2>
+<p>如果𝑋(𝑡)的均值、自相关函数都与绝对时间𝑡无关，就叫广义平稳过程： <span
 class="math display">\[
-z(t) = a(t) + jb(t) = A(t){e^{j\varphi (t)} }
-\]</span> 复信号的瞬时功率是实部和虚部瞬时功率之和： <span
-class="math display">\[
-{\left| {z(t)} \right|^2} = {a^2}(t) + {b^2}(t)
-\]</span> ### 1.1.3复单频信号</p>
-<p><strong>复单频信号：</strong>点在圆周上匀速运动，逆时针旋转是正转，顺时针旋转是反转；</p>
-<p><img src="https://s2.loli.net/2022/03/12/9gupPXt6mcFkDdA.png" srcset="/img/loading.gif" lazyload /></p>
-<p>复单频信号的模平方与复指数部分无关。</p>
-<p><img src="https://s2.loli.net/2022/03/12/xnw6Y4dzNT1EZ9G.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="傅里叶变换">1.2傅里叶变换</h2>
-<p>1）定义 <span class="math display">\[
-\begin{array}{*{20}{l} }
-{(1)\quad F(f) = \int_{ - \infty }^\infty  {f(t){e^{ - j 2\pi f t} } }
-dt =  &lt; f(t),{e^{j 2\pi f t} } &gt; }\\
-{(2)\quad f(t) = \int_{ - \infty }^\infty  {F(f){e^{j 2\pi f t} } }
-df  =  &lt; F(f),{e^{ - j 2\pi f t} } &gt; }
+\begin{array}{l}
+E[X(t)] = {m_X}\\
+E[X(t + \tau )X(t)] = {R_X}(\tau )
 \end{array}
 \]</span></p>
-<p>2）性质</p>
 <ul>
-<li><p>一个域中的原点的值是另一个域中的面积</p></li>
-<li><p>时域越宽，频域越窄；频域越宽，时域越窄；</p></li>
-<li><p>时移、频移</p></li>
-<li><p><img
-src="https://s2.loli.net/2022/03/12/ODcPRsLzXwETnfM.png" srcset="/img/loading.gif" lazyload /></p>
-<p>实信号x(t)的频谱满足共轭偶对称</p>
+<li>遍历性：所有的样本函数都有相同的均值和自相关函数</li>
+</ul>
+<p><span class="math display">\[
+\begin{array}{l}
+P\{ \overline {x(t)}  = {m_x}\}  = 1\\
+P\{ \overline {x(t + \tau )x(t)}  = R(\tau )\}  = 1
+\end{array}
+\]</span></p>
+<p>均值和自相关满足遍历性的平稳过程叫做广义遍历过程。</p>
+<ul>
+<li>平稳过程自相关函数的傅里叶变换就是功率谱密度，因为平稳过程自相关函数本身就与自变量t无关。</li>
+</ul>
+<h2 id="联合平稳">2.4联合平稳</h2>
+<ul>
+<li>两个平稳过程X(t)、Y(t)的互相关函数也与变量t无关：</li>
+</ul>
+<p><span class="math display">\[
+E[X(t + \tau )Y(t)] = {R_{XY} }(\tau )
+\]</span></p>
+<ul>
+<li>两个随机过程不相关：</li>
+</ul>
+<p><span class="math display">\[
+\begin{array}{l}
+\forall {t_1},{t_2}\quad E[X({t_1})Y({t_2})] = E[X({t_1})]E[Y({t_2})]\\
+\quad \quad \quad {R_{XY} }({t_1},{t_2}) = {m_X}({t_1}){m_Y}({t_2})
+\end{array}
+\]</span></p>
+<ul>
+<li>两个随机过程同一时刻不相关</li>
+<li>零均值随机变量的相关系数（与概率论中类似）：</li>
+</ul>
+<p><span class="math display">\[
+{\rho _{XY} } = E[\frac{X}{ {\sqrt {E[{X^2}]} } } \cdot \frac{Y}{ {\sqrt
+{E[{Y^2}]} } }] = \frac{ {E[XY]} }{ {\sqrt {E[{X^2}]E[{Y^2}]} } }
+\]</span></p>
+<ul>
+<li>零均值联合平稳过程的相关系数</li>
+</ul>
+<p><span class="math display">\[
+{\rho _{XY} }(\tau ) = E[\frac{ {X(t + \tau )} }{ {\sqrt {E[{X^2}]} } }
+\cdot \frac{ {Y(t)} }{ {\sqrt {E[{Y^2}]} } }] = \frac{ { {R_{XY} }(\tau
+)} }{ {\sqrt {E[{X^2}]E[{Y^2}]} } }
+\]</span></p>
+<p>1）对所有时间间隔相关系数都等于0，则两个平稳过程不相关</p>
+<p>2）对时间间隔为0时，相关系数都等于0，则同一时刻不相关</p>
+<h2 id="平稳过程通过线性系统">2.5平稳过程通过线性系统</h2>
+<ul>
+<li>平稳过程通过线性系统后的均值：</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/03/17/iYphbZs1mV7ATJI.png" srcset="/img/loading.gif" lazyload /></p>
+<ul>
+<li>平稳过程通过线性系统后的自相关函数：</li>
+</ul>
 <p><img
-src="https://s2.loli.net/2022/03/12/8gFlnXTDxGozH6P.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p><img
-src="https://s2.loli.net/2022/03/12/IpZxtUAXoTe1mdR.png" srcset="/img/loading.gif" lazyload /></p></li>
-</ul>
-<p>3）矩形的傅氏变换是sinc</p>
-<p><img src="https://s2.loli.net/2022/03/14/3Azp5IHy9i2Sfba.png" srcset="/img/loading.gif" lazyload /></p>
-<p>4）sinc的傅氏变换是矩形</p>
-<p><img src="https://s2.loli.net/2022/03/14/XeUCl1sTNE67Juq.jpg" srcset="/img/loading.gif" lazyload /></p>
-<p>要点：sinc前面乘的是矩形的面积，sinc()括号内𝑡或𝑓前乘的是矩形的宽度</p>
-<h2 id="内积">1.3内积</h2>
-<p>1）定义</p>
-<p><img src="https://s2.loli.net/2022/03/12/cCFQuXJ26igh7qy.png" srcset="/img/loading.gif" lazyload /></p>
-<p>2）性质</p>
+src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-20220317150318297.png" srcset="/img/loading.gif" lazyload /></p>
+<p><strong>Y(t)也是平稳过程</strong>，并且X(t)与Y(t)是联合平稳的。</p>
 <ul>
-<li>时域内积等于频域内积，则有时域正交频域也正交。<img
-src="https://s2.loli.net/2022/03/13/3vGSrlJCpj4Vc2B.png" srcset="/img/loading.gif" lazyload /></li>
-<li>信号的能量是信号与自身的内积</li>
-<li>帕瑟瓦尔定理，因此能量可以在时域计算，也可以在频域计算。<img
-src="https://s2.loli.net/2022/03/13/IMY258WXSNJqaHR.png" srcset="/img/loading.gif" lazyload /></li>
-<li>互能量，两个信号的内积称为互能量，两个信号的互能量顺序不同，会导致结果也不相同。</li>
-</ul>
-<h2 id="许瓦兹不等式">1.4许瓦兹不等式</h2>
-<ul>
-<li>互能量的模值小于等于自能量的几何平均。</li>
-</ul>
-<p>柯西-施瓦茨不等式和数学中的不等式是一样的，可以扩展至多维的情况。</p>
-<ul>
-<li><p>能量归一化： <span class="math display">\[
-\frac{ {x(t)} }{ {\sqrt { {E_x} } } },\frac{ {y(t)} }{ {\sqrt { {E_y} }
-} }
-\]</span></p></li>
-<li><p>能量归一化相关系数： <span class="math display">\[
-{\rho _{xy} } = \int_{ - \infty }^\infty  {\frac{ {x(t)} }{ {\sqrt {
-{E_x} } } } \cdot \frac{ { {y^*}(t)} }{ {\sqrt { {E_y} } } } } dt =
-\frac{ { {E_{xy} } } }{ {\sqrt { {E_x}{E_y} } } }
-\]</span></p></li>
-</ul>
-<h2 id="能量信号的相关函数">1.5能量信号的相关函数</h2>
-<p>1）定义</p>
-<p><img src="https://s2.loli.net/2022/03/13/fLkJ6goa1CHNew4.png" srcset="/img/loading.gif" lazyload /></p>
-<p>2）性质</p>
-<ul>
-<li>互相关函数的共轭对称性：</li>
+<li>输出的功率谱密度：</li>
 </ul>
 <p><span class="math display">\[
-{R_{xy} }(\tau ) = R_{yx}^*( - \tau )
+{P_Y}(f) = {\left| {H(f)} \right|^2}{P_X}(f)
 \]</span></p>
-<ul>
-<li>自相关函数共轭偶对称性：</li>
-</ul>
-<p><span class="math display">\[
-{R_{x} }(\tau ) = R_{x}^*( - \tau )
-\]</span></p>
-<ul>
-<li>x(t)的能量是自相关函数在自变量=0处的值</li>
-</ul>
-<h2 id="能量谱密度">1.6能量谱密度</h2>
-<p>1）能量信号的互能量谱密度 <span class="math display">\[
-{E_{xy} }(f) = X(f){Y^*}(f)
-\]</span> 信号傅里叶变换的共轭乘积。</p>
-<p>2）能量信号的自能量谱密度（能量谱密度） <span class="math display">\[
-{E_x}(f) = X(f){X^*}(f) = {\left| {X(f)} \right|^2}
-\]</span> 3）互相关函数的傅氏变换是互能量谱密度 <span
-class="math display">\[
-{R_{xy} }(\tau ) \Leftrightarrow X(f){Y^*}(f)
-\]</span> <img
-src="https://s2.loli.net/2022/03/14/3wKRWHJIXarxdmf.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="功率信号的相关函数">1.7功率信号的相关函数</h2>
-<p>1）功率信号自相关函数</p>
-<p><img src="https://s2.loli.net/2022/03/14/MrkROUetywHjQum.png" srcset="/img/loading.gif" lazyload /></p>
-<p>2）功率信号自相关函数与能量自相关函数相同</p>
-<p>3）功率谱密度定义 <span class="math display">\[
-{P_{xy} }(f) = \mathop {\lim }\limits_{T \to \infty } \{
-\frac{1}{T}X(f){Y^*}(f)\}
-\]</span></p>
-<h2 id="信号的带宽">1.8信号的带宽</h2>
-<p>1）单边谱密度：实信号的能量或功率谱密度是𝑓的偶函数。</p>
-<p>2）基带信号与频带信号</p>
-<ul>
-<li>基带信号也叫低通信号：信号的功率或能量主要集中在𝑓=0附近</li>
-<li>频带信号也叫带通信号：信号的功率或能量主要集中在某个载频𝑓c附近</li>
-</ul>
-<p><strong>3）带宽</strong></p>
-<ul>
-<li>信号的带宽指单边谱密度的宽度</li>
-<li>带宽有多种定义，主要有：</li>
-</ul>
-<p><img src="https://s2.loli.net/2022/03/15/6sMfBpoWhZ1txU9.png" srcset="/img/loading.gif" lazyload /></p>
-<ul>
-<li>信号平方的带宽：x(t)平方的绝对带宽是x(t)的两倍</li>
-</ul>
-<h2 id="线性时不变系统">1.9线性时不变系统</h2>
-<p>线性时不变系统也叫滤波器或简称为线性系统。</p>
-<p><img src="https://s2.loli.net/2022/03/16/VTq9HCBx812Rfj3.png" srcset="/img/loading.gif" lazyload /></p>
-<p>𝐻(𝑓)是ℎ(𝑡)的傅氏变换。</p>
-<p><img src="https://s2.loli.net/2022/03/16/qMZfgJUbtpWe7lx.png" srcset="/img/loading.gif" lazyload /></p>
-<ul>
-<li>能量谱密度：</li>
-</ul>
-<p><span class="math display">\[
-{E_y}(f) = {\left| {H(f)} \right|^2}{E_x}(f)
-\]</span></p>
-<ul>
-<li>功率谱密度：</li>
-</ul>
-<p><span class="math display">\[
-{P_y}(f) = {\left| {H(f)} \right|^2}{P_x}(f)
-\]</span></p>
-<ul>
-<li>理想低通滤波器：传递函数是矩形，冲激响应是sinc函数</li>
-</ul>
-<p><img src="https://s2.loli.net/2022/03/16/eUYoIbX5pgBwFjh.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="希尔伯特变换与解析信号">1.10希尔伯特变换与解析信号</h2>
-<p>1）希尔伯特变换</p>
-<p>实信号𝑥(𝑡)的希尔伯特变换^x(𝑡)是将𝑥(𝑡)通过一个特定滤波器的输出：<img
-src="https://s2.loli.net/2022/03/16/yuJjLFtszo1R3w4.png" srcset="/img/loading.gif" lazyload /></p>
-<p>该滤波器的时域冲激响应是：<img
-src="https://s2.loli.net/2022/03/16/x9eiVOIC2LG3wEF.png" srcset="/img/loading.gif" lazyload /></p>
-<p>频域传递函数是：<img
-src="https://s2.loli.net/2022/03/16/JysFcYRq3geHxPu.png" srcset="/img/loading.gif" lazyload /></p>
-<p>2）性质：</p>
-<ul>
-<li>希尔伯特变换不改变能量谱密度，不改变功率谱密度。</li>
-<li>偶函数的希尔伯特变换是奇函数，奇函数的希尔伯特变换是偶函数。</li>
-<li>希尔伯特变换不改变功率。</li>
-<li>希尔伯特变换后与原信号正交。</li>
-</ul>
-<p>3）解析信号：实信号𝑥(𝑡)的解析信号𝑧(𝑡)定义为如下复信号： <span
-class="math display">\[
-z(t) = x(t) + j \cdot \hat x(t)
-\]</span> <img
-src="https://s2.loli.net/2022/03/16/U3DpAx9iNe7abWv.png" srcset="/img/loading.gif" lazyload /></p>
-<p>解析信号的传递函数： <span class="math display">\[
-H(f) = 1 + j \cdot [ - j \cdot {\mathop{\rm sgn}} (f)] = 1 +
-{\mathop{\rm sgn}} (f) = \left\{ \begin{array}{l}
-2,\quad f &gt; 0\\
-0,\quad f &lt; 0
-\end{array} \right.
-\]</span> 输出信号的频谱： <span class="math display">\[
-Z(f) = H(f)X(f) = \left\{ \begin{array}{l}
-2X(f),\quad f &gt; 0\\
-\quad 0,\quad \quad \,\,f &lt; 0
-\end{array} \right.
-\]</span></p>
-<p>功率谱密度： <span class="math display">\[
-{P_z}(f) = {\left| {1 + {\mathop{\rm sgn}} (f)} \right|^2}{P_x}(f) =
-\left\{ \begin{array}{l}
-4{P_x}(f),\quad f &gt; 0\\
-\quad 0,\quad \quad \;f &lt; 0
-\end{array} \right.
-\]</span></p>
-<h2 id="带通信号的复包络">1.11带通信号的复包络</h2>
-<p>1）带通信号：带通信号是指频谱集中在某个载频𝑓c附近的信号。注意𝑓c不一定必须是信号频带的中心频率。</p>
-<p>2）复包络的定义： <span class="math display">\[
-{x_L}(t) = z(t){e^{ - j2\pi {f_c}t}}
-\]</span> 其中，z(t)是x(t)的解析信号。</p>
-<p>复包络的频谱： <span class="math display">\[
-{X_L}(f) = Z(f + {f_c}) = \left\{ {\begin{array}{*{20}{l}}
-{2X(f + {f_c}),\quad \left| f \right| &lt; {f_c}}\\
-{\quad 0,\quad \quad {\mkern 1mu} \quad \quad else}
-\end{array}} \right.
-\]</span> 复包络的功率谱密度： <span class="math display">\[
-{P_L}(f) = {P_Z}(f + {f_c}) = \left\{ {\begin{array}{*{20}{l}}
-{4{P_x}(f + {f_c}),\quad \left| f \right| &lt; {f_c}}\\
-{\quad 0,\quad \quad \;\quad \quad else}
-\end{array}} \right.
-\]</span></p>
-<p><strong>复包络相当于把带通信号往左搬移到基带。</strong></p>
-<p>从复包络的频谱推导出带通信号的频谱： <span class="math display">\[
-X(f) = \frac{1}{2}{X_L}(f - {f_c}) + \frac{1}{2}X_L^*( - f - {f_c})
-\]</span></p>
-<h2 id="带通信号的表示">1.12带通信号的表示</h2>
-<p>复包络一般是一个复信号，可以写成实部、虚部这样的直角坐标形式，也可以写成模值、相角这样的极坐标形式。
-<span class="math display">\[
-{x_L}(x) = {x_c}(x) + j \cdot {x_s}(x) = A(t){e^{j\varphi (t)}}
-\]</span> <img
-src="https://s2.loli.net/2022/03/16/6wDzBPZEVAT4X5x.png" srcset="/img/loading.gif" lazyload /></p>
-<p><strong>带通信号的三种表示方式：</strong></p>
-<p><img src="https://s2.loli.net/2022/03/16/zEUygole14PBn7X.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="带通系统的等效基带分析">1.13带通系统的等效基带分析</h2>
-<p>1）带通系统</p>
-<p><img src="https://s2.loli.net/2022/03/16/VTq9HCBx812Rfj3.png" srcset="/img/loading.gif" lazyload /></p>
-<p>带通信号通过带通系统变成了另外一个带通信号。带通系统的传递函数𝐻(𝑓)是带通型的，其冲激响应ℎ(𝑡)是一个带通信号。</p>
-<p>2）等效基带系统</p>
-<p><img
-src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-20220316171746203.png" srcset="/img/loading.gif" lazyload /></p>
-<p>带通信号𝑥(𝑡)通过带通滤波器ℎ(𝑡)后变成了另一个带通信号𝑦(𝑡)，此问题可等价地看成是：复包络𝑥L(𝑡)通过一个等效基带系统ℎe(𝑡)后变成了另一个复包络𝑦L(𝑡)。</p>
-<p><img src="https://s2.loli.net/2022/03/16/NVu2LAXDOpecnJr.png" srcset="/img/loading.gif" lazyload /></p>
-<p>等效替代后系统的传递函数是原系统的传递函数往下搬移fc的频率。</p>
+<p>零均值平稳过程希尔伯特变换后的均值为0，不改变自相关函数及功率谱密度；希尔伯特变换与原函数的互相关函数是原函数的自相关函数的希尔伯特变换；输入与输出在同一时刻不相关。</p>
 
               
             </div>
@@ -576,8 +457,8 @@ src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-202203161717
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>通信原理——第一章（确定信号分析）</div>
-      <div>https://2022xi.github.io/2022/03/12/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%88%E7%A1%AE%E5%AE%9A%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%EF%BC%89/</div>
+      <div>通信原理——第二章（随机信号分析）</div>
+      <div>https://2022xi.github.io/2022/03/16/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E9%9A%8F%E6%9C%BA%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%EF%BC%89/</div>
     </div>
     <div class="license-meta">
       
@@ -589,7 +470,7 @@ src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-202203161717
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月12日</div>
+          <div>2022年3月16日</div>
         </div>
       
       
@@ -619,18 +500,12 @@ src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-202203161717
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/15/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88%E6%95%99%E7%A8%8B%EF%BC%88word%EF%BC%89/" title="毕业论文排版教程（word）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">毕业论文排版教程（word）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%88%E9%A2%91%E8%B0%B1%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8%EF%BC%89/" title="信号与系统——第四章（频谱分析技术应用）">
-                        <span class="hidden-mobile">信号与系统——第四章（频谱分析技术应用）</span>
+                      <a href="/2022/03/15/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88%E6%95%99%E7%A8%8B%EF%BC%88word%EF%BC%89/" title="毕业论文排版教程（word）">
+                        <span class="hidden-mobile">毕业论文排版教程（word）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
