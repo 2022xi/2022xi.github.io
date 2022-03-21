@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2022xi.github.io/img/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E7%AC%AC%E4%BA%8C%E7%AB%A0).jpg">
 <meta property="article:published_time" content="2022-03-16T11:47:50.251Z">
-<meta property="article:modified_time" content="2022-03-17T07:47:55.815Z">
+<meta property="article:modified_time" content="2022-03-20T03:12:06.811Z">
 <meta property="article:author" content="Mr niu2">
 <meta property="article:tag" content="通信原理">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          5.2k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          15 分钟
+          44 分钟
         
       </span>
     
@@ -392,12 +392,11 @@ E[X(t + \tau )Y(t)] = {R_{XY} }(\tau )
 <ul>
 <li>平稳过程通过线性系统后的均值：</li>
 </ul>
-<p><img src="https://s2.loli.net/2022/03/17/iYphbZs1mV7ATJI.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2022/03/20/PktNaD25KgCSh81.png" srcset="/img/loading.gif" lazyload /></p>
 <ul>
 <li>平稳过程通过线性系统后的自相关函数：</li>
 </ul>
-<p><img
-src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-20220317150318297.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2022/03/20/VMsPEaByIDlCkwK.png" srcset="/img/loading.gif" lazyload /></p>
 <p><strong>Y(t)也是平稳过程</strong>，并且X(t)与Y(t)是联合平稳的。</p>
 <ul>
 <li>输出的功率谱密度：</li>
@@ -406,6 +405,240 @@ src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-202203171503
 {P_Y}(f) = {\left| {H(f)} \right|^2}{P_X}(f)
 \]</span></p>
 <p>零均值平稳过程希尔伯特变换后的均值为0，不改变自相关函数及功率谱密度；希尔伯特变换与原函数的互相关函数是原函数的自相关函数的希尔伯特变换；输入与输出在同一时刻不相关。</p>
+<h2 id="复平稳过程">2.6复平稳过程</h2>
+<p><strong>复随机过程是一对实随机过程</strong></p>
+<ul>
+<li>复随机过程的相关函数：</li>
+</ul>
+<p><span class="math display">\[
+{ {R_{ {Z_1}{Z_2} } } }({t_1},{t_2}) = E[Z_1({t_1}){Z_2^*}({t_2})]
+\]</span></p>
+<ul>
+<li>共轭相关函数：</li>
+</ul>
+<p><span class="math display">\[
+{R_{Z{Z^*} } }({t_1},{t_2}) = E[Z({t_1})Z({t_2})]
+\]</span></p>
+<p>复随机过程Z(t)与Z(t)共轭的相关函数。</p>
+<ul>
+<li>复平稳：若复随机过程𝑍(𝑡)的实部𝑋(𝑡)与虚部𝑌(𝑡)都是平稳过程，并且二者联合平稳。</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/03/17/dSKs92aB76kIhoz.png" srcset="/img/loading.gif" lazyload /></p>
+<h2
+id="平稳带通过程的解析信号及复包络">2.7平稳带通过程的解析信号及复包络</h2>
+<p>1）解析信号</p>
+<p>平稳带通过程的解析信号是复平稳过程。</p>
+<ul>
+<li>解析信号Z(t)的自相关函数：</li>
+</ul>
+<p><span class="math display">\[
+{R_Z}(\tau ) = 2[{R_X}(\tau ) + j \cdot {\hat R_X}(\tau )
+\]</span></p>
+<p>解析信号的自相关函数是原自相关函数的解析信号的2倍。</p>
+<ul>
+<li>解析信号的功率谱密度，解析信号𝑍(𝑡)是𝑋(𝑡)通过传递函数为1+sgn(𝑓)的滤波器的输出，𝑍(𝑡)的功率谱密度为：</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/03/18/NRwohU6b9XJenOQ.png" srcset="/img/loading.gif" lazyload /></p>
+<ul>
+<li>解析信号Z(t)的共轭相关函数等于0，零均值平稳过程的解析信号共轭不相关。</li>
+</ul>
+<p>2）X(t)的复包络</p>
+<ul>
+<li><p><span class="math display">\[
+{X_L}(t) = Z(t){e^{ - j2\pi {f_c}t} }
+\]</span></p></li>
+<li><p>复包络的均值是0</p></li>
+<li><p>复包络的自相关函数</p></li>
+</ul>
+<p><span class="math display">\[
+E[{X_L}(t + \tau )X_L^*(t)] = {R_Z}(\tau ){e^{ - j2\pi {f_c}\tau } }
+\]</span></p>
+<ul>
+<li>复包络的共轭相关函数等于0</li>
+<li>零均值平稳带通过程的复包络是零均值复平稳过程。</li>
+<li>复包络的功率谱密度：</li>
+</ul>
+<p><span class="math display">\[
+{P_L}(f) = 4{P_X}(f + {f_c}),\quad \left| f \right| \le {f_c}
+\]</span></p>
+<ul>
+<li>复包络的同相分量及正交分量有相同的自相关函数、功率谱密度：</li>
+</ul>
+<p><span class="math display">\[
+{R_c}(\tau ) = {R_s}(\tau ) = \frac{1}{2}{\mathop{\rm Re}\nolimits} \{
+{R_L}(\tau )\}
+\]</span></p>
+<ul>
+<li>同相分量和正交分量的互相关函数：</li>
+</ul>
+<p><span class="math display">\[
+{R_{cs} }(\tau ) =  - \frac{1}{ {4j} }{R_L}(\tau ) + \frac{1}{ {4j}
+}R_L^*(\tau ) =  - \frac{1}{2}{\mathop{\rm Im}\nolimits} \{ {R_L}(\tau
+)\}
+\]</span></p>
+<h2 id="平稳序列循环平稳">2.8平稳序列、循环平稳</h2>
+<p>1）随机序列：无限个随机变量</p>
+<ul>
+<li>均值：<em>m(n)=E[Xn]，n</em>为整数</li>
+<li>相关函数：</li>
+</ul>
+<p><span class="math display">\[
+{R_{XY} }(k,m) = E[{X_k}{Y_m}]
+\]</span></p>
+<ul>
+<li>不相关：对任意<em>k,m</em>有</li>
+</ul>
+<p><span class="math display">\[
+{R_{XY} }(k,m) = E[{X_k}{Y_m}] = E[{X_k}]E[{Y_m}]
+\]</span></p>
+<ul>
+<li>同一时刻不相关：对任意<em>k</em>有</li>
+</ul>
+<p><span class="math display">\[
+{R_{XY} }(k) = E[{X_k}{Y_k}] = E[{X_k}]E[{Y_k}]
+\]</span></p>
+<p>2）广义平稳序列：<em>{Xn}</em> 的均值及自相关函数与绝对时间
+<em>n</em> 无关。</p>
+<p>3）联合平稳：随机序列 <em>{Xn}</em> 与 <em>{Yn}</em>
+各自平稳且互相关函数与绝对时间 <em>n</em> 无关。</p>
+<p>4）复平稳序列：复值随机序列 <em>{Zn}</em> 的实部及虚部联合平稳。</p>
+<p>5）循环平稳过程：均值与自相关函数是 <em>t</em> 的周期函数</p>
+<h2 id="高斯过程">3.9高斯过程</h2>
+<p>1）Q函数的定义：标准正太分布大于上 <em>x</em> 分位数的概率。</p>
+<p>2）erfc函数的定义：<em>X~N(0,1/2),</em>|<em>X</em>|<em>&gt;x</em>的概率</p>
+<p>3）联合高斯</p>
+<p><img src="https://s2.loli.net/2022/03/18/tUCVqDmBPfEGHW7.png" srcset="/img/loading.gif" lazyload /></p>
+<p>矩阵表示：</p>
+<p><img src="https://s2.loli.net/2022/03/18/6zC1V5FLcEIjDNW.png" srcset="/img/loading.gif" lazyload /></p>
+<p>4）高斯过程：</p>
+<p>设𝑋𝑡是随机过程，若对于任意𝑛个时刻 𝑡1,𝑡2,⋯,𝑡𝑛，𝑋𝑡1,𝑋𝑡2,⋯,𝑋(𝑡𝑛)
+服从联合高斯分布，则称𝑋𝑡为高斯过程。</p>
+<p>5）当均值为0时，高斯随机变量的方差就是其功率。</p>
+<h2 id="高斯白噪声">3.10高斯白噪声</h2>
+<p>1）理想限带白高斯噪声</p>
+<p><img src="https://s2.loli.net/2022/03/18/zOAbq8gpiYLueB3.png" srcset="/img/loading.gif" lazyload /></p>
+<p>2）高斯白噪声</p>
+<p>高斯白噪声是理想限带高斯白噪声带宽B趋于无穷的极限。</p>
+<ul>
+<li>白噪声的自相关函数是一个冲击信号： <span class="math display">\[
+E[u(t + \tau )n(t)] = \frac{ { {N_0} } }{2}\delta (\tau )
+\]</span></li>
+</ul>
+<p>3）高斯白噪声通过滤波器</p>
+<p><img src="https://s2.loli.net/2022/03/19/CIx93Uo7fkOq8nF.png" srcset="/img/loading.gif" lazyload /></p>
+<p>由于输入𝑛w(𝑡)是零均值平稳高斯过程，所以输出𝑛(𝑡)也是零均值平稳高斯过程。</p>
+<p>输出𝑛(𝑡)的功率谱密度： <span class="math display">\[
+{P_n}(f) = \frac{ { {N_0} } }{2}{\left| {H(f)} \right|^2}
+\]</span> 输出𝑛(𝑡)的功率： <span class="math display">\[
+E[{n^2}(t)] = \int_{ - \infty }^\infty  {\frac{ { {N_0} } }{2}{ {\left|
+{H(f)} \right|}^2} } df = \frac{ { {N_0} } }{2}\int_{ - \infty
+}^\infty  { { {\left| {H(f)} \right|}^2} } df = \frac{ { {N_0} }
+}{2}{E_h}
+\]</span></p>
+<h2 id="白高斯噪声与确定信号的内积">3.11白高斯噪声与确定信号的内积</h2>
+<p>1）高斯白噪声与一个确定信号的内积</p>
+<p><img src="https://s2.loli.net/2022/03/19/AaJPmrMtgzQvlWO.png" srcset="/img/loading.gif" lazyload /></p>
+<p>设𝑔(𝑡)是能量为𝐸𝑔的确定实能量信号。白高斯噪声𝑛w(𝑡)与𝑔(𝑡)的内积为：
+<span class="math display">\[
+Z = \int_{ - \infty }^\infty  { {n_w}(t)g(t)} dt
+\]</span> Z服从高斯分布，Z的均值是0，方差： <span
+class="math display">\[
+\begin{array}{l}
+\quad {\sigma ^2} = \frac{ { {N_0} } }{2}{E_g}\\
+\therefore Z \sim N(0,\frac{ { {N_0} } }{2}{E_g})
+\end{array}
+\]</span> 2）高斯白噪声与两个确定信号的内积</p>
+<p><img src="https://s2.loli.net/2022/03/19/hHY5Xx7eQoz81A9.png" srcset="/img/loading.gif" lazyload />
+<span class="math display">\[
+\begin{array}{l}
+{Z_1} \sim N(0,\frac{ { {N_0} } }{2}{E_1})\\
+{Z_2} \sim N(0,\frac{ { {N_0} } }{2}{E_2})
+\end{array}
+\]</span> Z1,Z2的相关性： <span class="math display">\[
+E[{Z_1}{Z_2}] = \frac{ { {N_0} } }{2}\int_{ - \infty }^\infty  { {\phi
+_1}(t)} {\phi _2}(t)dt
+\]</span> 若两个确定信号正交，则Z1,Z2独立。</p>
+<p>3）高斯白噪声在归一化正交函数上的投影</p>
+<p><img src="https://s2.loli.net/2022/03/19/KIGHZ4cq3SX5oB7.png" srcset="/img/loading.gif" lazyload /></p>
+<h2
+id="窄带高斯噪声的解析信号及复包络">3.12窄带高斯噪声的解析信号及复包络</h2>
+<p>1）窄带高斯噪声𝑛(𝑡)：频谱无限宽的白高斯噪声𝑛w(𝑡)通过一个带通型滤波器𝐻(𝑓)后形成了𝑛(𝑡)。</p>
+<p><img src="https://s2.loli.net/2022/03/19/fKLqZmnSy9NjYc4.png" srcset="/img/loading.gif" lazyload /></p>
+<p>2）n(t)希尔伯特变换的特性</p>
+<ul>
+<li>输出是零均值的平稳高斯过程；</li>
+<li>输入输出有相同的自相关函数、功率谱密度、功率；</li>
+<li>互相关函数是原自相关函数的希尔伯特变换，是奇函数； <span
+class="math display">\[
+{R_{\hat nn} }(\tau ) = {\hat R_n}(\tau )\quad \quad {R_{n\hat n} }(\tau
+) = {R_{\hat nn} }( - \tau ) =  - {\hat R_n}(\tau )
+\]</span></li>
+<li>输入输出在同一时刻不相关</li>
+</ul>
+<p><span class="math display">\[
+{R_{n\hat n} }(0) = {R_{\hat nn} }(0) = 0
+\]</span></p>
+<p>3）解析信号的性质同平稳带通过程相同</p>
+<p>4）复包络的特性</p>
+<ul>
+<li>复包络是零均值复高斯过程</li>
+<li>复包络功率谱密度</li>
+</ul>
+<p><span class="math display">\[
+{P_L}(f) = {P_Z}(f + {f_c}) = 4{P_n}(f + {f_c}),\quad \left| f \right|
+\le {f_c}
+\]</span></p>
+<ul>
+<li>复包络和解析信号有相同的功率</li>
+</ul>
+<p><span class="math display">\[
+{P_L} = {P_Z} = 2{P_n}
+\]</span></p>
+<ul>
+<li>复包络的自相关函数与解析信号的自相关函数相差一个指数项；共轭相关函数为0</li>
+<li>复包络是复平稳过程，满足共轭不相关。</li>
+<li>复包络的同相分量与正交分量有相同的自相关函数、功率谱密度、功率。</li>
+</ul>
+<p><span class="math display">\[
+\begin{array}{l}
+{P_c}(f) = {P_s}(f) = \frac{1}{4}{P_L}(f) + \frac{1}{4}{P_L}( - f)\\
+\quad \quad \quad \quad \quad \quad  = {P_n}(f + {f_c}) + {P_n}(f -
+{f_c}),\left| f \right| &lt; {f_c}
+\end{array}
+\]</span></p>
+<ul>
+<li>同相分量与正交分量独立</li>
+</ul>
+<h2 id="匹配滤波器">3.14匹配滤波器</h2>
+<p><img src="https://s2.loli.net/2022/03/19/ksGXb4386Wy5Hrl.png" srcset="/img/loading.gif" lazyload /></p>
+<ul>
+<li>瞬时信噪比：</li>
+</ul>
+<p><span class="math display">\[
+\gamma  = \frac{ { {y^2}({t_0})} }{ {E[{n^2}({t_0})]} }
+\]</span></p>
+<p><strong>匹配滤波器，使𝑡0时刻的信噪比𝛾最大</strong></p>
+<ul>
+<li>根据柯西-施瓦兹不等式，可得最大信噪比𝛾：</li>
+</ul>
+<p><span class="math display">\[
+{\gamma _{\max } } = \frac{ {2{E_s} } }{ { {N_0} } }
+\]</span></p>
+<ul>
+<li>最佳滤波器（匹配滤波器）： s</li>
+</ul>
+<p><span class="math display">\[
+h(t) = K \cdot s({t_0} - t)
+\]</span></p>
+<ul>
+<li>匹配滤波器的传递函数：</li>
+</ul>
+<p><span class="math display">\[
+H(f) = K \cdot {S^*}(f){e^{ - j2\pi f{t_0} } }
+\]</span></p>
+<ul>
+<li>匹配滤波器输出波形是s(t)的自相关函数乘以K.</li>
+</ul>
 
               
             </div>
@@ -499,6 +732,12 @@ src="C:\Users\math2\AppData\Roaming\Typora\typora-user-images\image-202203171503
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/03/20/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E6%A8%A1%E6%8B%9F%E8%B0%83%E5%88%B6%EF%BC%89/" title="通信原理——第三章（模拟调制）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">通信原理——第三章（模拟调制）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
