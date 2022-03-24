@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://2022xi.github.io/img/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E7%AC%AC%E4%B8%89%E7%AB%A0).jpg">
 <meta property="article:published_time" content="2022-03-20T02:34:13.922Z">
-<meta property="article:modified_time" content="2022-03-21T12:20:18.426Z">
+<meta property="article:modified_time" content="2022-03-24T03:51:07.529Z">
 <meta property="article:author" content="Mr niu2">
 <meta property="article:tag" content="通信原理">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          3.9k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          9 分钟
+          33 分钟
         
       </span>
     
@@ -321,7 +321,7 @@
 <p>在载频𝑓c两旁有两个对称的边带（side
 band），所以叫双边带；由于默认𝑚(𝑡)是零均值，不包含直流分量（𝑓=0处无冲激），所以叫抑制载波。</p>
 <p>理解：因为需要把频谱分别往左右搬移，时域的相乘等于频域的卷积，正弦信号的频谱是-fc,+fc处的两个冲激，所以原信号频谱与正弦信号的频谱进行卷积就是把频谱分别往左右搬移。</p>
-<h2 id="dsb-sc的相干解调">4.3DSB-SC的相干解调</h2>
+<h2 id="dsb-sc的相干解调">3.3DSB-SC的相干解调</h2>
 <p><img src="https://s2.loli.net/2022/03/20/gifDBQdZPbMrvzX.png" srcset="/img/loading.gif" lazyload /></p>
 <p><img src="https://s2.loli.net/2022/03/20/qr9wNjnIXcQg7mL.png" srcset="/img/loading.gif" lazyload /></p>
 <p>调制信号通过解调器后，可以分解成原信号与一个高频部分的叠加。经过低通滤波器后，高频部分被滤除。</p>
@@ -333,9 +333,9 @@ target="_blank" rel="noopener" href="https://2022xi.cn/2022/03/10/信号与系�
 <li><strong>DSB-SC只能相干解调。</strong></li>
 <li>导频辅助的载波同步</li>
 </ul>
-<p><img src="E:\Desktop\屏幕截图%202022-03-20%20181230.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2022/03/22/a3yXFzqUvPIHifw.png" srcset="/img/loading.gif" lazyload /></p>
 <p>所增加的𝑎⋅𝑐(𝑡)叫导频</p>
-<h2 id="包络调制am">4.4包络调制（AM）</h2>
+<h2 id="包络调制am">3.4包络调制（AM）</h2>
 <p><img src="https://s2.loli.net/2022/03/20/NCxVPZ3hInuTqKW.png" srcset="/img/loading.gif" lazyload
 alt="image-20220320202748100" /> <span class="math display">\[
 s(t) = {A_c}\cos (2\pi {f_c}t) + A&#39;m(t)\cos (2\pi {f_c}t)
@@ -346,7 +346,7 @@ s(t) = {A_c}\cos (2\pi {f_c}t) + A&#39;m(t)\cos (2\pi {f_c}t)
 <ul>
 <li>包络检波器是非相干解调，不需要载波同步。</li>
 </ul>
-<h2 id="am的调幅系数及调制效率">4.5AM的调幅系数及调制效率</h2>
+<h2 id="am的调幅系数及调制效率">3.5AM的调幅系数及调制效率</h2>
 <p>1）调幅系数</p>
 <p>AM是DSB-SC插入了一个载波，其信号表达式为：<img
 src="https://s2.loli.net/2022/03/21/185iZ2ymzvIKMYr.png" srcset="/img/loading.gif" lazyload /></p>
@@ -357,6 +357,195 @@ src="https://s2.loli.net/2022/03/21/N4FdjfRQcDWV93K.png" srcset="/img/loading.gi
 <p><strong>调制效率：</strong></p>
 <p><img src="https://s2.loli.net/2022/03/21/FtVhokCx6X3BcZO.png" srcset="/img/loading.gif" lazyload /></p>
 <p><img src="https://s2.loli.net/2022/03/21/hrkdKGpeo7WujzN.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="单边带信号ssb">3.6单边带信号（SSB）</h2>
+<p><img src="https://s2.loli.net/2022/03/21/YJ48kcfe7aEbNiQ.png" srcset="/img/loading.gif" lazyload /></p>
+<p>实现SSB的方法例如可以用滤波器：将DSB信号通过一个适当的滤波器去除两个边带中的一个。</p>
+<ul>
+<li><p>上单边带调制（USB）</p>
+<p>单边带信号的复包络是一个解析信号</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{array}{l}
+{s_{L,USB} }(t) = \frac{ { {A_c} } }{2} \cdot [m(t) + j \cdot \hat
+m(t)]\\
+{s_{USB} }(t) = \frac{ { {A_c} } }{2} \cdot [m(t)\cos 2\pi {f_c}t - \hat
+m(t)\sin 2\pi {f_c}t]
+\end{array}
+\]</span></p>
+<ul>
+<li>下单边带调制（LSB） 单边带信号的复包络是一个解析信号的共轭</li>
+</ul>
+<p><span class="math display">\[
+\begin{array}{l}
+{s_{L,LSB} }(t) = \frac{ { {A_c} } }{2} \cdot [m(t) - j \cdot \hat
+m(t)]\\
+{s_{LSB} }(t) = \frac{ { {A_c} } }{2} \cdot [m(t)\cos 2\pi {f_c}t + \hat
+m(t)\sin 2\pi {f_c}t]
+\end{array}
+\]</span></p>
+<p><img src="https://s2.loli.net/2022/03/22/xlJF5jrK8ovNVqg.png" srcset="/img/loading.gif" lazyload />
+<strong>SSB解调：</strong>相干解调，得到带通信号的复包络的实部。</p>
+<h2 id="抗噪声性能">3.7抗噪声性能</h2>
+<p>解调输出端的信噪比：平均信号功率/平均噪声功率</p>
+<p>1）DSB-SC相干解调</p>
+<p><img src="https://s2.loli.net/2022/03/22/TapwJX3B2sicFxv.png" srcset="/img/loading.gif" lazyload /></p>
+<p>𝑟(𝑡)的同相分量是𝑠(𝑡)的同相分量加上𝑛(𝑡)的同相分量。窄带噪声𝑛(𝑡)可以表示为:
+<span class="math display">\[
+n(t) = {n_c}(t)\cos 2\pi {f_c}t - {n_s}(t)\sin 2\pi {f_c}t
+\]</span> <img
+src="https://s2.loli.net/2022/03/22/6g5VxGY3zWnl7TF.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2022/03/22/a7slq3OwyWY1vUH.png" srcset="/img/loading.gif" lazyload /></p>
+<p>解调输出信噪比是： <span class="math display">\[
+{(\frac{S}{N})_o} = \frac{ {\overline { { {[{A_c}m(t)]}^2} } } }{
+{E[n_c^2(t)]} } = \frac{ {2{P_R} } }{ { {N_0}B} } = \frac{ { {P_R} } }{
+{ {N_0}W} }
+\]</span> 2）AM相干解调</p>
+<p><img src="https://s2.loli.net/2022/03/22/Bqu4PtCGiaScHo7.png" srcset="/img/loading.gif" lazyload /></p>
+<p>由于隔直流的原因，最后的输出𝑦(𝑡)仍然保持不变，输出信噪比也不变。</p>
+<p>AM的调制效率𝜂是其DSB-SC部分的功率𝑃R′在𝑠(𝑡)总功率𝑃R中的占比： <span
+class="math display">\[
+\eta  = \frac{ { { {P&#39;_R} } } }{ { {P_R} } }\quad \quad {P&#39;_R} =
+\eta {P_R}
+\]</span> 将这个关系代入便得到AM相干解调的输出信噪比为： <span
+class="math display">\[
+{(\frac{S}{N})_o} = \frac{ {2{ {P&#39;_R} } } }{ { {N_0}B} } = \eta
+\frac{ { {P_R} } }{ { {N_0}W} }
+\]</span> 3）SSB相干解调</p>
+<p><img src="https://s2.loli.net/2022/03/22/ZT5cnafSRdyur8m.png" srcset="/img/loading.gif" lazyload /></p>
+<p>s(t)的功率是𝑃R，则𝑃R′=𝑃R/2</p>
+<p>解调输出信噪比是： <span class="math display">\[
+{(\frac{S}{N})_o} = \frac{ {2{ {P&#39;_R} } } }{ { {N_0}B} } = \frac{ {
+{P_R} } }{ { {N_0}W} }
+\]</span></p>
+<p>4）AM包络检波</p>
+<p>系统模型：</p>
+<p><img src="https://s2.loli.net/2022/03/23/5PziYjTIUpKwSoG.png" srcset="/img/loading.gif" lazyload /></p>
+<p>包络检波器的功能：输出是输入带通信号的包络</p>
+<p>输入信号r(t)=s(t)+n(t)</p>
+<p><img src="https://s2.loli.net/2022/03/23/83QBciSHgXuovsL.png" srcset="/img/loading.gif" lazyload /></p>
+<p>包络是：<img
+src="https://s2.loli.net/2022/03/23/gjZkzRtLlJpVI1q.png" srcset="/img/loading.gif" lazyload /></p>
+<p>期望信号𝑠(𝑡)的功率远大于噪声𝑛(𝑡)的功率时的高信噪比条件下，包络可近似为：<img
+src="https://s2.loli.net/2022/03/23/jDfaPcztJFOKw9L.png" srcset="/img/loading.gif" lazyload /></p>
+<p>输出结果与AM相干解调相同，所以信噪比也和AM相干解调相同。</p>
+<h2 id="角度调制">3.8角度调制</h2>
+<p>角度类调制：包络是常数，信息m(t)携带在复包络的相位中</p>
+<p>FM/PM： <span class="math display">\[
+A(t) = {A_c},\varphi (t) \sim m(t)
+\]</span> <img
+src="https://s2.loli.net/2022/03/23/WlzeOBU7cdghR9x.png" srcset="/img/loading.gif" lazyload /></p>
+<p>角度调制：借助有意为之的位置或速度晃动携带信息。</p>
+<p>线性调相（PM）：瞬时相位偏移与𝑚(𝑡)成正比</p>
+<p><img src="https://s2.loli.net/2022/03/23/iWzDrZRcL1kNKG2.png" srcset="/img/loading.gif" lazyload /></p>
+<p>线性调频（FM）：瞬时频率偏移与𝑚(𝑡)成正比</p>
+<p><img src="https://s2.loli.net/2022/03/23/oUDxZLkuvir5b2q.png" srcset="/img/loading.gif" lazyload /></p>
+<p>FM与PM之间的关系：</p>
+<ul>
+<li>微分之后再调频（FM），结果是调相（PM）;</li>
+<li>积分之后再调相（PM），结果是调相（FM）。</li>
+</ul>
+<p>最大频偏：<img
+src="https://s2.loli.net/2022/03/23/lNVCc73RD6E8MBZ.png" srcset="/img/loading.gif" lazyload /></p>
+<p>调频指数：定义为最大频偏按基带信号的最高频率归一化 <span
+class="math display">\[
+{\beta _f} \buildrel \Delta \over = \frac{ {\Delta {f_{\max } } } }{W}
+\]</span></p>
+<h2 id="角度调制信号的频谱特性">3.9角度调制信号的频谱特性</h2>
+<p>1）单音调频（初相位为0的余弦信号）<img
+src="https://s2.loli.net/2022/03/23/PK6jiz4pOrHck2B.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2022/03/23/JGWb9x32YfR1uni.png" srcset="/img/loading.gif" lazyload /></p>
+<p>其中，调制指数： <span class="math display">\[
+\beta  = \frac{ {\Delta {f_{\max } } } }{ { {f_m} } } = \frac{ {
+{A_m}{K_f} } }{ { {f_m} } }
+\]</span></p>
+<p><img src="https://s2.loli.net/2022/03/23/TeKPnwmDXoUx6Wy.png" srcset="/img/loading.gif" lazyload /></p>
+<p>对这个复包络傅里叶变换不容易求，需要对其进行傅里叶级数分解：</p>
+<p><img src="https://s2.loli.net/2022/03/23/SqGXT5WE2UAxukO.png" srcset="/img/loading.gif" lazyload /></p>
+<p>根据傅里叶级数展开式可以写出复包络的频谱为：</p>
+<p><img src="https://s2.loli.net/2022/03/23/BcLb4fgWmGXUKTs.png" srcset="/img/loading.gif" lazyload /></p>
+<p>J𝑛(𝛽)是第一类𝑛阶贝塞尔函数，函数值从趋势上来说是随|𝑛|的增加而减小，所以大部分能量集中在|𝑛|比较小的范围内。</p>
+<p><strong>2）卡松公式</strong></p>
+<ul>
+<li><p>单音调频的结果表明FM信号的有效带宽集中在载频附近的一个范围内。</p></li>
+<li><p>一般情况下，角度调制信号的带宽的近似计算公式为：</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{array}{l}
+B \approx 2(\Delta {f_{\max } } + {f_m})\\
+B \approx 2{f_m}({\beta _f} + 1)
+\end{array}
+\]</span></p>
+<h2 id="fm的抗噪声性能">3.10FM的抗噪声性能</h2>
+<p>1）系统模型</p>
+<p><img src="https://s2.loli.net/2022/03/23/B8Qy4GtgAaW5skf.png" srcset="/img/loading.gif" lazyload /></p>
+<p>带通滤波器的带宽： <span class="math display">\[
+B = 2({\beta _f} + 1)W
+\]</span> 到达解调器的信号为：</p>
+<p><img src="https://s2.loli.net/2022/03/23/JZAKycR8NDHmXqv.png" srcset="/img/loading.gif" lazyload /></p>
+<p>其中期望信号𝑠(𝑡)的功率为： <span class="math display">\[
+{P_R} = \overline { {s^2}(t)}  = \frac{ {A_c^2} }{2}
+\]</span> <img
+src="https://s2.loli.net/2022/03/23/VjSoBLGX9parn18.png" srcset="/img/loading.gif" lazyload /></p>
+<p>𝑛c(𝑡)、𝑛s(𝑡𝑡)的功率谱密度是𝑛(𝑡)功率谱密度左移、右移后叠加：</p>
+<p><img src="https://s2.loli.net/2022/03/23/3vTyLawB8HDs6xG.png" srcset="/img/loading.gif" lazyload /></p>
+<p>可以理解为功率谱密度左移、右移叠加后，功率谱密度的面积不变，所以𝑛(𝑡)及其同相、正交分量有相同的功率。</p>
+<ul>
+<li>鉴频器的功能：输出带通信号的瞬时频偏</li>
+</ul>
+<p>2）噪声为零时的输出信号功率</p>
+<p>关掉噪声时，鉴频器输入为r(t)=s(t)</p>
+<p><img src="https://s2.loli.net/2022/03/23/guGhnjacts7MPYE.png" srcset="/img/loading.gif" lazyload /></p>
+<p>输出端期望信号功率为：<img
+src="https://s2.loli.net/2022/03/23/rmLIckQvUzbRs1S.png" srcset="/img/loading.gif" lazyload /></p>
+<p>3）𝒎(𝒕)=𝟎时的输出噪声功率</p>
+<p>𝑚(𝑡)=0时，鉴频器输入成为：<img
+src="https://s2.loli.net/2022/03/24/5LHjBf3kzJ2N4I9.png" srcset="/img/loading.gif" lazyload /></p>
+<p>𝑟(𝑡)的复包络是：</p>
+<p><img src="https://s2.loli.net/2022/03/24/IGeNOdn2WKkcbz7.png" srcset="/img/loading.gif" lazyload /></p>
+<p>鉴频器输出是：<img
+src="https://s2.loli.net/2022/03/24/aoKfWxe7b8RtXzh.png" srcset="/img/loading.gif" lazyload /></p>
+<p>参考下面的图，𝐴c充分大时</p>
+<p><img src="https://s2.loli.net/2022/03/24/aWM738EpjheBJq6.png" srcset="/img/loading.gif" lazyload /></p>
+<p>于是，鉴频器输出近似为：<img
+src="https://s2.loli.net/2022/03/24/OAIMqDVuzN4b8wg.png" srcset="/img/loading.gif" lazyload /></p>
+<p>此信号通过截止频率为𝑊的LPF，输出噪声功率是：<img
+src="https://s2.loli.net/2022/03/24/CIWz6rjcPUBJ7me.png" srcset="/img/loading.gif" lazyload /></p>
+<p>微分是传递函数为 <em>j2𝜋f</em> 的线性系统，所以有：</p>
+<p><img src="https://s2.loli.net/2022/03/24/GeuOi8Kv72FVUdS.png" srcset="/img/loading.gif" lazyload /></p>
+<p>所以，输出噪声功率为：</p>
+<p><img src="https://s2.loli.net/2022/03/24/qmDLVer7ZSOvN4c.png" srcset="/img/loading.gif" lazyload /></p>
+<p><strong>噪声为0与输入为0的两个结果相除便得到输出信噪比：</strong></p>
+<p><img src="https://s2.loli.net/2022/03/24/M6jLZvtlnmSpBsK.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="频分复用">3.11频分复用</h2>
+<p>复用（multiplexing）的意思是将多个信息信号合在一起，变成一个信号后传输。</p>
+<ul>
+<li>频分复用（FDM）、时分复用（TDM）、码分复用（CDM）</li>
+</ul>
+<p>复合调制：FDM形成的合成信号一般是一个带宽更宽的模拟基带信号，为了通过带通信道传输，还需要再进行一次调制。</p>
+<p><img src="https://s2.loli.net/2022/03/24/CRXsULpJ6PjBzZo.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="载波同步问题">3.12载波同步问题</h2>
+<p>正弦调制所用的载波是正弦波，也叫单频载波、连续波。</p>
+<p>1）发送信号中直接包含发送载波，收端可以从接收信号中直接提取出相干解调所需的载波。</p>
+<ul>
+<li>DSB-SC插入导频 <img
+src="https://s2.loli.net/2022/03/24/5ydRoiXV7m8OWhY.png" srcset="/img/loading.gif" lazyload /></li>
+<li>AM</li>
+</ul>
+<p>2）发送信号中不包含发送载波</p>
+<ul>
+<li><p>平方环法 <img
+src="https://s2.loli.net/2022/03/24/8vLpMdCz6sNhZGc.png" srcset="/img/loading.gif" lazyload />y(t)中包含一个基带信号和带通信号，带通信号均值不为零，则可通过滤波提出这个分量，然后二分频便得到所需的载波。</p>
+<p><img
+src="https://s2.loli.net/2022/03/24/ymkWhLGZwS6Hogb.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>科斯塔斯环法 <img
+src="https://s2.loli.net/2022/03/24/zhZB9HotkWjf2pa.png" srcset="/img/loading.gif" lazyload />
+信号分别通过两个滤波器输出信号的同相分量 I(t) 和正交分量 Q(t)
+，二者相乘后可得： <img
+src="https://s2.loli.net/2022/03/24/6BAl8ivbrDZu4kW.png" srcset="/img/loading.gif" lazyload />
+即若0&lt;𝜃−𝜑&lt;𝜋/2，那么𝐼(𝑡)×𝑄(𝑡)为正，VCO的频率增高，𝜑增加，𝜃−𝜑减小，𝜑滞后的情况改善。</p></li>
+<li><p>0,𝜋相位模糊
+获得的载波信号可能与原信号相同，也可能与原信号相差一个𝜋。</p></li>
+</ul>
 
               
             </div>
