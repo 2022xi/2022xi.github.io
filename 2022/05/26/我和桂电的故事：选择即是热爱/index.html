@@ -16,23 +16,23 @@
   <meta name="author" content="酒中仙">
   <meta name="keywords" content="">
   
-    <meta name="description" content="跨专业考研，复试科目：信号与系统，清华大学卓晴副教授课程学习笔记。这一节内容涉及很多电路知识，由于本人跨考的是网安，所以这部分知识就不去填补了，只理解时域系统分析的一般方法。">
+    <meta name="description" content="应学校宣传任务，也借此机会回顾总结一下自己的大学四年吧。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="信号与系统——第二章（时域系统分析）">
-<meta property="og:url" content="https://2022xi.github.io/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E6%97%B6%E5%9F%9F%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%EF%BC%89/index.html">
+<meta property="og:title" content="我和桂电的故事：选择即是热爱">
+<meta property="og:url" content="https://2022xi.github.io/2022/05/26/%E6%88%91%E5%92%8C%E6%A1%82%E7%94%B5%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%9A%E9%80%89%E6%8B%A9%E5%8D%B3%E6%98%AF%E7%83%AD%E7%88%B1/index.html">
 <meta property="og:site_name" content="舍功利之心，注一腔热情。">
-<meta property="og:description" content="跨专业考研，复试科目：信号与系统，清华大学卓晴副教授课程学习笔记。这一节内容涉及很多电路知识，由于本人跨考的是网安，所以这部分知识就不去填补了，只理解时域系统分析的一般方法。">
+<meta property="og:description" content="应学校宣传任务，也借此机会回顾总结一下自己的大学四年吧。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2022xi.github.io/img/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F(%E7%AC%AC%E4%BA%8C%E7%AB%A0).jpg">
-<meta property="article:published_time" content="2022-03-10T11:07:36.752Z">
-<meta property="article:modified_time" content="2022-03-26T09:21:33.821Z">
+<meta property="og:image" content="https://2022xi.github.io/img/%E6%A1%82%E7%94%B5.jpg">
+<meta property="article:published_time" content="2022-05-26T12:01:28.878Z">
+<meta property="article:modified_time" content="2022-05-26T12:23:40.556Z">
 <meta property="article:author" content="酒中仙">
-<meta property="article:tag" content="信号与系统">
+<meta property="article:tag" content="个人总结">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2022xi.github.io/img/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F(%E7%AC%AC%E4%BA%8C%E7%AB%A0).jpg">
+<meta name="twitter:image" content="https://2022xi.github.io/img/%E6%A1%82%E7%94%B5.jpg">
   
   
-  <title>信号与系统——第二章（时域系统分析） - 舍功利之心，注一腔热情。</title>
+  <title>我和桂电的故事：选择即是热爱 - 舍功利之心，注一腔热情。</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +214,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="信号与系统——第二章（时域系统分析）">
+          <span id="subtitle" title="我和桂电的故事：选择即是热爱">
             
           </span>
         </div>
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-10 19:07" pubdate>
-          2022年3月10日 晚上
+        <time datetime="2022-05-26 20:01" pubdate>
+          2022年5月26日 晚上
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          1.9k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          21 分钟
+          17 分钟
         
       </span>
     
@@ -287,167 +287,44 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">信号与系统——第二章（时域系统分析）</h1>
+            <h1 style="display: none">我和桂电的故事：选择即是热爱</h1>
             
             <div class="markdown-body">
               
-              <h1
-id="信号与系统第二章时域系统分析">信号与系统——第二章（时域系统分析）</h1>
-<p><img src="https://s2.loli.net/2022/02/16/S8K9TmxprO5bsoV.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="微分方程与差分方程">2.1微分方程与差分方程</h2>
-<h3 id="微分方程的建立">2.1.1微分方程的建立</h3>
-<p>以输出信号的导数的最高阶次，作为微分方程的阶次。微分方程根据物理的实际问题建立输入输出关系，例如电路系统，根据元器件的电气特性建立微分方程。</p>
-<p><img src="https://s2.loli.net/2022/02/17/AOqx5ngbUShmLF6.png" srcset="/img/loading.gif" lazyload /></p>
-<p>一般把输出写在方程的左边，输入写在方程的右边。</p>
-<h3 id="差分方程的建立">2.1.2差分方程的建立</h3>
-<p>常用后向差分方程，以输出信号的最大延迟作为差分方程的阶。</p>
-<p><img src="https://s2.loli.net/2022/02/17/AqGijdJagRoZp9e.png" srcset="/img/loading.gif" lazyload /></p>
-<p>1）微分方程离散化：使用前向差分或后向差分近似微分。</p>
-<p>2）物理系统建立差分方程。</p>
-<p>3）根据系统框图建立差分方程。</p>
-<h3 id="方程求解">2.1.3方程求解</h3>
-<p>建立微分/差分方程数学模型，求解输入输出的隐式关系成显式关系，并通过结果介绍其中物理含义。</p>
-<p><img src="https://s2.loli.net/2022/02/17/IVml4wCsJTrASUE.jpg" srcset="/img/loading.gif" lazyload /></p>
-<p>根据微分/差分方程的齐次方程的特征方程，求出带待定系数的齐次解，</p>
-<p><img src="https://s2.loli.net/2022/02/17/w2VkeYozj6qitup.png" srcset="/img/loading.gif" lazyload /></p>
-<p>求出微分/差分方程的一个特解，</p>
-<p><img src="https://s2.loli.net/2022/02/17/e2RYrvcVX4BoCZA.png" srcset="/img/loading.gif" lazyload /></p>
-<p>根据初始条件确定方程中的未知参数。</p>
-<h2 id="确定系统初始条件">2.2确定系统初始条件</h2>
-<p><img src="https://s2.loli.net/2022/02/17/IDX7FHxJewjTv2O.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="物理条件约束方法">2.2.1物理条件约束方法</h3>
-<p>根据系统的实际物理特性确定，这处老师讲解的例子需要运用到电容电感的电路知识，这里我将题目列出，感兴趣的朋友可以试一试。</p>
-<p><img src="https://s2.loli.net/2022/02/17/aoj234TkxqfYXO6.png" srcset="/img/loading.gif" lazyload /></p>
-<p>0时刻之前开关S在1处，0时刻将开关S拨向2处，求0+时刻通过电阻R1的电流。</p>
-<h3 id="奇异函数匹配方法">2.2.1奇异函数匹配方法</h3>
-<p>例如将函数y(t)分解成一个连续函数+单位冲激偶函数+单位冲激函数+单位跃迁函数
-<span class="math display">\[
-y(t){|_{ {0_ - } \sim {0_ + } } } = {y_1}(t) + a\delta &#39;(t) +
-b\delta (t) + c\Delta u(t)
-\]</span> 求y(t)在0-到0+之间的跳变， <span class="math display">\[
-y({0_ + }) - y({0_ - }) = c
-\]</span>
-应为只有单位跃迁函数在0处出现了跳变。所以计算整体跳变时，仅计算单位跃迁函数部分即可。</p>
-<p>例子：</p>
-<p><img src="https://s2.loli.net/2022/02/17/pWKk8usZPFQmXDg.png" srcset="/img/loading.gif" lazyload /></p>
-<p>博主真迹：</p>
-<p><img src="https://s2.loli.net/2022/02/17/sZXleNL5F2GkSPJ.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="迭代方法差分方程">2.2.1迭代方法：差分方程</h3>
-<p><img src="https://s2.loli.net/2022/02/17/asLqfgP2QoFmtdE.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="系统初始条件的两种特殊情况">2.2.1系统初始条件的两种特殊情况</h3>
-<ul>
-<li>零状态：对于连续时间系统，表示0-时各阶输出导数都是0；对于离散时间系统，表示n&lt;0时系统输出都是0.</li>
-<li>零输入：系统在0时刻没有输出，当然系统状态没有跳变。</li>
-</ul>
-<h2 id="方程求解的举例说明">2.3方程求解的举例说明</h2>
-<h3 id="连续时间信号例题">2.3.1连续时间信号例题</h3>
-<p>例1：</p>
-<p><img src="https://s2.loli.net/2022/02/18/fazwZv1sAM9VJj2.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="离散时间信号例题">2.3.2离散时间信号例题</h3>
-<p>有些离散时间信号例题的求解有点像组合数学中，递推关系的求解方法。</p>
-<p>例2：</p>
-<p><img src="https://s2.loli.net/2022/02/18/5U1YEqHKL7jnVkg.png" srcset="/img/loading.gif" lazyload /></p>
-<p>例3：<img
-src="https://s2.loli.net/2022/02/18/YOAFWa3wLsZJS12.png" srcset="/img/loading.gif" lazyload /></p>
-<p>例4：</p>
-<p><img src="https://s2.loli.net/2022/02/18/iLYXEOx7MuWzT4a.png" srcset="/img/loading.gif" lazyload /></p>
-<p>因为x[0]=0，是0输入，所以可以直接用y[-1]=-1求待定系数。</p>
-<h3 id="银行贷款例题">2.3.3银行贷款例题</h3>
-<p><img src="https://s2.loli.net/2022/02/18/f2dTgZD6BjQuGUH.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://s2.loli.net/2022/02/18/Agm8lVQM4e3tCJ1.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="差分方程数值求解微分方程">2.3.4差分方程数值求解微分方程</h3>
-<p>对微分方程离散化，用差分代替微分操作：（后向差分形式） <span
-class="math display">\[
-\frac{ {dy(t)} }{ {dt} } = \frac{ {y(nT) - y(nT - T)} }{T}
-\]</span> <img
-src="https://s2.loli.net/2022/02/18/aJtjwc94oNUlD5n.png" srcset="/img/loading.gif" lazyload /></p>
-<h3
-id="奇异函数平衡法求解初始条件">2.3.5奇异函数平衡法（求解初始条件）</h3>
-<p>同2.2.1节奇异函数匹配法。</p>
-<p><img src="https://s2.loli.net/2022/02/18/ACPfyxb1lWThS7w.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="lti系统解的分析">2.4LTI系统解的分析</h2>
-<h3 id="自由响应与强迫响应">2.4.1自由响应与强迫响应</h3>
-<p>1）自由响应：齐次解 ——&gt;&gt;系统固有频率 <span
-class="math display">\[
-\sum\limits_{i = 1}^n { {c_i}{e^{ {\lambda _i}t} } } ,\sum\limits_{i =
-1}^N { {A_i}{a_i}^n}
-\]</span>
-如果系统是稳定的自由响应通常是瞬态解。自由响应总体形式与输入信号无关，但参数与输入信号有关。</p>
-<p>2）强迫响应：特解 ——&gt;&gt;与激励函数形式有关系 <span
-class="math display">\[
-B(t),B[n]
-\]</span> 如果输入是稳定信号强迫响应也是稳态响应。</p>
-<p><img src="https://s2.loli.net/2022/02/19/z9QDLlY4hcEkijX.png" srcset="/img/loading.gif" lazyload /></p>
-<p>系统的自由响应反映了系统的性质；系统的强迫响应反映了系统对信号的处理能力。</p>
-<h3 id="瞬态解与稳态解">2.4.2瞬态解与稳态解</h3>
-<p>1）瞬态解：当时间趋于无穷，系统输出趋于0的部分。</p>
-<p>2）稳态解：当时间趋于无穷，保留下来的部分。</p>
-<p><img src="https://s2.loli.net/2022/02/19/lKZ7RUfF8kc3O4L.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="零输入响应与零状态响应">2.4.3零输入响应与零状态响应</h3>
-<p>1）零输入响应：系统在没有外部输入信号的情况下，由内部起始条件所产生的响应。</p>
-<p>2）零状态响应：系统在起始条件为零的情况下的系统对于输出信号的输出响应。</p>
-<h3 id="单位冲击与阶跃响应介绍">2.4.4单位冲击与阶跃响应介绍</h3>
-<p>1）单位冲击响应：LTI输入为单位冲击信号时的零状态响应，h(t),h[n]</p>
-<p>2）单位阶跃响应：LTI输入为单位阶跃信号时的零状态响应，g(t),g[n] <span
-class="math display">\[
-\begin{array}{l}
-g&#39;(t) = h(t)\\
-g[n] - g[n - 1] = h[n]
-\end{array}
-\]</span> <strong>求解例题：</strong></p>
-<p><img src="https://s2.loli.net/2022/02/19/GyvT1IY3gHnUea2.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://s2.loli.net/2022/02/19/h3kzFm9M5NYQZRi.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://s2.loli.net/2022/02/19/yTGikClhZvoe4BM.png" srcset="/img/loading.gif" lazyload /></p>
-<p><strong>注意：</strong>齐次解只是代表了t&gt;0之后的解，对于t=0的时刻，还需要判断是否包含了一些冲激信号。</p>
-<p><img src="https://s2.loli.net/2022/02/19/3eFMp5vaIocxLTb.png" srcset="/img/loading.gif" lazyload /></p>
-<h3
-id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位冲击信号的关系</h3>
-<p><img src="https://s2.loli.net/2022/02/19/RZO7Mt3IB4FdsK5.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="卷积与卷积和">2.5卷积与卷积和</h2>
-<h3 id="卷积的定义">2.5.1卷积的定义</h3>
-<p><img src="https://s2.loli.net/2022/02/19/BE4nr1vIeyAZc2g.png" srcset="/img/loading.gif" lazyload /></p>
-<p>h(t),h[t]为系统的单位冲击响应。</p>
-<p>卷积运算的条件：</p>
-<ul>
-<li>线性时不变系统LTI</li>
-<li>求解LTI的零状态响应</li>
-</ul>
-<h3 id="卷积的性质">2.5.2卷积的性质</h3>
-<p>1）代数性质</p>
-<ul>
-<li>交换性</li>
-<li>分配律</li>
-<li>结合律</li>
-</ul>
-<p>2）微分/差分 <span class="math display">\[
-\frac{d}{ {dt} }[{f_1}(t)*{f_2}(t)] = {f_1}(t)*\frac{d}{ {dt} }{f_2}(t)
-= \frac{d}{ {dt} }{f_1}(t)*{f_2}(t)
-\]</span> 3）积分/累加 <span class="math display">\[
-\int_{ - \infty }^t {[{f_1}(\tau )*{f_2}(\tau )]d\tau }  =
-{f_1}(t)*\int_{ - \infty }^t { {f_2}(\tau )d\tau }  = \int_{ - \infty
-}^t { {f_1}(\tau )d\tau } *{f_2}(t)
-\]</span></p>
-<p>4）时移性质</p>
-<p><img src="https://s2.loli.net/2022/02/19/ATVy9OfUlLEnJM8.png" srcset="/img/loading.gif" lazyload /></p>
-<p>5）与单位冲激信号、单位阶跃信号卷积</p>
-<p><img src="https://s2.loli.net/2022/02/19/RXz62IwcPYCSkTu.png" srcset="/img/loading.gif" lazyload /></p>
-<p>与单位冲激信号卷积体现采样特性；同单位跃迁信号卷积体现为积分。</p>
-<h3 id="性质的应用">2.5.3性质的应用</h3>
-<p>利用性质2）微分/差分、3）积分/累加简化卷积运算：对一个卷积运算可以对其中一个信号进行微分使其称为一个单位冲激响应信号的加，再对另外一个信号进行积分，即可通过平移和相加得到卷积结果。</p>
-<p><img src="https://s2.loli.net/2022/02/19/SpDekj7MJsitIAv.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="辅助求解方法">2.5.4辅助求解方法</h3>
-<p>1）图解法（通用方法）</p>
-<p>2）对位相乘求和、表格方法、矩阵方法（离散）</p>
-<p><img src="https://s2.loli.net/2022/02/19/bVmzxgWTaIUelYX.png" srcset="/img/loading.gif" lazyload /></p>
-<p>3）对连续时间信号离散化求解</p>
-<h3 id="解卷积">2.5.5解卷积</h3>
-<p>输入、卷积结果、系统单位冲激响应信号，知其二求其一。</p>
-<p>例：x[n],y[n]求：h[n]—&gt;系统辨识；</p>
-<p>​ h[n],y[n]求：x[n]—&gt;信号估计，信号恢复；</p>
-<p>应用：图像恢复、雷达探测等。</p>
-<h3 id="卷积的应用">2.5.6卷积的应用</h3>
-<p>1）滤波：去噪、均衡、补偿</p>
-<p>图像滤波，采用不同的滤波算子进行卷积达到不同的图像滤波效果。</p>
+              <h1 id="我和桂电的故事选择即是热爱">我和桂电的故事：选择即是热爱</h1>
+<p>2016年我和大多数人一样，对于自己未来的职业发展和兴趣爱好不甚了解，经家人推荐，我的填报了桂林电子科技大学，并顺利录取。选择即是热爱，大一我就喜欢上了这所以电子信息见长的大学，这可能是一个男生对技术的尊崇与偏爱。当时校创新实践基地、机器人中心的技术水平和取得的成果让大一的我很是惊讶，很难想象一名本科学生就可以和校外企业合作项目，获得不菲的劳务。而我也在机电工程学院组织的创新文化月中迈出了我技术学习的第一步，那是一台由51单片机控制的计时器，它曾一度让我沉迷其中、废寝忘食。</p>
+<p><img src="https://s2.loli.net/2022/05/26/EMDHvlF7dPcxQzB.gif" srcset="/img/loading.gif" lazyload alt="STM32跑马灯" style="zoom:300%;" /></p>
+<p>后来由于自己割舍不断的军旅情怀，我选择了参军入伍，待大二复学时转眼已是2019年，经过之前的学习和思考，我对自己有了较为清晰的认识，发现自己对计算机编程和数学有着浓厚的兴趣，所以我选择转入数学与计算科学学院信息与计算科学专业学习。但两年的部队生活，高强度的军事训练，几乎不怎么接触学科知识，这让初返校园连三角函数都已经忘记怎么算的我十分不适，再加上转专业后许多课程需要补，以至于课程冲突最厉害时，同一时间冲突了三门课，所以我只能利用课余时间看书、看慕课进行补课，那段时间自己忙碌而充实。不过在这忙碌学习之余，我还是有幸参加了青春桂电，在这里我认识了很多有趣有义有能力的朋友，我们经常穿着小马甲，拿着手里的相机在校园各处拍摄采访，每当看到自己拍摄的照片和制作的视频在学校新媒体平台上发表时，心里就涌起满满的喜悦和满足，仿佛之前忙碌带来的疲惫一扫而空了。</p>
+<figure>
+<img src="https://s2.loli.net/2022/05/26/vMybTquSwAcJjEt.jpg" srcset="/img/loading.gif" lazyload
+alt="校园合唱节拍摄报道" />
+<figcaption aria-hidden="true">校园合唱节拍摄报道</figcaption>
+</figure>
+<p>到了大三后，自己有了一些沉淀，在学院也慢慢地崭露头角，开始接触一些老师的科研项目，并且带领团队去参加一些比赛。我初次接触导师唐敏副教授是起源于之前参加的学院创新实践基地，在大三时开始施行导师制，我当时就选择了唐敏老师，她是一位很年轻、很负责任的老师，她安排给我们看论文，学习机器学习相关知识，开组会分享本周的学习内容。在她的启发下共同完成了两篇学术论文，并且均投稿在国际知名期刊上，对此我付出了很多努力，也极大开拓了自己的视野。特别是在其中一篇非交互式SVM训练算法的设计上，我创新性地提出了一种通过矩阵分解来分离权重和样本数据的方法，极大改进了隐私保护下SVM模型分布式训练过程，而提出这种创新性的实用方法带来的喜悦无以言表，使我愿意通宵达旦、不眠不休地去实验证明其可靠性。</p>
+<figure>
+<img src="https://s2.loli.net/2022/05/26/Hn4qkhzomwLPgjK.jpg" srcset="/img/loading.gif" lazyload
+alt="算法模型图" />
+<figcaption aria-hidden="true">算法模型图</figcaption>
+</figure>
+<p>此外在校期间，我参加过挑战杯、互联网＋、蓝桥杯、数学建模、数学竞赛等等许多竞赛，也拿了一些奖。曾经我会因为一纸获奖证书而兴奋不已，但其实我回过头看，拥有这些获奖证书好像并没有很大意义，相反能让我津津乐道的还是那些参赛过程。我现在更倾向于去提高自身能力，自身能力提高了，一些奖项自然而然地就来了，而这些竞赛经历也在潜移默化地提升着自身能力。在一个团队中作为负责人往往要承担比其他成员多得多的责任，同样也能收获多得多的成长，我们互联网＋项目团队从组建到进入全国总决赛历时将近一年，团队成员相继加入又相继离场，最后七人的学生团队互相扶持，攻克难关。在这一路上，李冠霖、徐增敏两位老师为我们尽心竭力，帮助我们寻找项目资源、理清项目逻辑，使起先的一个想法最终登上了全国总决赛的舞台。</p>
+<figure>
+<img src="https://s2.loli.net/2022/05/26/cEFQ6k7UpyVDwqX.jpg" srcset="/img/loading.gif" lazyload
+alt="第七届“互联网+”大赛" />
+<figcaption aria-hidden="true">第七届“互联网+”大赛</figcaption>
+</figure>
+<p>长期以来，我始终以“感恩社会，奉献学校，服务师生，锻炼自己”为宗旨，在服务他人的过程中我自己也能得到满足。在抗击新冠肺炎疫情期间，习近平总书记强调，要关心关爱广大医务人员，帮助解决实际困难和问题。江西省团委号召赣籍学子积极响应，开展“为奉献者奉献”志愿关爱行动，对此我凭借自己所学知识，充分发挥数学专业优势，对坚守在防‘疫’一线的医务人员子女的数学和物理学科开展一对一学业辅导，巩固网络教学内容，复习知识点，讲解解题思路，扩展知识面，提升学习兴趣。我辅导的学生有了明显的提升，并在开学后的测试中数学考出了102分的满意成绩。另外，在学习和辅导之余，我还积极投身社区防疫志愿服务，主动担负起晚上通宵执勤监测任务，对外来人员进行严格的体温测量，秉承“无论是谁，没有通行证一律不放行”的原则，坚决阻止病毒携带者进入社区，做到了一切为人民，把人民群众的生命安全和身体健康放在第一位。</p>
+<figure>
+<img src="https://s2.loli.net/2022/05/26/PuE3AIFLS8t52mc.png" srcset="/img/loading.gif" lazyload
+alt="医务人员子女线上一对一辅导" />
+<figcaption aria-hidden="true">医务人员子女线上一对一辅导</figcaption>
+</figure>
+<p>习近平总书记在党的十九大报告中强调：“青年兴则国家兴，青年强则国家强。青年一代有理想、有本领、有担当，国家就有前途，民族就有希望。”
+作为新时代的中国青年，我将时刻牢记总书记的教诲，努力做到有理想、有本领、有担当，将自己的爱国热情化作行动，将自己的理想和祖国的前途命运结合起来，让青春在党和人民最需要的地方绽放绚丽之花，为社会主义经济建设做出更大贡献，努力在中华民族复兴的伟大实践中书写出一份绚烂无悔的青春篇章。</p>
+<figure>
+<img src="https://s2.loli.net/2022/05/26/zx2KOViYERqPCoM.jpg" srcset="/img/loading.gif" lazyload
+alt="小小特种兵夏令营带训" />
+<figcaption aria-hidden="true">小小特种兵夏令营带训</figcaption>
+</figure>
 
               
             </div>
@@ -465,15 +342,8 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%A4%8D%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">复试学习笔记</a>
+  <a href="/categories/%E9%9A%8F%E7%AC%94/" class="category-chain-item">随笔</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%A4%8D%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/" class="category-chain-item">信号与系统</a>
-  
-  
-
   
 
       </span>
@@ -487,7 +357,7 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/">#信号与系统</a>
+        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/">#个人总结</a>
       
     </div>
   
@@ -499,8 +369,8 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>信号与系统——第二章（时域系统分析）</div>
-      <div>https://2022xi.github.io/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E6%97%B6%E5%9F%9F%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%EF%BC%89/</div>
+      <div>我和桂电的故事：选择即是热爱</div>
+      <div>https://2022xi.github.io/2022/05/26/%E6%88%91%E5%92%8C%E6%A1%82%E7%94%B5%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%9A%E9%80%89%E6%8B%A9%E5%8D%B3%E6%98%AF%E7%83%AD%E7%88%B1/</div>
     </div>
     <div class="license-meta">
       
@@ -512,7 +382,7 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月10日</div>
+          <div>2022年5月26日</div>
         </div>
       
       
@@ -542,18 +412,12 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%A2%91%E8%B0%B1%E5%88%86%E6%9E%90%EF%BC%89/" title="信号与系统——第三章（信号的频谱分析）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">信号与系统——第三章（信号的频谱分析）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/10/%E4%B8%8D%E6%87%82%E9%9F%B3%E4%B9%90%EF%BC%8C%E4%BD%86%E6%83%B3%E5%AD%A6%E5%90%89%E4%BB%96%E7%9A%84%E6%8B%A8%E5%BC%A6%E6%89%8B/" title="不懂音乐，但想学吉他的拨弦手">
-                        <span class="hidden-mobile">不懂音乐，但想学吉他的拨弦手</span>
+                      <a href="/2022/05/23/STM32%E2%80%94%E2%80%94GPIO%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%93%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/" title="STM32——GPIO工作原理及库函数介绍">
+                        <span class="hidden-mobile">STM32——GPIO工作原理及库函数介绍</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -635,12 +499,6 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -875,44 +733,6 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        MathJax = {
-          tex    : {
-            inlineMath: { '[+]': [['$', '$']] }
-          },
-          loader : {
-            load: ['ui/lazy']
-          },
-          options: {
-            renderActions: {
-              findScript    : [10, doc => {
-                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-                  const display = !!node.type.match(/; *mode=display/);
-                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-                  const text = document.createTextNode('');
-                  node.parentNode.replaceChild(text, node);
-                  math.start = { node: text, delim: '', n: 0 };
-                  math.end = { node: text, delim: '', n: 0 };
-                  doc.math.push(math);
-                });
-              }, '', false],
-              insertedScript: [200, () => {
-                document.querySelectorAll('mjx-container').forEach(node => {
-                  let target = node.parentNode;
-                  if (target.nodeName.toLowerCase() === 'li') {
-                    target.parentNode.classList.add('has-jax');
-                  }
-                });
-              }, '', false]
-            }
-          }
-        };
-      </script>
-    
-
-  <script  src="https://cdn.staticfile.org/mathjax/3.2.0/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
