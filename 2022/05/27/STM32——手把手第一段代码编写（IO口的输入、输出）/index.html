@@ -16,24 +16,23 @@
   <meta name="author" content="酒中仙">
   <meta name="keywords" content="">
   
-    <meta name="description" content="非root用户还是离线安装tensorflow-gpu很少有这么苛刻的条件。本文借助虚拟机搭建好tensorflow-gpu虚拟环境后，将其迁移至公共服务器上，再离线安装cuda和cudnn。">
+    <meta name="description" content="这篇文章标志着博主迈出了研究生学习的第一步，凭借大一学习51单片机的基础，正式开启STM32的学习。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x">
-<meta property="og:url" content="https://2022xi.github.io/2022/03/10/%E5%9C%A8%E5%85%AC%E5%85%B1Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BD%BF%E7%94%A8%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85tensorflow-gpu/index.html">
+<meta property="og:title" content="STM32——手把手第一段代码编写（IO口的输入、输出）">
+<meta property="og:url" content="https://2022xi.github.io/2022/05/27/STM32%E2%80%94%E2%80%94%E6%89%8B%E6%8A%8A%E6%89%8B%E7%AC%AC%E4%B8%80%E6%AE%B5%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99%EF%BC%88IO%E5%8F%A3%E7%9A%84%E8%BE%93%E5%85%A5%E3%80%81%E8%BE%93%E5%87%BA%EF%BC%89/index.html">
 <meta property="og:site_name" content="舍功利之心，注一腔热情。">
-<meta property="og:description" content="非root用户还是离线安装tensorflow-gpu很少有这么苛刻的条件。本文借助虚拟机搭建好tensorflow-gpu虚拟环境后，将其迁移至公共服务器上，再离线安装cuda和cudnn。">
+<meta property="og:description" content="这篇文章标志着博主迈出了研究生学习的第一步，凭借大一学习51单片机的基础，正式开启STM32的学习。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2022xi.github.io/img/tensorflow-gpu.jpg">
-<meta property="article:published_time" content="2022-03-10T11:07:36.793Z">
-<meta property="article:modified_time" content="2022-03-26T09:25:14.069Z">
+<meta property="og:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103.jpg">
+<meta property="article:published_time" content="2022-05-27T02:45:09.746Z">
+<meta property="article:modified_time" content="2022-05-28T08:51:22.542Z">
 <meta property="article:author" content="酒中仙">
-<meta property="article:tag" content="tensorflow">
-<meta property="article:tag" content="cuda">
+<meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2022xi.github.io/img/tensorflow-gpu.jpg">
+<meta name="twitter:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103.jpg">
   
   
-  <title>在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x - 舍功利之心，注一腔热情。</title>
+  <title>STM32——手把手第一段代码编写（IO口的输入、输出） - 舍功利之心，注一腔热情。</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,7 +214,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x">
+          <span id="subtitle" title="STM32——手把手第一段代码编写（IO口的输入、输出）">
             
           </span>
         </div>
@@ -227,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-10 19:07" pubdate>
-          2022年3月10日 晚上
+        <time datetime="2022-05-27 10:45" pubdate>
+          2022年5月27日 上午
         </time>
       </span>
     
@@ -239,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          1.8k 字
         
       </span>
     
@@ -250,7 +249,7 @@
         
         
         
-          26 分钟
+          15 分钟
         
       </span>
     
@@ -288,113 +287,93 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x</h1>
+            <h1 style="display: none">STM32——手把手第一段代码编写（IO口的输入、输出）</h1>
             
             <div class="markdown-body">
               
               <h1
-id="在公共服务器上使用非root用户离线安装tensorflow-gpu-2.x">在公共服务器上使用非root用户离线安装tensorflow-gpu
-2.x</h1>
-<p>非root用户还是离线安装tensorflow-gpu很少有这么苛刻的条件，这偏偏被我遇上了。。。</p>
-<p>场景是这样的，老师给了我一个超算的用户，这种学校的公共服务器肯定是不会给root权限的，而偏偏这台机器只连学校内网，这就很郁闷。。。</p>
-<p>在网上查了查很少有这样场景下的安装教程，于是我就来写一篇。</p>
-<h2 id="一寻常做法">一、寻常做法</h2>
-<p>因为离线，所以寻常做法是通过命令复制现有的base环境</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create tf_gpu -clone base<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>在自己电脑里下载python、tensorflow-gpu，以及所有依赖库，把它们都上传到服务器上一个一个安装，不出所料我吐了。</p>
-<p>于是经过我百般摸索，使出了浑身解数，终于给我发现了一个神奇的方法。</p>
-<h2 id="二借助虚拟机安装">二、借助虚拟机安装</h2>
-<p>这起源于，我从百度上得知conda创建的虚拟环境可以直接复制到另一台机器上使用。</p>
-<p>我在我自己的笔记本上创建了一个和服务器ubuntu版本一样的虚拟机（虚拟机的安装过程我这里就不叙述了）。在服务器上，通过conda-V命令我得到了服务器上conda的版本是4.10.3，于是我在虚拟机上也同样安装了一个conda4.10.3。于是我在虚拟机上，安装寻常安装tensorflow的步骤：</p>
-<p>创建虚拟环境。</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create -n tf_gpu Python&#x3D;3.9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>激活虚拟环境。</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">activate tf-gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>安装tensorflow-gpu，这样所需要的依赖就可以自动安装。</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda install tensorflow-gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>网上说要使用gpu加速，需要另外装cuda和cudnn两个工具，而cuda和cudnn有很严格的版本对应关系，因为担心会冲突，我先用conda安装cudatoolkit、cudnn</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda install cudatoolkit
-conda install cudnn<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
-<p>这样我就得到了cuda版本11.3.1和cudnn版本8.2.1（不知道我这样是否多此一举，但我确是这样做了），后续下载相应的版本进行安装。</p>
-<p><img src="https://s2.loli.net/2022/02/12/TseURp37FrJNWjD.png" srcset="/img/loading.gif" lazyload /></p>
-<p>注意：以上安装过程均未使用root权限。</p>
-<p>把前面这些能在虚拟机中安装好的完成之后，开始将tf_gpu打包，使用cd命令切换至虚拟环境目录，打包虚拟环境tf_gpu</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -zcvf tf_gpu.tar.gz tf_gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>将tf_gpu.tar.gz复制上传至服务器。</p>
-<p>将tf_gpu.tar.gz解压至服务器conda的虚拟环境目录</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -zxvf tf_gpu.tar.gz -C ～&#x2F;.conda&#x2F;envs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>这里每个人的conda虚拟环境目录可能会不同，请根据自己的实际情况而定。</p>
-<p>解压之后，在终端中输入conda info
--e就会发现tf_gpu已经迁移到服务器中了。</p>
-<p><img src="https://s2.loli.net/2022/02/12/L3oe91xKldTjXJz.png" srcset="/img/loading.gif" lazyload /></p>
-<p>激活tf_gpu虚拟环境</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">activate tf_gpu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>进入python环境</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
-a <span class="token operator">=</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
-<p>可以正常输出，但会报一堆警告，这是因为还需要安装cuda和cudnn。</p>
-<h2 id="三cuda安装">三、cuda安装</h2>
-<p>到NVIDIA官网 <a
-target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https%3A%2F%2Fdeveloper.nvidia.com%2Fcuda-toolkit-archive">[CUDA
-Toolkit Archive | NVIDIA
-Developer](https://developer.nvidia.com/cuda-toolkit-archive)</a>
-选择对应版本的cuda，这里选择11.3.1。</p>
-<p>然后再选对应的系统型号和installer type</p>
-<p><img src="https://s2.loli.net/2022/02/12/yQBxj1aoU5OGILl.png" srcset="/img/loading.gif" lazyload /></p>
-<p>将“Base
-Installer”里面的下载链接复制到下载器中，或者也可以自己复制链接地址用wget下载，然后安装</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wget https:&#x2F;&#x2F;developer.download.nvidia.com&#x2F;compute&#x2F;cuda&#x2F;11.3.1&#x2F;local_installers&#x2F;cuda_11.3.1_465.19.01_linux.run
-# sh后的文件名以实际下载文件名为准
-sh cuda_11.3.1_465.19.01_linux.run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
-<p>因为是非root用户，所以安装过程中所以需要root权限的操作都要避免掉。</p>
-<p>接受协议</p>
-<p><img src="https://s2.loli.net/2022/02/12/8Kqpe5LWDuFfrcw.png" srcset="/img/loading.gif" lazyload /></p>
-<p>取消cuda安装驱动程序</p>
-<p><img src="https://s2.loli.net/2022/02/12/W3C26owX1KPBRd7.png" srcset="/img/loading.gif" lazyload /></p>
-<p>进入Options</p>
-<p><img src="https://s2.loli.net/2022/02/12/9E84ftDTvN3L1oR.png" srcset="/img/loading.gif" lazyload /></p>
-<p>不更新和安装驱动</p>
-<p><img src="https://s2.loli.net/2022/02/12/uyEtc69XA7OgFdY.png" srcset="/img/loading.gif" lazyload /></p>
-<p>不创建链接和文档</p>
-<p><img src="https://s2.loli.net/2022/02/12/DzuqixQXkce8Sfp.png" srcset="/img/loading.gif" lazyload /></p>
-<p>更改cuda的安装路径为用户目录</p>
-<p><img src="https://s2.loli.net/2022/02/12/qyM1DjgrCAL3NVR.png" srcset="/img/loading.gif" lazyload /></p>
-<p>更改完这些选项就可以安装了。</p>
-<h2 id="四cudnn安装">四、cudnn安装</h2>
-<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">cuDNN
-Archive | NVIDIA Developer</a>
-下载cudnn需要NVIDIA账号，注册一个即可。</p>
-<p>选择对应cuda版本号的cudnn版本（8.2.1）。</p>
-<p><img src="https://s2.loli.net/2022/02/12/wbcT2ovR7UCxJSg.png" srcset="/img/loading.gif" lazyload /></p>
-<p>选择cuDNN Library for
-Linux，因为下载cudnn是需要登录的，所以在自己电脑上下载后，再传到服务器上。</p>
-<p>下载完 cuDNN，发现后缀是 .tgz ，使用命令解压至用户目录</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -zxvf cudnn-11.3-linux-x64-v8.2.1.32.tgz -C ~&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
-<p>解压后发现cudnn总共分两个目录，复制 cuDNN 文件到 CUDA
-安装目录：(cuDNN 解压到 ~/cuda 目录了，~/cuda-11.3 为自己设定的 CUDA
-安装目录，~ 代表用户目录),并且给所有用户添加读的权限</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cp ~&#x2F;cuda&#x2F;include&#x2F;cudnn.h ~&#x2F;cuda-11.3&#x2F;include
-cp ~&#x2F;cuda&#x2F;lib64&#x2F;lib* ~&#x2F;cuda-11.3&#x2F;lib64
-chmod a+r ~&#x2F;cuda-11.3&#x2F;include&#x2F;cudnn.h ~&#x2F;cuda-11.3&#x2F;lib64&#x2F;libcudnn*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
-<p>建立软连接</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd ~&#x2F;cuda-11.3&#x2F;lib64
-ln -sf libcudnn.so.8.2.1 libcudnn.so.8
-ln -sf libcudnn.so.8 libcudnn.so
-ldconfig -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
-<h2 id="五配置用户环境变量">五、配置用户环境变量</h2>
-<p>修改 ~/.bashrc 文件，将下面两行加进去：（将xxx 改成自己的用户名）</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">export PATH&#x3D;&#x2F;home&#x2F;xxx&#x2F;cuda-11.3&#x2F;bin$&#123;PATH:+:$&#123;PATH&#125;&#125; 
-export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib64$&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
-<p>保存 ~/.bashrc 文件后，source ~/.bashrc 使其生效。</p>
-<p>到这一步tensorflow-gpu的环境搭建就完成了，我们可以验证一下是否启动了GPU加速。在python中运行下面代码，打印结果若是true，则成功启动GPU加速，反之。</p>
-<div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
-<span class="token keyword">print</span><span class="token punctuation">(</span>tf<span class="token punctuation">.</span>test<span class="token punctuation">.</span>is_gpu_available<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
-<p><strong><em>温馨提示：</em></strong>使用公共服务器的同学可以在安装自己的cuda和cudnn后，最好删除安装文件，为自己和别人节省公共空间。（安装其他包也是一样，及时清理安装缓存文件）</p>
-<h2 id="reference">reference</h2>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c95c5b6a4707">Linux服务器中非 root
-用户安装（多版本） CUDA 和 cuDNN - 简书 (jianshu.com)</a></p>
+id="stm32手把手第一段代码编写跑马灯io口输出">STM32——手把手第一段代码编写（跑马灯IO口输出）</h1>
+<h2 id="库函数版本">库函数版本</h2>
+<h3 id="io口操作流程">IO口操作流程</h3>
+<ul>
+<li>使能IO口时钟，调用函数RCC_APB2PeriphColckCmd(),
+不同的IO组，调用的时钟使能函数不一样</li>
+</ul>
+<p><div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOA<span class="token operator">|</span>RCC_APB2Periph_GPIOD<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>	 <span class="token comment">//使能PB,PE端口时钟</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></p>
+<ul>
+<li><p>初始化IO口模式，调用函数GPIO_Init()</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">GPIO_InitTypeDef  GPIO_InitStructure<span class="token punctuation">;</span>
+GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_8<span class="token punctuation">;</span>				 <span class="token comment">//LED0-->PB.5 端口配置</span>
+GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_Out_PP<span class="token punctuation">;</span> 		 <span class="token comment">//推挽输出</span>
+GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_50MHz<span class="token punctuation">;</span>		 <span class="token comment">//IO口速度为50MHz</span>
+<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span>					 <span class="token comment">//根据设定参数初始化GPIOB.5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+<li><p>操作IO口，输出高低电平</p></li>
+</ul>
+<p><div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">GPIO_SetBits</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span>GPIO_Pin_8<span class="token punctuation">)</span><span class="token punctuation">;</span>						 <span class="token comment">//PA.8 输出高</span>
+<span class="token function">GPIO_ResetBits</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span>GPIO_Pin_8<span class="token punctuation">)</span><span class="token punctuation">;</span>				     <span class="token comment">//PA.8 输出低 </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></p>
+<h3 id="硬件驱动程序编写">硬件驱动程序编写</h3>
+<p>通常会同时编写一个.c文件和.h文件。</p>
+<ul>
+<li><p>编写.h文件时避免头文件被重复引用</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">__XX_H     </span><span class="token comment">//若文件中没有引用xx.h文件，则执行#define __XX_H</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">__XX_H</span></span>
+
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span>             <span class="token comment">//若文件中已经引用xx.h文件，则中间内容不被执行</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+<li><p>编写.c文件时，按照IO口操作流程进行初始化</p></li>
+</ul>
+<h2 id="寄存器版本">寄存器版本</h2>
+<h3 id="io口操作流程-1">IO口操作流程</h3>
+<ul>
+<li><p>使能IO口时钟，配置寄存器RCC_APB2ENR</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stm32f10x.h"</span></span>
+RCC<span class="token operator">-></span>APB2ENR<span class="token operator">|=</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">6</span><span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">3</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></li>
+<li><p>初始化IO口模式，配置寄存器GPIOx_CRH/CRL</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//GPIOB.5设置成推挽输出</span>
+GPIOB<span class="token operator">-></span>CRL<span class="token operator">&amp;=</span><span class="token number">0xFF0FFFFF</span><span class="token punctuation">;</span>
+GPIOB<span class="token operator">-></span>CRL<span class="token operator">|=</span><span class="token number">0x00300000</span><span class="token punctuation">;</span>
+<span class="token comment">//GPIOE.9设置成推挽输出</span>
+GPIOE<span class="token operator">-></span>CRH<span class="token operator">&amp;=</span><span class="token number">0xFFFFFFF0</span><span class="token punctuation">;</span>
+GPIOE<span class="token operator">-></span>CRH<span class="token operator">|=</span><span class="token number">0x00000003</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+<li><p>操作IO口，输出高低电平，配置寄存器GPIOX_ODR或者BSRR/BRR</p></li>
+</ul>
+<p><div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">GPIOB<span class="token operator">-></span>ODR<span class="token operator">|=</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">5</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></p>
+<p>## 位操作版本</p>
+<p>IO口操作流程</p>
+<ul>
+<li><p>使能IO口时钟，调用函数RCC_APB2PeriphColckCmd()</p></li>
+<li><p>初始化IO口模式，调用函数GPIO_Init()</p></li>
+<li><p>操作IO口，输出高低电平，使用位带操作</p></li>
+</ul>
+<h1
+id="stm32手把手第一段代码编写按键io口输入">STM32——手把手第一段代码编写（按键IO口输入）</h1>
+<h3 id="io口操作流程-2">IO口操作流程</h3>
+<ul>
+<li><p>使能按键对应IO口时钟，调用函数：RCC_APB2PeriphClockCmd()</p></li>
+<li><p>初始化IO模式：上拉/下拉输入，调用函数：GPIO_Init()</p></li>
+<li><p>扫描IO口电平（库函数/寄存器/位操作）</p></li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// 库函数版本</span>
+<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOA<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span>；
+GPIO_InitTypeDef  GPIO_InitStructure<span class="token punctuation">;</span>
+GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_5<span class="token punctuation">;</span>				 <span class="token comment">//按键0-->PA.5 端口配置</span>
+GPIO_InitStructure<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_IPU<span class="token punctuation">;</span> 		     <span class="token comment">//上拉输入</span>
+<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStructure<span class="token punctuation">)</span><span class="token punctuation">;</span>					 <span class="token comment">//根据设定参数初始化GPIOA.5</span>
+<span class="token function">GPIO_ReadInputDataBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span>GPIO_Pin_5<span class="token punctuation">)</span><span class="token comment">//读取按键0</span>
+
+<span class="token comment">// 寄存器版本</span>
+<span class="token keyword">void</span> <span class="token function">KEY_Init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	RCC<span class="token operator">-></span>APB2ENR<span class="token operator">|=</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">2</span><span class="token punctuation">;</span>     <span class="token comment">//使能PORTA时钟</span>
+	GPIOA<span class="token operator">-></span>CRL<span class="token operator">&amp;=</span><span class="token number">0XFF0FFFFF</span><span class="token punctuation">;</span>	<span class="token comment">//PC5设置成输入	  </span>
+	GPIOA<span class="token operator">-></span>CRL<span class="token operator">|=</span><span class="token number">0X00800000</span><span class="token punctuation">;</span>   
+	GPIOA<span class="token operator">-></span>ODR<span class="token operator">|=</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">5</span><span class="token punctuation">;</span>	   	<span class="token comment">//PC5上拉 </span>
+<span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<h3 id="按键扫描思路">按键扫描思路</h3>
+<p><img src="https://s2.loli.net/2022/05/28/VtMHro6bONqluZK.png" srcset="/img/loading.gif" lazyload /></p>
+<p>记录电平跳变并持续一小段时间，则可判断按键按下。</p>
+<h1 id="mdk中寄存器地址名称映射">MDK中寄存器地址名称映射</h1>
+<p><img src="https://s2.loli.net/2022/05/28/kp7mhwo2ldsiKRj.jpg" srcset="/img/loading.gif" lazyload /></p>
 
               
             </div>
@@ -412,12 +391,12 @@ export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="category-chain-item">深度学习</a>
+  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" class="category-chain-item">嵌入式开发</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/tensorflow/" class="category-chain-item">tensorflow</a>
+  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/STM32/" class="category-chain-item">STM32</a>
   
   
 
@@ -434,9 +413,7 @@ export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/tensorflow/">#tensorflow</a>
-      
-        <a href="/tags/cuda/">#cuda</a>
+        <a href="/tags/STM32/">#STM32</a>
       
     </div>
   
@@ -448,8 +425,8 @@ export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>在公共服务器上使用非root用户离线安装tensorflow-gpu 2.x</div>
-      <div>https://2022xi.github.io/2022/03/10/%E5%9C%A8%E5%85%AC%E5%85%B1Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BD%BF%E7%94%A8%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85tensorflow-gpu/</div>
+      <div>STM32——手把手第一段代码编写（IO口的输入、输出）</div>
+      <div>https://2022xi.github.io/2022/05/27/STM32%E2%80%94%E2%80%94%E6%89%8B%E6%8A%8A%E6%89%8B%E7%AC%AC%E4%B8%80%E6%AE%B5%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99%EF%BC%88IO%E5%8F%A3%E7%9A%84%E8%BE%93%E5%85%A5%E3%80%81%E8%BE%93%E5%87%BA%EF%BC%89/</div>
     </div>
     <div class="license-meta">
       
@@ -461,7 +438,7 @@ export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月10日</div>
+          <div>2022年5月27日</div>
         </div>
       
       
@@ -491,18 +468,12 @@ export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;wuliyttaotao&#x2F;cuda-11.3&#x2F;lib
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%88%E9%A2%91%E8%B0%B1%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8%EF%BC%89/" title="信号与系统——第四章（频谱分析技术应用）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">信号与系统——第四章（频谱分析技术应用）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%A2%91%E8%B0%B1%E5%88%86%E6%9E%90%EF%BC%89/" title="信号与系统——第三章（信号的频谱分析）">
-                        <span class="hidden-mobile">信号与系统——第三章（信号的频谱分析）</span>
+                      <a href="/2022/05/26/%E6%88%91%E5%92%8C%E6%A1%82%E7%94%B5%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%9A%E9%80%89%E6%8B%A9%E5%8D%B3%E6%98%AF%E7%83%AD%E7%88%B1/" title="我和桂电的故事：选择即是热爱">
+                        <span class="hidden-mobile">我和桂电的故事：选择即是热爱</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
