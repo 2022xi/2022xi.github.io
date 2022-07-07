@@ -16,23 +16,23 @@
   <meta name="author" content="酒中仙">
   <meta name="keywords" content="">
   
-    <meta name="description" content="跨专业考研，复试科目：信号与系统，清华大学卓晴副教授课程学习笔记。这一节内容涉及很多电路知识，由于本人跨考的是网安，所以这部分知识就不去填补了，只理解时域系统分析的一般方法。">
+    <meta name="description" content="这篇文章标志着博主迈出了研究生学习的第一步，凭借大一学习51单片机的基础，正式开启STM32的学习。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="信号与系统——第二章（时域系统分析）">
-<meta property="og:url" content="https://2022xi.github.io/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E6%97%B6%E5%9F%9F%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%EF%BC%89/index.html">
+<meta property="og:title" content="STM32——IIC、SPI通信">
+<meta property="og:url" content="https://2022xi.github.io/2022/07/02/STM32%E2%80%94%E2%80%94IIC%E3%80%81SPI%E9%80%9A%E4%BF%A1/index.html">
 <meta property="og:site_name" content="舍功利之心，注一腔热情。">
-<meta property="og:description" content="跨专业考研，复试科目：信号与系统，清华大学卓晴副教授课程学习笔记。这一节内容涉及很多电路知识，由于本人跨考的是网安，所以这部分知识就不去填补了，只理解时域系统分析的一般方法。">
+<meta property="og:description" content="这篇文章标志着博主迈出了研究生学习的第一步，凭借大一学习51单片机的基础，正式开启STM32的学习。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2022xi.github.io/img/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F(%E7%AC%AC%E4%BA%8C%E7%AB%A0).jpg">
-<meta property="article:published_time" content="2022-03-10T11:07:36.752Z">
-<meta property="article:modified_time" content="2022-03-26T09:21:33.821Z">
+<meta property="og:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103.jpg">
+<meta property="article:published_time" content="2022-07-01T16:04:10.147Z">
+<meta property="article:modified_time" content="2022-07-02T09:56:37.672Z">
 <meta property="article:author" content="酒中仙">
-<meta property="article:tag" content="信号与系统">
+<meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2022xi.github.io/img/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F(%E7%AC%AC%E4%BA%8C%E7%AB%A0).jpg">
+<meta name="twitter:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103.jpg">
   
   
-  <title>信号与系统——第二章（时域系统分析） - 舍功利之心，注一腔热情。</title>
+  <title>STM32——IIC、SPI通信 - 舍功利之心，注一腔热情。</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +214,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="信号与系统——第二章（时域系统分析）">
+          <span id="subtitle" title="STM32——IIC、SPI通信">
             
           </span>
         </div>
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-10 19:07" pubdate>
-          2022年3月10日 晚上
+        <time datetime="2022-07-02 00:04" pubdate>
+          2022年7月2日 凌晨
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          1.7k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          21 分钟
+          14 分钟
         
       </span>
     
@@ -287,167 +287,99 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">信号与系统——第二章（时域系统分析）</h1>
+            <h1 style="display: none">STM32——IIC、SPI通信</h1>
             
             <div class="markdown-body">
               
-              <h1
-id="信号与系统第二章时域系统分析">信号与系统——第二章（时域系统分析）</h1>
-<p><img src="https://s2.loli.net/2022/02/16/S8K9TmxprO5bsoV.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="微分方程与差分方程">2.1微分方程与差分方程</h2>
-<h3 id="微分方程的建立">2.1.1微分方程的建立</h3>
-<p>以输出信号的导数的最高阶次，作为微分方程的阶次。微分方程根据物理的实际问题建立输入输出关系，例如电路系统，根据元器件的电气特性建立微分方程。</p>
-<p><img src="https://s2.loli.net/2022/02/17/AOqx5ngbUShmLF6.png" srcset="/img/loading.gif" lazyload /></p>
-<p>一般把输出写在方程的左边，输入写在方程的右边。</p>
-<h3 id="差分方程的建立">2.1.2差分方程的建立</h3>
-<p>常用后向差分方程，以输出信号的最大延迟作为差分方程的阶。</p>
-<p><img src="https://s2.loli.net/2022/02/17/AqGijdJagRoZp9e.png" srcset="/img/loading.gif" lazyload /></p>
-<p>1）微分方程离散化：使用前向差分或后向差分近似微分。</p>
-<p>2）物理系统建立差分方程。</p>
-<p>3）根据系统框图建立差分方程。</p>
-<h3 id="方程求解">2.1.3方程求解</h3>
-<p>建立微分/差分方程数学模型，求解输入输出的隐式关系成显式关系，并通过结果介绍其中物理含义。</p>
-<p><img src="https://s2.loli.net/2022/02/17/IVml4wCsJTrASUE.jpg" srcset="/img/loading.gif" lazyload /></p>
-<p>根据微分/差分方程的齐次方程的特征方程，求出带待定系数的齐次解，</p>
-<p><img src="https://s2.loli.net/2022/02/17/w2VkeYozj6qitup.png" srcset="/img/loading.gif" lazyload /></p>
-<p>求出微分/差分方程的一个特解，</p>
-<p><img src="https://s2.loli.net/2022/02/17/e2RYrvcVX4BoCZA.png" srcset="/img/loading.gif" lazyload /></p>
-<p>根据初始条件确定方程中的未知参数。</p>
-<h2 id="确定系统初始条件">2.2确定系统初始条件</h2>
-<p><img src="https://s2.loli.net/2022/02/17/IDX7FHxJewjTv2O.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="物理条件约束方法">2.2.1物理条件约束方法</h3>
-<p>根据系统的实际物理特性确定，这处老师讲解的例子需要运用到电容电感的电路知识，这里我将题目列出，感兴趣的朋友可以试一试。</p>
-<p><img src="https://s2.loli.net/2022/02/17/aoj234TkxqfYXO6.png" srcset="/img/loading.gif" lazyload /></p>
-<p>0时刻之前开关S在1处，0时刻将开关S拨向2处，求0+时刻通过电阻R1的电流。</p>
-<h3 id="奇异函数匹配方法">2.2.1奇异函数匹配方法</h3>
-<p>例如将函数y(t)分解成一个连续函数+单位冲激偶函数+单位冲激函数+单位跃迁函数
-<span class="math display">\[
-y(t){|_{ {0_ - } \sim {0_ + } } } = {y_1}(t) + a\delta &#39;(t) +
-b\delta (t) + c\Delta u(t)
-\]</span> 求y(t)在0-到0+之间的跳变， <span class="math display">\[
-y({0_ + }) - y({0_ - }) = c
-\]</span>
-应为只有单位跃迁函数在0处出现了跳变。所以计算整体跳变时，仅计算单位跃迁函数部分即可。</p>
-<p>例子：</p>
-<p><img src="https://s2.loli.net/2022/02/17/pWKk8usZPFQmXDg.png" srcset="/img/loading.gif" lazyload /></p>
-<p>博主真迹：</p>
-<p><img src="https://s2.loli.net/2022/02/17/sZXleNL5F2GkSPJ.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="迭代方法差分方程">2.2.1迭代方法：差分方程</h3>
-<p><img src="https://s2.loli.net/2022/02/17/asLqfgP2QoFmtdE.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="系统初始条件的两种特殊情况">2.2.1系统初始条件的两种特殊情况</h3>
+              <h1 id="iic通信">IIC通信</h1>
+<p>I2C(IIC,Inter－Integrated
+Circuit),两线式串行总线，它是由数据线SDA和时钟SCL构成的串行总线，可发送和接收数据，IIC是半双工通信方式。</p>
+<h2 id="iic协议">IIC协议</h2>
 <ul>
-<li>零状态：对于连续时间系统，表示0-时各阶输出导数都是0；对于离散时间系统，表示n&lt;0时系统输出都是0.</li>
-<li>零输入：系统在0时刻没有输出，当然系统状态没有跳变。</li>
+<li><p>空闲状态</p>
+<p>I2C总线总线的SDA和SCL两条信号线同时处于高电平时，规定为总线的空闲状态。</p></li>
+<li><p>开始信号</p>
+<p>l当SCL为高期间，SDA由高到低的跳变；启动信号是一种电平跳变时序信号，而不是一个电平信号。</p></li>
+<li><p>停止信号</p>
+<p>当SCL为高期间，SDA由低到高的跳变；停止信号也是一种电平跳变时序信号，而不是一个电平信号。</p>
+<p><img
+src="https://s2.loli.net/2022/07/01/H5vuVkwtqP3W2ab.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>应答信号ACK</p>
+<p>发送器每发送一个字节，就在时钟脉冲9期间释放数据线，由接收器反馈一个应答信号。
+应答信号为低电平时，规定为有效应答位（ACK简称应答位），表示接收器已经成功地接收了该字节；应答信号为高电平时，规定为非应答位（NACK），一般表示接收器接收该字节没有成功。</p>
+<p><img
+src="https://s2.loli.net/2022/07/01/z2LpfcTyJiqRKFY.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>数据的有效性</p>
+<p>I2C总线进行数据传送时，时钟信号为高电平期间，数据线上的数据必须保持稳定，只有在时钟线上的信号为低电平期间，数据线上的高电平或低电平状态才允许变化。</p>
+<p><img
+src="https://s2.loli.net/2022/07/01/yTSKxDzdNhOmljb.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>数据传输</p>
+<p>在I2C总线上传送的每一位数据都有一个时钟脉冲相对应（或同步控制），即在SCL串行时钟的配合下，在SDA上逐位地串行传送每一位数据。</p></li>
 </ul>
-<h2 id="方程求解的举例说明">2.3方程求解的举例说明</h2>
-<h3 id="连续时间信号例题">2.3.1连续时间信号例题</h3>
-<p>例1：</p>
-<p><img src="https://s2.loli.net/2022/02/18/fazwZv1sAM9VJj2.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="离散时间信号例题">2.3.2离散时间信号例题</h3>
-<p>有些离散时间信号例题的求解有点像组合数学中，递推关系的求解方法。</p>
-<p>例2：</p>
-<p><img src="https://s2.loli.net/2022/02/18/5U1YEqHKL7jnVkg.png" srcset="/img/loading.gif" lazyload /></p>
-<p>例3：<img
-src="https://s2.loli.net/2022/02/18/YOAFWa3wLsZJS12.png" srcset="/img/loading.gif" lazyload /></p>
-<p>例4：</p>
-<p><img src="https://s2.loli.net/2022/02/18/iLYXEOx7MuWzT4a.png" srcset="/img/loading.gif" lazyload /></p>
-<p>因为x[0]=0，是0输入，所以可以直接用y[-1]=-1求待定系数。</p>
-<h3 id="银行贷款例题">2.3.3银行贷款例题</h3>
-<p><img src="https://s2.loli.net/2022/02/18/f2dTgZD6BjQuGUH.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://s2.loli.net/2022/02/18/Agm8lVQM4e3tCJ1.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="差分方程数值求解微分方程">2.3.4差分方程数值求解微分方程</h3>
-<p>对微分方程离散化，用差分代替微分操作：（后向差分形式） <span
-class="math display">\[
-\frac{ {dy(t)} }{ {dt} } = \frac{ {y(nT) - y(nT - T)} }{T}
-\]</span> <img
-src="https://s2.loli.net/2022/02/18/aJtjwc94oNUlD5n.png" srcset="/img/loading.gif" lazyload /></p>
-<h3
-id="奇异函数平衡法求解初始条件">2.3.5奇异函数平衡法（求解初始条件）</h3>
-<p>同2.2.1节奇异函数匹配法。</p>
-<p><img src="https://s2.loli.net/2022/02/18/ACPfyxb1lWThS7w.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="lti系统解的分析">2.4LTI系统解的分析</h2>
-<h3 id="自由响应与强迫响应">2.4.1自由响应与强迫响应</h3>
-<p>1）自由响应：齐次解 ——&gt;&gt;系统固有频率 <span
-class="math display">\[
-\sum\limits_{i = 1}^n { {c_i}{e^{ {\lambda _i}t} } } ,\sum\limits_{i =
-1}^N { {A_i}{a_i}^n}
-\]</span>
-如果系统是稳定的自由响应通常是瞬态解。自由响应总体形式与输入信号无关，但参数与输入信号有关。</p>
-<p>2）强迫响应：特解 ——&gt;&gt;与激励函数形式有关系 <span
-class="math display">\[
-B(t),B[n]
-\]</span> 如果输入是稳定信号强迫响应也是稳态响应。</p>
-<p><img src="https://s2.loli.net/2022/02/19/z9QDLlY4hcEkijX.png" srcset="/img/loading.gif" lazyload /></p>
-<p>系统的自由响应反映了系统的性质；系统的强迫响应反映了系统对信号的处理能力。</p>
-<h3 id="瞬态解与稳态解">2.4.2瞬态解与稳态解</h3>
-<p>1）瞬态解：当时间趋于无穷，系统输出趋于0的部分。</p>
-<p>2）稳态解：当时间趋于无穷，保留下来的部分。</p>
-<p><img src="https://s2.loli.net/2022/02/19/lKZ7RUfF8kc3O4L.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="零输入响应与零状态响应">2.4.3零输入响应与零状态响应</h3>
-<p>1）零输入响应：系统在没有外部输入信号的情况下，由内部起始条件所产生的响应。</p>
-<p>2）零状态响应：系统在起始条件为零的情况下的系统对于输出信号的输出响应。</p>
-<h3 id="单位冲击与阶跃响应介绍">2.4.4单位冲击与阶跃响应介绍</h3>
-<p>1）单位冲击响应：LTI输入为单位冲击信号时的零状态响应，h(t),h[n]</p>
-<p>2）单位阶跃响应：LTI输入为单位阶跃信号时的零状态响应，g(t),g[n] <span
-class="math display">\[
-\begin{array}{l}
-g&#39;(t) = h(t)\\
-g[n] - g[n - 1] = h[n]
-\end{array}
-\]</span> <strong>求解例题：</strong></p>
-<p><img src="https://s2.loli.net/2022/02/19/GyvT1IY3gHnUea2.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://s2.loli.net/2022/02/19/h3kzFm9M5NYQZRi.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://s2.loli.net/2022/02/19/yTGikClhZvoe4BM.png" srcset="/img/loading.gif" lazyload /></p>
-<p><strong>注意：</strong>齐次解只是代表了t&gt;0之后的解，对于t=0的时刻，还需要判断是否包含了一些冲激信号。</p>
-<p><img src="https://s2.loli.net/2022/02/19/3eFMp5vaIocxLTb.png" srcset="/img/loading.gif" lazyload /></p>
-<h3
-id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位冲击信号的关系</h3>
-<p><img src="https://s2.loli.net/2022/02/19/RZO7Mt3IB4FdsK5.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="卷积与卷积和">2.5卷积与卷积和</h2>
-<h3 id="卷积的定义">2.5.1卷积的定义</h3>
-<p><img src="https://s2.loli.net/2022/02/19/BE4nr1vIeyAZc2g.png" srcset="/img/loading.gif" lazyload /></p>
-<p>h(t),h[t]为系统的单位冲击响应。</p>
-<p>卷积运算的条件：</p>
+<h2 id="eeprom24c02">EEPROM（24C02）</h2>
+<p>总容量是256（2K/8)个字节，IIC接口</p>
 <ul>
-<li>线性时不变系统LTI</li>
-<li>求解LTI的零状态响应</li>
+<li><p>设备地址</p>
+<p><img
+src="https://s2.loli.net/2022/07/02/JqUteIgwmVQHzxy.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>24C02字节写时序</p>
+<p><img
+src="https://s2.loli.net/2022/07/02/QH8dcXOl3BjpgGu.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>24C02读时序</p>
+<p><img
+src="https://s2.loli.net/2022/07/02/QKle2unUTxmvN4p.png" srcset="/img/loading.gif" lazyload /></p></li>
 </ul>
-<h3 id="卷积的性质">2.5.2卷积的性质</h3>
-<p>1）代数性质</p>
+<h1 id="spi通信">SPI通信</h1>
+<p>SPI 是英语Serial Peripheral
+interface的缩写，顾名思义就是串行外围设备接口。SPI，是一种高速的，全双工，同步的通信总线，并且在芯片的管脚上只占用四根线。</p>
+<h2 id="spi接口原理">SPI接口原理</h2>
 <ul>
-<li>交换性</li>
-<li>分配律</li>
-<li>结合律</li>
+<li><p>SPI内部结构简明图</p>
+<p><img src="https://s2.loli.net/2022/07/02/P8FnoSusOWxDqdM.png" srcset="/img/loading.gif" lazyload /></p>
+<p><strong>SPI接口一般使用4条线通信：</strong></p>
+<p>MISO 主设备数据输入，从设备数据输出。</p>
+<p>MOSI 主设备数据输出，从设备数据输入。</p>
+<p>SCLK时钟信号，由主设备产生。</p>
+<p>CS从设备片选信号，由主设备控制。</p></li>
+<li><p>从选择（NSS）脚管理</p>
+<p>不仅可以使用特定的NSS脚控制片选信号，也可以使用任意的IO口控制片选信号。</p></li>
+<li><p>时钟信号的相位和极性</p>
+<p>SPI_CR寄存器的CPOL和CPHA位，能够组合成四种可能的时序关系。</p>
+<p>CPOL位确定时钟在空闲状态下的电平：CPOL位为0时，时钟信号在空闲时为低电平；CPOL位为1时，时钟信号在空闲时为高电平。</p>
+<p>CPHA位确定数据在时钟的第几个边沿被采集：CPHA位为0时，在第一个边沿被采集；CPHA位为1时，在第二个边沿被采集。</p></li>
+<li><p>数据帧格式</p>
+<p><img src="https://s2.loli.net/2022/07/02/ibJY6WmauqTEOSs.png" srcset="/img/loading.gif" lazyload /></p>
+<p>LSB：least significant bit 表示二进制数据的最低位</p>
+<p>MSB : most significant bit 表示二进制数据的最高位</p></li>
+<li><p>状态标志</p>
+<p><img
+src="https://s2.loli.net/2022/07/02/Lg1Ue4Tj2fsCIni.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>SPI中断</p>
+<p><img
+src="https://s2.loli.net/2022/07/02/8B7GEpzvOLi9In5.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>SPI引脚配置</p>
+<p><img
+src="https://s2.loli.net/2022/07/02/qyh6mjC3AYIcs4n.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>常用寄存器</p>
+<p><img
+src="https://s2.loli.net/2022/07/02/azwYEnhDM2OIHyi.jpg" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>程序配置过程</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//配置相关引脚的复用功能，使能SPIx时钟</span>
+<span class="token keyword">void</span> <span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIO_TypeDef<span class="token operator">*</span> GPIOx<span class="token punctuation">,</span> GPIO_InitTypeDef<span class="token operator">*</span> GPIO_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//初始化SPIx,设置SPIx工作模式</span>
+<span class="token keyword">void</span> <span class="token function">SPI_Init</span><span class="token punctuation">(</span>SPI_TypeDef<span class="token operator">*</span> SPIx<span class="token punctuation">,</span> SPI_InitTypeDef<span class="token operator">*</span> SPI_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//使能SPIx</span>
+<span class="token keyword">void</span> <span class="token function">SPI_Cmd</span><span class="token punctuation">(</span>SPI_TypeDef<span class="token operator">*</span> SPIx<span class="token punctuation">,</span> FunctionalState NewState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//SPI传输数据</span>
+<span class="token keyword">void</span> <span class="token function">SPI_I2S_SendData</span><span class="token punctuation">(</span>SPI_TypeDef<span class="token operator">*</span> SPIx<span class="token punctuation">,</span> <span class="token class-name">uint16_t</span> Data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">uint16_t</span> <span class="token function">SPI_I2S_ReceiveData</span><span class="token punctuation">(</span>SPI_TypeDef<span class="token operator">*</span> SPIx<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+<span class="token comment">//查看SPI传输状态</span>
+<span class="token function">SPI_I2S_GetFlagStatus</span><span class="token punctuation">(</span>SPI2<span class="token punctuation">,</span> SPI_I2S_FLAG_RXNE<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></li>
 </ul>
-<p>2）微分/差分 <span class="math display">\[
-\frac{d}{ {dt} }[{f_1}(t)*{f_2}(t)] = {f_1}(t)*\frac{d}{ {dt} }{f_2}(t)
-= \frac{d}{ {dt} }{f_1}(t)*{f_2}(t)
-\]</span> 3）积分/累加 <span class="math display">\[
-\int_{ - \infty }^t {[{f_1}(\tau )*{f_2}(\tau )]d\tau }  =
-{f_1}(t)*\int_{ - \infty }^t { {f_2}(\tau )d\tau }  = \int_{ - \infty
-}^t { {f_1}(\tau )d\tau } *{f_2}(t)
-\]</span></p>
-<p>4）时移性质</p>
-<p><img src="https://s2.loli.net/2022/02/19/ATVy9OfUlLEnJM8.png" srcset="/img/loading.gif" lazyload /></p>
-<p>5）与单位冲激信号、单位阶跃信号卷积</p>
-<p><img src="https://s2.loli.net/2022/02/19/RXz62IwcPYCSkTu.png" srcset="/img/loading.gif" lazyload /></p>
-<p>与单位冲激信号卷积体现采样特性；同单位跃迁信号卷积体现为积分。</p>
-<h3 id="性质的应用">2.5.3性质的应用</h3>
-<p>利用性质2）微分/差分、3）积分/累加简化卷积运算：对一个卷积运算可以对其中一个信号进行微分使其称为一个单位冲激响应信号的加，再对另外一个信号进行积分，即可通过平移和相加得到卷积结果。</p>
-<p><img src="https://s2.loli.net/2022/02/19/SpDekj7MJsitIAv.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="辅助求解方法">2.5.4辅助求解方法</h3>
-<p>1）图解法（通用方法）</p>
-<p>2）对位相乘求和、表格方法、矩阵方法（离散）</p>
-<p><img src="https://s2.loli.net/2022/02/19/bVmzxgWTaIUelYX.png" srcset="/img/loading.gif" lazyload /></p>
-<p>3）对连续时间信号离散化求解</p>
-<h3 id="解卷积">2.5.5解卷积</h3>
-<p>输入、卷积结果、系统单位冲激响应信号，知其二求其一。</p>
-<p>例：x[n],y[n]求：h[n]—&gt;系统辨识；</p>
-<p>​ h[n],y[n]求：x[n]—&gt;信号估计，信号恢复；</p>
-<p>应用：图像恢复、雷达探测等。</p>
-<h3 id="卷积的应用">2.5.6卷积的应用</h3>
-<p>1）滤波：去噪、均衡、补偿</p>
-<p>图像滤波，采用不同的滤波算子进行卷积达到不同的图像滤波效果。</p>
+<h2 id="w25qxx芯片">W25QXX芯片</h2>
+<p>W25Q128(W25Q64)将16M(8M)的容量分为256
+(128)个块（Block），每个块大小为64K字节，每个块又分为16个扇区（Sector），每个扇区4K个字节。W25Qxx的最小擦除单位为一个扇区，也就是每次必须擦除4K个字节。</p>
+<p>W25QXX芯片的操作需要不断查看芯片的数据手册。</p>
 
               
             </div>
@@ -465,12 +397,12 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%A4%8D%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">复试学习笔记</a>
+  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" class="category-chain-item">嵌入式开发</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%A4%8D%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/" class="category-chain-item">信号与系统</a>
+  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/STM32/" class="category-chain-item">STM32</a>
   
   
 
@@ -487,7 +419,7 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/">#信号与系统</a>
+        <a href="/tags/STM32/">#STM32</a>
       
     </div>
   
@@ -499,8 +431,8 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>信号与系统——第二章（时域系统分析）</div>
-      <div>https://2022xi.github.io/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E6%97%B6%E5%9F%9F%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%EF%BC%89/</div>
+      <div>STM32——IIC、SPI通信</div>
+      <div>https://2022xi.github.io/2022/07/02/STM32%E2%80%94%E2%80%94IIC%E3%80%81SPI%E9%80%9A%E4%BF%A1/</div>
     </div>
     <div class="license-meta">
       
@@ -512,7 +444,7 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月10日</div>
+          <div>2022年7月2日</div>
         </div>
       
       
@@ -542,9 +474,9 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/10/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%A2%91%E8%B0%B1%E5%88%86%E6%9E%90%EF%BC%89/" title="信号与系统——第三章（信号的频谱分析）">
+                      <a href="/2022/07/04/STM32%E2%80%94%E2%80%94MQTT%E5%8D%8F%E8%AE%AE/" title="STM32——MQTT协议">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">信号与系统——第三章（信号的频谱分析）</span>
+                        <span class="hidden-mobile">STM32——MQTT协议</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -552,8 +484,8 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/10/%E4%B8%8D%E6%87%82%E9%9F%B3%E4%B9%90%EF%BC%8C%E4%BD%86%E6%83%B3%E5%AD%A6%E5%90%89%E4%BB%96%E7%9A%84%E6%8B%A8%E5%BC%A6%E6%89%8B/" title="不懂音乐，但想学吉他的拨弦手">
-                        <span class="hidden-mobile">不懂音乐，但想学吉他的拨弦手</span>
+                      <a href="/2022/06/21/STM32%E2%80%94%E2%80%94%E5%90%84%E7%B1%BB%E4%B8%AD%E6%96%AD/" title="STM32——各类中断">
+                        <span class="hidden-mobile">STM32——各类中断</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -635,12 +567,6 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -875,44 +801,6 @@ id="lti系统特性与单位冲击信号的关系">2.4.5LTI系统特性与单位
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        MathJax = {
-          tex    : {
-            inlineMath: { '[+]': [['$', '$']] }
-          },
-          loader : {
-            load: ['ui/lazy']
-          },
-          options: {
-            renderActions: {
-              findScript    : [10, doc => {
-                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-                  const display = !!node.type.match(/; *mode=display/);
-                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-                  const text = document.createTextNode('');
-                  node.parentNode.replaceChild(text, node);
-                  math.start = { node: text, delim: '', n: 0 };
-                  math.end = { node: text, delim: '', n: 0 };
-                  doc.math.push(math);
-                });
-              }, '', false],
-              insertedScript: [200, () => {
-                document.querySelectorAll('mjx-container').forEach(node => {
-                  let target = node.parentNode;
-                  if (target.nodeName.toLowerCase() === 'li') {
-                    target.parentNode.classList.add('has-jax');
-                  }
-                });
-              }, '', false]
-            }
-          }
-        };
-      </script>
-    
-
-  <script  src="https://cdn.staticfile.org/mathjax/3.2.0/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
