@@ -2,7 +2,7 @@
 title: Linux和Windows安装tensorflow-cpu 2.x
 tags: [tensorflow]
 category: [深度学习,tensorflow]
-top: 3
+top: 9
 index_img: /img/tensorflow-cpu.jpg
 ---
 # Linux和Windows安装tensorflow-cpu 2.x
