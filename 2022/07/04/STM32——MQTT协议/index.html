@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="舍功利之心，注一腔热情。">
 <meta property="og:description" content="这篇文章标志着博主迈出了研究生学习的第一步，凭借大一学习51单片机的基础，正式开启STM32的学习。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103.jpg">
+<meta property="og:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103-MQTT%E5%8D%8F%E8%AE%AE.jpg">
 <meta property="article:published_time" content="2022-07-04T09:17:21.410Z">
-<meta property="article:modified_time" content="2022-07-07T08:39:42.873Z">
+<meta property="article:modified_time" content="2022-07-16T10:14:52.313Z">
 <meta property="article:author" content="酒中仙">
 <meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103.jpg">
+<meta name="twitter:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103-MQTT%E5%8D%8F%E8%AE%AE.jpg">
   
   
   <title>STM32——MQTT协议 - 舍功利之心，注一腔热情。</title>
@@ -414,10 +414,11 @@ src="https://s2.loli.net/2022/07/06/yHmSTzX3swG2jUq.png" srcset="/img/loading.gi
 <li>保留标志：第1个字节，第0位。置1则该条报文会发送给后续订阅的设备。</li>
 </ul></li>
 <li><p>可变报头（可变报头按顺序包含主题名和报文标识符）</p>
+<p><img src="https://s2.loli.net/2022/07/11/oNYERg3JCtzD5yW.png" srcset="/img/loading.gif" lazyload /></p>
 <ul>
-<li><p>主题名：和主题过滤器一个概念。</p></li>
-<li><p>报文标识符：只有当QoS等级是1或2时，报文标识符（Packet
-Identifier）字段才能出现在PUBLISH报文中。</p></li>
+<li>主题名：和主题过滤器一个概念。</li>
+<li>报文标识符：只有当QoS等级是1或2时，报文标识符（Packet
+Identifier）字段才能出现在PUBLISH报文中。</li>
 </ul></li>
 <li><p>有效载荷：有效载荷包含将被发布的应用消息。数据的内容和格式是应用特定的。有效载荷的长度这样计算：用固定报头中的剩余长度字段的值减去可变报头的长度。包含零长度有效载荷的PUBLISH报文是合法的。</p></li>
 </ul>
@@ -521,6 +522,12 @@ src="https://s2.loli.net/2022/07/07/ZoRkBFUVaeuA6Db.png" srcset="/img/loading.gi
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/07/16/Linux%E2%80%94%E2%80%94Linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/" title="Linux——Linux基本操作（一）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux——Linux基本操作（一）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

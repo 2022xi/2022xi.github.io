@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="舍功利之心，注一腔热情。">
 <meta property="og:description" content="这篇文章标志着博主迈出了研究生学习的第一步，凭借大一学习51单片机的基础，正式开启STM32的学习。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103.jpg">
+<meta property="og:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103-IIC%E3%80%81SPI%E9%80%9A%E4%BF%A1.jpg">
 <meta property="article:published_time" content="2022-07-01T16:04:10.147Z">
-<meta property="article:modified_time" content="2022-07-02T09:56:37.672Z">
+<meta property="article:modified_time" content="2022-07-16T10:14:20.838Z">
 <meta property="article:author" content="酒中仙">
 <meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103.jpg">
+<meta name="twitter:image" content="https://2022xi.github.io/img/%E6%AD%A3%E7%82%B9%E5%8E%9F%E5%AD%90STM32F103-IIC%E3%80%81SPI%E9%80%9A%E4%BF%A1.jpg">
   
   
   <title>STM32——IIC、SPI通信 - 舍功利之心，注一腔热情。</title>
@@ -378,7 +378,7 @@ src="https://s2.loli.net/2022/07/02/azwYEnhDM2OIHyi.jpg" srcset="/img/loading.gi
 </ul>
 <h2 id="w25qxx芯片">W25QXX芯片</h2>
 <p>W25Q128(W25Q64)将16M(8M)的容量分为256
-(128)个块（Block），每个块大小为64K字节，每个块又分为16个扇区（Sector），每个扇区4K个字节。W25Qxx的最小擦除单位为一个扇区，也就是每次必须擦除4K个字节。</p>
+(128)个块（Block），每个块大小为64K字节，每个块又分为16个扇区（Sector），每个扇区4K个字节，一页（Page）是256个字节。W25Qxx的最小擦除单位为一个扇区，也就是每次必须擦除4K个字节。</p>
 <p>W25QXX芯片的操作需要不断查看芯片的数据手册。</p>
 
               

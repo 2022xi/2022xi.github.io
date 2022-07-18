@@ -1,0 +1,939 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="酒中仙">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在掌握STM32的常用操作之后，现在开始对项目实际需求进行针对性的学习。这篇博客是根据正点原子手把手教你学Linux系列课程之Ubuntu入门篇整理的学习笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux——Linux基本操作（一）">
+<meta property="og:url" content="https://2022xi.github.io/2022/07/16/Linux%E2%80%94%E2%80%94Linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="舍功利之心，注一腔热情。">
+<meta property="og:description" content="在掌握STM32的常用操作之后，现在开始对项目实际需求进行针对性的学习。这篇博客是根据正点原子手把手教你学Linux系列课程之Ubuntu入门篇整理的学习笔记。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://2022xi.github.io/img/Linux%E2%80%94%E2%80%94Shell.jpg">
+<meta property="article:published_time" content="2022-07-16T10:18:30.736Z">
+<meta property="article:modified_time" content="2022-07-18T03:06:13.525Z">
+<meta property="article:author" content="酒中仙">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://2022xi.github.io/img/Linux%E2%80%94%E2%80%94Shell.jpg">
+  
+  
+  <title>Linux——Linux基本操作（一） - 舍功利之心，注一腔热情。</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"2022xi.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>酒中仙</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/message/">
+                <i class="iconfont icon-note"></i>
+                留言
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Linux——Linux基本操作（一）">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-16 18:18" pubdate>
+          2022年7月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux——Linux基本操作（一）</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="linuxlinux基本操作一">Linux——Linux基本操作（一）</h1>
+<h2 id="常用shell命令">常用Shell命令</h2>
+<ul>
+<li>目录信息查看命令ls</li>
+<li>目录切换命令cd</li>
+<li>当前路径显示命令pwd</li>
+<li>系统信息查看命令uname</li>
+<li>清理屏幕命令clear</li>
+<li>显示文件内容命令cat</li>
+<li>切换用户身份命令sudo</li>
+<li>文件拷贝命令cp</li>
+<li>切换用户命令su</li>
+<li>移动文件命令mv</li>
+<li>创建文件夹命令mkdir</li>
+<li>创建文件命令touch</li>
+<li>删除命令rm</li>
+<li>目录删除命令rmdir</li>
+<li>显示网络配置信息命令ifconfig</li>
+<li>重启命令reboot</li>
+<li>关机命令poweroff</li>
+<li>系统帮助命令man</li>
+<li>数据同步写入磁盘命令sync</li>
+<li>查找文件命令find</li>
+<li>查找内容命令grep</li>
+<li>文件夹大小查看命令du</li>
+<li>磁盘空间检查命令df</li>
+<li>使用gedit打开某个文件命令gedit</li>
+<li>当前的系统进程查看命令ps</li>
+<li>进程实时运行状态查看命令top</li>
+<li>文件类型查看命令file</li>
+</ul>
+<h2 id="软件安装">软件安装</h2>
+<ul>
+<li><p>通过APP Store安装</p>
+<p>使用apt工具安装软件，需要sudo，也就是root权限。</p></li>
+<li><p>使用APT工具安装</p>
+<p>使用apt包管理工具，apt可以自动下载，配置，安装。</p></li>
+<li><p>deb软件包安装</p>
+<p>使用dpkg命令安装deb软件包，命令如下： sudo dpkg -i xxxx.deb
+在windows下，我们安装的是.exe文件，在Ubuntu就有一个.deb。</p></li>
+<li><p>自己下载程序源码编译安装</p>
+<p>Make Make install</p></li>
+<li><p>其他安装方法</p>
+<p>QT扩展名是.run</p></li>
+</ul>
+<h2 id="文件系统结构">文件系统结构</h2>
+<h3 id="根目录">根目录“/”：</h3>
+<ul>
+<li>Linux下“/”就是根目录！所有的目录都是由根目录衍生出来的。</li>
+</ul>
+<h3 id="文件系统结构-1">文件系统结构</h3>
+<ul>
+<li>/bin
+：存放二进制可执行文件，这些命令在单用户模式下也能够使用。可以被root和一般的账号使用。</li>
+<li>/boot：Ubuntu内核和启动文件，比如vmlinuz-xxx。gurb引导装载程序。</li>
+<li>/dev：设备驱动文件</li>
+<li>/etc：存放一些系统配置文件，比如用户账号和密码文件，各种服务的起始地址。</li>
+<li>/home：系统默认的用户主文件夹，一般创建用户账户的时候，默认的用户主文件夹都会放到此目录下。</li>
+<li>/lib：存放库文件</li>
+<li>/media：此目录下放置可插拔设备，比如SD卡，或者U盘就是挂载到这个目录中。</li>
+<li>/mnt：用户可使用的挂载点，如果要挂载一些额外的设备，那么就可以挂载到此处。</li>
+<li>/opt：可选的文件和程序存放目录，给第三方软件放置的目录。</li>
+<li>/root：root用户目录，也就是系统管理员目录。</li>
+<li>/sbin：和/bin类似，也是存放一些二进制可执行文件。sbin下面的一般是系统开机过程中所需要的命令。</li>
+<li>/srv：服务相关目录。比如网络服务。</li>
+<li>/sys：记录内核信息，虚拟文件系统。</li>
+<li>/tmp：临时目录</li>
+<li>/var：存放一些变化的文件，比如日志文件</li>
+<li>/usr：usr不是user的缩写，而是UNIX Software
+Resource的缩写，存放于系统用户有关的文件，会占用很大的存储空间！</li>
+<li>/proc：虚拟文件系统，数据放置到内存中，存放系统运行信息</li>
+</ul>
+<h3 id="绝对路径和相对路径">绝对路径和相对路径</h3>
+<ul>
+<li>绝对路径：从根目录“/”算起的路径。</li>
+<li>相对路径：相对于目前路径的文件名写法，比如./home/zzk。不是以“/”开头的就行。</li>
+<li>“.”代表当前路径，也可以 用“./”表示</li>
+<li>“..”代表上一层目录，也可以用“../”表示</li>
+</ul>
+<h2 id="磁盘管理">磁盘管理</h2>
+<h3 id="磁盘文件">磁盘文件</h3>
+<ul>
+<li><p>/dev/sd*文件，此类文件是磁盘设备文件，并不能直接访问磁盘，必须要将磁盘挂载到某一个目录下才可以访问。</p>
+<p>例如：/dev/sdb和/dev/sdb1是U盘的设备文件。</p>
+<p>/dev/sdb表示U盘，/dev/sdb1表示U盘的第一个分区。</p></li>
+</ul>
+<h3 id="磁盘和目录的容量查询命令">磁盘和目录的容量查询命令</h3>
+<ul>
+<li>df：列出文件系统的整体磁盘使用量。主要查看个文件系统的使用量，</li>
+<li>du：评估文件系统的磁盘使用量，主要查看单个文件的大小。</li>
+</ul>
+<h3 id="磁盘挂载与卸载分区和格式化">磁盘挂载与卸载，分区和格式化</h3>
+<ul>
+<li><p>磁盘的挂载和卸载</p>
+<p>mount和umount命令</p></li>
+<li><p>磁盘分区</p>
+<p>fdisk命令</p></li>
+<li><p>磁盘格式化</p>
+<p>磁盘分区创建好以后就可以格式化磁盘，使用命令mkfs。如：mkfs -t vfat
+/dev/sdx</p></li>
+</ul>
+<h2 id="压缩与解压缩">压缩与解压缩</h2>
+<p>Linux下常用的压缩扩展名有：.tar、.tar.bz2、.tar.gz。</p>
+<h3 id="gzip压缩工具">gzip压缩工具</h3>
+<ul>
+<li><p>.gzip工具负责压缩和解压缩.gz格式的压缩包。</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gzip xxx			&#x2F;&#x2F;压缩
+gzip -d xxx.gz	&#x2F;&#x2F;解压缩<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></li>
+<li><p>gzip对文件夹进行压缩</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gzip -r xxx		&#x2F;&#x2F;对文件夹进行压缩
+gzip -rd xxx.gz	&#x2F;&#x2F;对文件夹进行解压缩<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></li>
+</ul>
+<p>gzip虽然可以对文件夹进行压缩，但是并不能提供打包的服务，只是对文件夹中的所有文件进行了单独的压缩。</p>
+<h3 id="bzip2压缩工具">bzip2压缩工具</h3>
+<p>和gzip类似，只是bzip2工具负责压缩和解压缩.bz2格式的压缩包。</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">bzip2 -z xxx			&#x2F;&#x2F;压缩
+bzip2 -d xxx.gz			&#x2F;&#x2F;解压缩<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
+<h3 id="tar打包工具">tar打包工具</h3>
+<p>tar工具参数：</p>
+<ul>
+<li>-f，使用归档文件或 ARCHIVE 设备</li>
+<li>-c：创建新归档，创建压缩文件</li>
+<li>-x：从图档中解出文件，解压缩</li>
+<li>-j：使用bzip2压缩格式。</li>
+<li>-z：使用gzip压缩格式</li>
+<li>-v：打印出命令执行过程。</li>
+</ul>
+<p>tar工具提供打包服务，就是将多个文件打包，比如</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -vcf test.tar test	&#x2F;&#x2F;将test打包成test.tar
+tar -vxf test.tar		&#x2F;&#x2F;解包<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
+<p>上面的tar命令只提供了打包和解包的功能，tar在提供打包和解包的同时使用gzip/bzip2进行压缩，实现类似windwos下winRAR软件的命令。</p>
+<ul>
+<li><p>对.tar.bz2进行压缩和解压缩</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -vxjf xxx.tar.bz2	解压缩
+tar -vcjf xxx.tar.bz2 xxx 压缩	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></li>
+<li><p>对.tar.gz进行压缩和解压缩</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -vxzf	xxx.tar.gz		&#x2F;&#x2F;解压缩
+tar -vczf xxx.tar.gz xxx 	&#x2F;&#x2F;压缩	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></li>
+</ul>
+<h3 id="其他格式的压缩和解压缩">其他格式的压缩和解压缩</h3>
+<ul>
+<li><p>.rar格式</p>
+<p>需要先安装rar：sudo apt-get install rar</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">rar x xxx.rar		&#x2F;&#x2F;解压缩
+rar a xxx.rar xxx	&#x2F;&#x2F;压缩<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></li>
+<li><p>.zip格式</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">zip -rv xxx.zip xxx	&#x2F;&#x2F;压缩
+unzip -v xxx.zip		&#x2F;&#x2F;解压缩<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></li>
+</ul>
+<h2 id="用户与用户组">用户与用户组</h2>
+<h3 id="linux用户">Linux用户</h3>
+<p>Linux是一个多用户操作系统，不同的用户拥有不同的权限。可以查看和操作不同的文件。
+Ubuntu有三种用户：初次创建的用户、root用户、普通用户。</p>
+<p>​ Linux用户记录在/etc/passwd这个文件内。 ​
+Linux用户密码记录在/etc/shadow这个文件内。 ​
+每个用户都有一个ID，叫做UID。</p>
+<h3 id="linux用户组">Linux用户组</h3>
+<p>用户和用户组的存在就是为了控制文件的访问权限，每个用户可以属于多个不同的组，每个用户组都有一个ID，叫做GID。<strong>用户组信息存储在/etc/group文件中。</strong></p>
+<h3 id="创建用户和用户组">创建用户和用户组</h3>
+<p>​ 添加用户：adduser命令，adduser 用户名 ​
+用户查询：finger命令，finger 用户名 ​ 修改用户密码：passwd命令，passwd
+用户名 ​ 删除用户：deluser命令，deluser 用户名 ​
+添加用户组：addgroup命令，addgroup 用户组名 ​
+显示组内用户名：groups命令，groups 用户组名 ​
+删除用户组：delgroup命令，delgroup用户组名</p>
+<h2 id="文件权限管理">文件权限管理</h2>
+<p>文件权限是指不同的用户或用户组对某个文件拥有的权限，文件的权限分为三种：r：读、w：写、
+x：可执行。可以使用二进制表示文件权限：r=4、w=2、x=1。
+文件描述形式如下：</p>
+<p><img
+src="https://gitee.com/math2022xi/mypicgo/raw/master/img/202207172356371.png" srcset="/img/loading.gif" lazyload /></p>
+<p>第一位表示文件类型，剩下的每三位表示一组权限，分别对应拥有者权限、拥有者所在组权限、其他用户权限。</p>
+<h3 id="文件权限修改">文件权限修改</h3>
+<ul>
+<li><p>修改文件权限命令</p>
+<p>chmod命令</p></li>
+<li><p>修改文件所属用户</p>
+<p>chown命令</p></li>
+</ul>
+<h2 id="文件连接">文件连接</h2>
+<p>Linux有两种连接文件：符号连接(软连接)和硬链接，符号链接类似Windows下的快捷方式。硬链接通过文件系统的inode连接来产生新文件名，而不是产生新文件。</p>
+<p>inode：记录文件属性，一个文件一个inode。inode相当于文件ID，查找文件的时候要先找到inode，然后才能读出文件的内容。</p>
+<h3 id="in命令">in命令</h3>
+<p>ln命令用于创建连接文件：ln [选项] 源文件 目标文件</p>
+<p>选项：-s 创建符号链接(软连接)；-f
+强制创建连接文件，如果目标存在，那么先删除掉目标文件，然后再建立连接文件。</p>
+<h3 id="硬连接">硬连接</h3>
+<p>硬链接是多个文件都指向同一个inode，硬链接知识点：</p>
+<ul>
+<li>具有相同inode的多个文件互为硬链接文件，创建硬链接相当于文件实体多了入口。</li>
+<li>对于硬链接文件，只有删除了源文件以及对应的所有硬连接文件，文件实体才会被删除。</li>
+<li>根据硬链接文件的特点，我们可以通过给文件创建硬连接的方式来防止文件误删除。</li>
+<li>不论修改源文件还是连接文件，另一个文件的数据都会被改变。</li>
+<li>硬连接不能跨文件系统。</li>
+<li>硬连接不能连接到目录。</li>
+</ul>
+<p>因为以上这些限制，硬链接其实不常用。</p>
+<h3 id="符号连接软连接">符号连接(软连接)</h3>
+<p>符号连接类似Windows下的快捷方式，符号链接也叫做软连接，软连接要用的多。符号连接相当于创建了一个独立的文件，这个文件会让数据读取指向它连接的哪个文件的文件名。软连接的特点：</p>
+<ul>
+<li>可以连接到目录。</li>
+<li>可以跨文件系统。</li>
+<li>删除源文件以后，软连接文件也就“打不开了”。</li>
+<li>符号连接文件通过-&gt;来指示具体的连接文件。</li>
+<li>符号连接要使用绝对路径，否则连接出问题。</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" class="category-chain-item">嵌入式开发</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux——Linux基本操作（一）</div>
+      <div>https://2022xi.github.io/2022/07/16/Linux%E2%80%94%E2%80%94Linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>酒中仙</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/17/Linux%E2%80%94%E2%80%94Shell%E5%91%BD%E4%BB%A4/" title="Linux——Linux基本操作（一）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux——Linux基本操作（一）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/04/STM32%E2%80%94%E2%80%94MQTT%E5%8D%8F%E8%AE%AE/" title="STM32——MQTT协议">
+                        <span class="hidden-mobile">STM32——MQTT协议</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.staticfile.org/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UCNXdyjiJS6tgjtPhPdXzf1J-gzGzoHsz","appKey":"KLouyOWRCliEiOJIX3CSjsMd","path":"window.location.pathname","placeholder":"Just Go Go!","avatar":"retro","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script  src="https://cdn.staticfile.org/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
